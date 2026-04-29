@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Балтийский индекс сухогрузов (BDI) — График и данные в реальном времени | BalticDryIndex.com</title>
+<meta name="description" content="Балтийский индекс сухогрузов (BDI) в реальном времени — график, данные, субиндексы Capesize, Panamax, Supramax и ежедневный анализ фрахтового рынка.">
+<meta name="keywords" content="балтийский индекс сухогрузов, BDI, балтийский индекс, индекс сухого фрахта, морской фрахт, capesize, panamax, supramax">
+<link rel="canonical" href="https://www.balticdryindex.com/ru/">
+<link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/">
+<link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
+<style>body { font-family: 'IBM Plex Sans', 'PT Sans', sans-serif; }</style>
+</head>
+<body>
+<div class="ticker-bar"><div class="ticker-label">ОНЛАЙН</div><div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div></div>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav><a href="/ru/" class="active">Данные</a><a href="/what-is-the-baltic-dry-index/">О BDI</a><a href="/bdi-chart-historical-data/">График</a><a href="/news/">Новости</a><a href="/" class="nav-cta">Оповещения</a></nav>
+    <div class="lang-switcher"><a href="/">EN</a><a href="/zh/">中文</a><a href="/ja/">日本語</a><a href="/pt/">PT</a><a href="/ru/" class="active">RU</a></div>
+  </div>
+</header>
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-title-block">
+      <div class="hero-eyebrow"><span class="live-dot"></span>Данные фрахтового рынка в реальном времени</div>
+      <h1 class="hero-title" style="font-size:clamp(30px,4vw,56px);line-height:1.05;">Балтийский<br><span>индекс сухогрузов</span></h1>
+    </div>
+    <div class="hero-bdi-block">
+      <div class="bdi-current-label">BDI Сегодня</div>
+      <div class="bdi-current-value" id="bdi-val"><span class="spin"></span></div>
+      <div class="bdi-change" id="bdi-change" style="color:var(--text-muted)">Получение данных…</div>
+      <div class="bdi-timestamp" id="bdi-ts">Балтийская биржа · Ежедневный фиксинг</div>
+    </div>
+  </div>
+  <div class="chart-card" style="margin-bottom:2px;">
+    <div class="chart-controls">
+      <div class="chart-title">Балтийский индекс сухогрузов (BDI) — История</div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="range-tabs"><button class="range-tab" data-range="1M">1М</button><button class="range-tab" data-range="3M">3М</button><button class="range-tab active" data-range="1Y">1Г</button><button class="range-tab" data-range="5Y">5Л</button><button class="range-tab" data-range="ALL">ВСЁ</button></div>
+        <div class="chart-status" id="chartStatus">Загрузка…</div>
+      </div>
+    </div>
+    <div class="chart-wrap"><div class="chart-skeleton" id="chartSkeleton">Получение данных…</div><canvas id="bdiChart" style="display:none;"></canvas></div>
+    <div class="data-note">Источник: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">Балтийская биржа</a> · Обновляется ежедневно</div>
+  </div>
+</div>
+<div class="sub-grid">
+  <div class="sub-indices">
+    <div class="sub-card" data-type="cape"><div class="sub-label">BCI</div><div class="sub-name">Индекс Capesize</div><div class="sub-value" id="bci-val">—</div><div class="sub-change" id="bci-chg" style="color:var(--text-muted)">Загрузка…</div><canvas class="mini-spark" id="spark1"></canvas></div>
+    <div class="sub-card" data-type="pana"><div class="sub-label">BPI</div><div class="sub-name">Индекс Panamax</div><div class="sub-value" id="bpi-val">—</div><div class="sub-change" id="bpi-chg" style="color:var(--text-muted)">Загрузка…</div><canvas class="mini-spark" id="spark2"></canvas></div>
+    <div class="sub-card" data-type="supra"><div class="sub-label">BSI</div><div class="sub-name">Индекс Supramax</div><div class="sub-value" id="bsi-val">—</div><div class="sub-change" id="bsi-chg" style="color:var(--text-muted)">Загрузка…</div><canvas class="mini-spark" id="spark3"></canvas></div>
+    <div class="sub-card" data-type="handy"><div class="sub-label">BHSI</div><div class="sub-name">Индекс Handysize</div><div class="sub-value" id="bhsi-val">—</div><div class="sub-change" id="bhsi-chg" style="color:var(--text-muted)">Загрузка…</div><canvas class="mini-spark" id="spark4"></canvas></div>
+  </div>
+</div>
+<div class="main-grid">
+  <div class="main-left">
+    <div class="alert-strip">
+      <div class="alert-text">Получайте <strong>бесплатные ежедневные оповещения BDI</strong> на вашу электронную почту до открытия рынков.</div>
+      <div class="alert-form"><input class="alert-input" type="email" placeholder="ваш@email.com" id="alertEmail"><button class="alert-btn" onclick="BDI.subscribe('alertEmail')">Подписаться</button></div>
+    </div>
+    <div class="prose" style="background:var(--surface);border:1px solid var(--border);padding:24px;">
+      <h2>Что такое Балтийский индекс сухогрузов?</h2>
+      <p><strong>Балтийский индекс сухогрузов (BDI)</strong> — ежедневный индекс стоимости фрахта, публикуемый <strong>Балтийской биржей в Лондоне</strong>. Он измеряет стоимость перевозки сухих навалочных грузов — железной руды, угля, зерна — по 23 основным мировым маршрутам.</p>
+      <p>BDI рассчитывается как средневзвешенное значение трёх субиндексов: <strong>Capesize (BCI) — 40%</strong>, <strong>Panamax (BPI) — 30%</strong> и <strong>Supramax (BSI) — 30%</strong>.</p>
+      <p>Индекс широко используется как опережающий индикатор мировой экономической активности. Рост BDI, как правило, сигнализирует об усилении глобальной торговли сырьевыми товарами.</p>
+      <p><a href="/what-is-the-baltic-dry-index/">→ Подробнее о Балтийском индексе сухогрузов</a></p>
+    </div>
+  </div>
+  <div class="main-right">
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">Статистика BDI</div><div class="panel-meta">2025–2026</div></div>
+      <div class="stats-row"><span class="stats-label">Максимум 52 недели</span><span class="stats-value">2 845</span></div>
+      <div class="stats-row"><span class="stats-label">Минимум 52 недели</span><span class="stats-value">1 261</span></div>
+      <div class="stats-row"><span class="stats-label">Изменение с начала года</span><span class="stats-value up">+108,80%</span></div>
+      <div class="stats-row"><span class="stats-label">Ставка Capesize/день</span><span class="stats-value">$36 002</span></div>
+      <div class="stats-row"><span class="stats-label">Исторический максимум</span><span class="stats-value">11 793 (2008)</span></div>
+      <div class="stats-row"><span class="stats-label">Исторический минимум</span><span class="stats-value">290 (2016)</span></div>
+    </div>
+    <div class="broker-strip" style="margin-top:2px;">
+      <div class="broker-label">Торговля морскими акциями и сырьём</div>
+      <div class="broker-grid" style="grid-template-columns:1fr 1fr;">
+        <a href="https://dukascopy.bank/swiss/open-mca-account/?ref=YJM-PUE&lang=en" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Dukascopy</div><div class="broker-desc">Швейцарский регулируемый банк и брокер.</div><div class="broker-cta">Открыть счёт →</div></a>
+        <a href="https://ibkr.com/referral/julio411" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">IBKR</div><div class="broker-desc">Низкие комиссии на мировых рынках. SBLK, GOGL и другие.</div><div class="broker-cta">Открыть счёт →</div></a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div><a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">Независимый источник данных Балтийского индекса сухогрузов и аналитики фрахтового рынка.</div></div>
+    <div><div class="footer-col-title">Данные</div><ul class="footer-links"><li><a href="/ru/">График BDI</a></li><li><a href="/bdi-chart-historical-data/">Исторические данные</a></li><li><a href="/news/">Новости BDI</a></li></ul></div>
+    <div><div class="footer-col-title">Компания</div><ul class="footer-links"><li><a href="/about/">О нас</a></li><li><a href="/contact/">Контакты</a></li><li><a href="/privacy-policy/">Конфиденциальность</a></li><li><a href="/disclaimer/">Отказ от ответственности</a></li></ul></div>
+    <div><div class="footer-col-title">Языки</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div><div class="footer-disclaimer">Данные носят ориентировочный характер. Не является финансовой рекомендацией.</div></div>
+</footer>
+<script src="/assets/bdi.js"></script>
+<script>
+let chartInstance=null,histData=[],currentRange='1Y';
+BDI.load(function(data){
+  BDI.setHero(data);
+  BDI.setSub('bci-val','bci-chg',data.bci);
+  BDI.setSub('bpi-val','bpi-chg',data.bpi);
+  BDI.setSub('bsi-val','bsi-chg',data.bsi);
+  BDI.setSub('bhsi-val','bhsi-chg',data.bhsi);
+  BDI.buildTicker(data);
+  histData=data.history;
+  chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  ['spark1','spark2','spark3','spark4'].forEach((id,i)=>BDI.drawSpark(id,['#4a9eff','#c8a84b','#a855f7','#00d084'][i],histData));
+});
+document.querySelectorAll('.range-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentRange=btn.dataset.range;chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);});
+});
+</script>
+</body>
+</html>

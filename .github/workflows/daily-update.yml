@@ -1,0 +1,46 @@
+name: Daily BDI Data Update
+
+on:
+  schedule:
+    - cron: "0 14 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  update-bdi-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install requests beautifulsoup4 lxml
+
+      - name: Update data only
+        run: |
+          python scripts/update_bdi.py --data-only
+
+      - name: Publish latest.json to gh-pages
+        run: |
+          git config --global user.name "BDI Bot"
+          git config --global user.email "bot@balticdryindex.com"
+
+          mkdir -p /tmp/bdi-data/data
+          cp data/latest.json /tmp/bdi-data/data/latest.json
+
+          git fetch origin gh-pages || true
+          git checkout --orphan gh-pages-temp
+          git rm -rf . || true
+          mkdir -p data
+          cp /tmp/bdi-data/data/latest.json data/latest.json
+
+          git add data/latest.json
+          git commit -m "Daily BDI data update" || echo "No data changes"
+
+          git branch -D gh-pages || true
+          git branch -m gh-pages
+          git push origin gh-pages --force

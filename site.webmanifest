@@ -1,0 +1,13 @@
+{
+  "name": "Baltic Dry Index",
+  "short_name": "BDI",
+  "description": "Live Baltic Dry Index data, charts and shipping market analysis",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090b0e",
+  "theme_color": "#090b0e",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

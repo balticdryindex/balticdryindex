@@ -1,0 +1,24 @@
+{
+  "date": "2026-04-23",
+  "updated": "13:00 UTC",
+  "source": "Baltic Exchange via GitHub Actions",
+  "bdi":  { "value": 2675, "prev": 2640, "change": 35,  "pct": 1.33 },
+  "bci":  { "value": 4356, "prev": 4300, "change": 56,  "pct": 1.30 },
+  "bpi":  { "value": 1971, "prev": 1973, "change": -2,  "pct": -0.10 },
+  "bsi":  { "value": 1484, "prev": 1443, "change": 41,  "pct": 2.84 },
+  "bhsi": { "value": 781,  "prev": 769,  "change": 12,  "pct": 1.56 },
+  "routes": {
+    "C3":  { "rate": 31200, "desc": "Tubarao → Qingdao (Iron Ore)" },
+    "C5":  { "rate": 12800, "desc": "W Australia → Qingdao (Iron Ore)" },
+    "P1A": { "rate": 17730, "desc": "USG → Skaw-Passero (Grain)" },
+    "S4A": { "rate": 17669, "desc": "USG → Skaw (Grains)" }
+  },
+  "stats": {
+    "week52High": 2845,
+    "week52Low": 1261,
+    "ytdPct": 108.80,
+    "capesizeTCE": 36002,
+    "allTimeHigh": 11793,
+    "allTimeLow": 290
+  }
+}

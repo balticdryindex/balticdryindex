@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>波罗的海干散货指数 (BDI) — 实时图表与数据 | BalticDryIndex.com</title>
+<meta name="description" content="波罗的海干散货指数(BDI)实时数据、图表、海岬型、巴拿马型、超灵便型子指数及每日航运市场分析。每日更新。">
+<meta name="keywords" content="波罗的海指数,BDI指数,波罗的海干散货指数,bdi 指數,散货运费指数,航运指数,海运指数,波羅的海指數,BCI指数,BPI指数">
+<link rel="canonical" href="https://www.balticdryindex.com/zh/">
+<link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/">
+<link rel="alternate" hreflang="ja" href="https://www.balticdryindex.com/ja/">
+<link rel="alternate" hreflang="zh" href="https://www.balticdryindex.com/zh/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "波罗的海干散货指数 (BDI)",
+  "description": "波罗的海干散货指数实时数据与图表",
+  "url": "https://www.balticdryindex.com/zh/",
+  "inLanguage": "zh"
+}
+</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  body { font-family: 'IBM Plex Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="ticker-bar">
+  <div class="ticker-label">实时</div>
+  <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/" class="active">实时数据</a>
+      <a href="/what-is-the-baltic-dry-index/">关于BDI</a>
+      <a href="/">English</a>
+      <a href="/ja/">日本語</a>
+      <a href="/" class="nav-cta">免费提醒</a>
+    </nav>
+    <div class="lang-switcher"><a href="/">EN</a><a href="/" class="active">中文</a><a href="/ja/">日本語</a></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-title-block">
+      <div class="hero-eyebrow"><span class="live-dot"></span>实时航运市场数据</div>
+      <h1 class="hero-title" style="font-size:clamp(32px,5vw,62px);line-height:1.1;">波罗的海<br><span>干散货指数</span></h1>
+    </div>
+    <div class="hero-bdi-block">
+      <div class="bdi-current-label">今日 BDI</div>
+      <div class="bdi-current-value" id="bdi-val"><span class="spin"></span></div>
+      <div class="bdi-change" id="bdi-change" style="color:var(--text-muted)">正在获取实时数据…</div>
+      <div class="bdi-timestamp" id="bdi-ts">波罗的海交易所 · 每日收盘</div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:2px;">
+    <div class="chart-controls">
+      <div class="chart-title">波罗的海干散货指数 (BDI) — 历史走势图</div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="range-tabs">
+          <button class="range-tab" data-range="1M">1月</button>
+          <button class="range-tab" data-range="3M">3月</button>
+          <button class="range-tab active" data-range="1Y">1年</button>
+          <button class="range-tab" data-range="5Y">5年</button>
+          <button class="range-tab" data-range="ALL">全部</button>
+        </div>
+        <div class="chart-status" id="chartStatus">加载中…</div>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-skeleton" id="chartSkeleton">正在获取历史数据…</div>
+      <canvas id="bdiChart" style="display:none;"></canvas>
+    </div>
+    <div class="data-note">数据来源: <a href="https://stooq.com" target="_blank" rel="noopener">Stooq.com</a> · 官方来源: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">波罗的海交易所</a> · 每个交易日更新</div>
+  </div>
+</div>
+
+<!-- SUB-INDICES -->
+<div class="sub-grid">
+  <div class="sub-indices">
+    <div class="sub-card" data-type="cape">
+      <div class="sub-label">BCI</div><div class="sub-name">海岬型指数</div>
+      <div class="sub-value" id="bci-val">—</div>
+      <div class="sub-change" id="bci-chg" style="color:var(--text-muted)">加载中…</div>
+      <canvas class="mini-spark" id="spark1"></canvas>
+    </div>
+    <div class="sub-card" data-type="pana">
+      <div class="sub-label">BPI</div><div class="sub-name">巴拿马型指数</div>
+      <div class="sub-value" id="bpi-val">—</div>
+      <div class="sub-change" id="bpi-chg" style="color:var(--text-muted)">加载中…</div>
+      <canvas class="mini-spark" id="spark2"></canvas>
+    </div>
+    <div class="sub-card" data-type="supra">
+      <div class="sub-label">BSI</div><div class="sub-name">超灵便型指数</div>
+      <div class="sub-value" id="bsi-val">—</div>
+      <div class="sub-change" id="bsi-chg" style="color:var(--text-muted)">加载中…</div>
+      <canvas class="mini-spark" id="spark3"></canvas>
+    </div>
+    <div class="sub-card" data-type="handy">
+      <div class="sub-label">BHSI</div><div class="sub-name">灵便型指数</div>
+      <div class="sub-value" id="bhsi-val">—</div>
+      <div class="sub-change" id="bhsi-chg" style="color:var(--text-muted)">加载中…</div>
+      <canvas class="mini-spark" id="spark4"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main-grid">
+  <div class="main-left">
+    <div class="alert-strip">
+      <div class="alert-text">订阅<strong>免费每日BDI提醒</strong> — 每天早上在市场开盘前发送到您的邮箱。</div>
+      <div class="alert-form"><input class="alert-input" type="email" placeholder="您的邮箱地址" id="alertEmail"><button class="alert-btn" onclick="BDI.subscribe('alertEmail')">订阅</button></div>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">主要航运路线</div><div class="panel-meta">参考运价 · 2026年4月</div></div>
+      <table class="route-table">
+        <thead><tr><th>航线</th><th>路线描述</th><th>美元/天</th><th>涨跌</th></tr></thead>
+        <tbody>
+          <tr><td><span class="route-code">C3</span></td><td>图巴朗 → 青岛（铁矿石）</td><td>$31,200</td><td class="up">+2.1%</td></tr>
+          <tr><td><span class="route-code">C5</span></td><td>西澳大利亚 → 青岛（铁矿石）</td><td>$12,800</td><td class="dn">−0.8%</td></tr>
+          <tr><td><span class="route-code">C8_14</span></td><td>直布罗陀 → 汉堡（谷物）</td><td>$28,575</td><td class="up">+1.2%</td></tr>
+          <tr><td><span class="route-code">P1A</span></td><td>美湾 → 斯卡-帕塞罗（谷物）</td><td>$17,730</td><td class="up">+0.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose" style="background:var(--surface);border:1px solid var(--border);padding:24px;margin-top:2px;">
+      <h2>什么是波罗的海干散货指数？</h2>
+      <p>波罗的海干散货指数（BDI）是由伦敦波罗的海交易所每日发布的航运运费成本指数。该指数衡量铁矿石、煤炭、粮食等干散货在23条主要全球航线上的运输成本。</p>
+      <p>BDI由三个子指数加权计算：<strong>海岬型指数（BCI）占40%</strong>、<strong>巴拿马型指数（BPI）占30%</strong>、<strong>超灵便型指数（BSI）占30%</strong>。</p>
+      <p>由于中国约占全球海运铁矿石消费量的70%，BDI常被用作中国工业活动的实时代理指标。当中国钢铁厂增加铁矿石进口时，海岬型运费通常会大幅上涨，推动BDI走高。</p>
+      <p><a href="/what-is-the-baltic-dry-index/">→ 了解更多关于波罗的海干散货指数</a></p>
+    </div>
+  </div>
+
+  <div class="main-right">
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">BDI 统计数据</div><div class="panel-meta">2025–2026</div></div>
+      <div class="stats-row"><span class="stats-label">52周最高</span><span class="stats-value">2,845</span></div>
+      <div class="stats-row"><span class="stats-label">52周最低</span><span class="stats-value">1,261</span></div>
+      <div class="stats-row"><span class="stats-label">年初至今涨幅</span><span class="stats-value up">+103.57%</span></div>
+      <div class="stats-row"><span class="stats-label">海岬型日收益</span><span class="stats-value">$33,012/天</span></div>
+      <div class="stats-row"><span class="stats-label">历史最高</span><span class="stats-value">11,793（2008年）</span></div>
+      <div class="stats-row"><span class="stats-label">历史最低</span><span class="stats-value">290（2016年）</span></div>
+    </div>
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">最新市场分析</div></div>
+      <a class="news-item" href="#"><div class="news-source">波罗的海交易所</div><div class="news-headline">BDI连续11个交易日上涨，创12月以来新高</div><div class="news-time">2026年4月17日</div></a>
+      <a class="news-item" href="#"><div class="news-source">贸易风</div><div class="news-headline">受巴西铁矿石出口强劲需求推动，海岬型运费大幅上涨</div><div class="news-time">2026年4月16日</div></a>
+      <a class="news-item" href="#"><div class="news-source">Splash247</div><div class="news-headline">中国港口吞吐量回升，提振干散货市场情绪</div><div class="news-time">2026年4月14日</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- BROKERS -->
+<div class="section" style="margin-bottom:40px;">
+  <div class="broker-strip">
+    <div class="broker-label">交易航运股票和大宗商品 — 合作券商</div>
+    <div class="broker-grid">
+      <a href="https://www.etoro.com/?utm_source=balticdryindex" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">eToro</div><div class="broker-desc">交易干散货股票和大宗商品。自动跟随顶级航运交易员。</div><div class="broker-cta">开户 →</div></a>
+      <a href="https://www.home.saxo/?utm_source=balticdryindex" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Saxo</div><div class="broker-desc">专业级别的全球商品期货和航运股票交易通道。</div><div class="broker-cta">开户 →</div></a>
+      <a href="https://ibkr.com/referral/julio411" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">IBKR</div><div class="broker-desc">全球市场低成本访问，专业交易者的行业首选。</div><div class="broker-cta">开户 →</div></a>
+      <a href="https://dukascopy.bank/swiss/open-mca-account/?ref=YJM-PUE&lang=en" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Dukascopy</div><div class="broker-desc">商品指数和航运股票差价合约交易，英国监管。</div><div class="broker-cta">开户 →</div></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div><a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">波罗的海干散货指数数据、航运市场分析和运费率情报的独立来源。每日更新。</div></div>
+    <div><div class="footer-col-title">数据</div><ul class="footer-links"><li><a href="/">实时BDI图表</a></li><li><a href="/bdi-chart-historical-data/">历史数据</a></li><li><a href="/vessel-classes/">船型介绍</a></li></ul></div>
+    <div><div class="footer-col-title">学习</div><ul class="footer-links"><li><a href="/what-is-the-baltic-dry-index/">什么是BDI？</a></li><li><a href="/analysis/">市场分析</a></li><li><a href="/glossary/">术语表</a></li></ul></div>
+    <div><div class="footer-col-title">语言</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com · 版权所有</div><div class="footer-disclaimer">数据仅供参考，非投资建议。数据来源：波罗的海交易所 via Stooq。</div></div>
+</footer>
+
+<script src="/assets/bdi.js"></script>
+<script>
+let chartInstance=null, histData=[], currentRange='1Y';
+BDI.load(function(data){
+  BDI.setHero(data.bdi.value,data.bdi.prev,data.bdi.date);
+  BDI.setSub('bci-val','bci-chg',data.bci.value,data.bci.prev);
+  BDI.setSub('bpi-val','bpi-chg',data.bpi.value,data.bpi.prev);
+  BDI.setSub('bsi-val','bsi-chg',data.bsi.value,data.bsi.prev);
+  BDI.setSub('bhsi-val','bhsi-chg',data.bhsi.value,data.bhsi.prev);
+  BDI.buildTicker(data);
+  histData=data.history;
+  chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  ['spark1','spark2','spark3','spark4'].forEach((id,i)=>BDI.drawSpark(id,['#4a9eff','#c8a84b','#a855f7','#00d084'][i],histData));
+  const cs=document.getElementById('chartStatus');
+  if(cs){cs.textContent=data.live?'● 实时 · Stooq':'最新数据: 2026年4月17日';cs.className='chart-status'+(data.live?' live':'');}
+});
+document.querySelectorAll('.range-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); currentRange=btn.dataset.range;
+    chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  });
+});
+</script>
+</body>
+</html>
