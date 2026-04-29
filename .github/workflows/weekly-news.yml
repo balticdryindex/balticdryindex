@@ -1,4 +1,4 @@
-name: Weekly BDI News Update
+name: Weekly BDI News
 
 on:
   schedule:
@@ -12,22 +12,25 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout main
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - run: pip install requests beautifulsoup4 lxml
+      - name: Install packages
+        run: pip install requests beautifulsoup4 lxml
 
-      - name: Generate weekly news
-        run: |
-          python scripts/update_bdi.py
+      - name: Run updater full
+        run: python scripts/update_bdi.py
 
-      - name: Commit weekly news update
+      - name: Commit weekly news
         run: |
           git config --global user.name "BDI Bot"
           git config --global user.email "bot@balticdryindex.com"
+
           git add -A
           git diff --staged --quiet || git commit -m "Weekly BDI news update"
           git push
