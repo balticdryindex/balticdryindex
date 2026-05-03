@@ -67,7 +67,7 @@ def fetch_balticexchange_api():
                 }
 
         if "bdi" in result:
-            print(f"[API] BDI={result['bdi']['value']}")
+            print(f"[API SUCCESS] BDI={result['bdi']['value']} DATE={result['bdi']['date']}")
             return result
 
         return None
@@ -203,8 +203,17 @@ if __name__ == "__main__":
     data = fetch_all_data()
 
     if not data:
-        print("No update performed.")
+    print("No update from primary logic — forcing fallback update")
+
+    previous = load_previous()
+
+    if previous:
+        previous["updated"] = datetime.datetime.utcnow().strftime("%H:%M UTC")
+        previous["source"] = "No update — kept previous"
+
+        save_data(previous)
         sys.exit(0)
 
-    save_data(data)
-    print("Update complete.")
+    else:
+        print("No previous data — exiting")
+        sys.exit(1)
