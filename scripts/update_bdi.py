@@ -80,8 +80,7 @@ def fetch_all_data():
 
     # skip weekends
     if today.weekday() >= 5:
-        print("Weekend — no update.")
-        return None
+        print("Weekend — checking API anyway...")
 
     api = fetch_balticexchange_api()
 
