@@ -78,23 +78,26 @@ def fetch_all_data():
 
     today = datetime.date.today()
 
-    # skip weekends
     if today.weekday() >= 5:
         print("Weekend — checking API anyway...")
 
-api = fetch_balticexchange_api()
+    print(f"=== RUN {today} ===")
 
-if not api:
-    print("API failed.")
-    return None
+    api = fetch_balticexchange_api()
 
-print(f"[DEBUG] API DATE={api['bdi']['date']} PREVIOUS DATE={previous.get('date')}")
+    if not api:
+        print("API failed.")
+        return None
 
-new_date = api["bdi"]["date"]
-prev_date = previous.get("date")
+    # Debug
+    print(f"[DEBUG] API DATE={api['bdi']['date']} PREVIOUS DATE={previous.get('date')}")
 
+    new_date = api["bdi"]["date"]
+    prev_date = previous.get("date")
+
+    # IMPORTANT: force update even if same date
     if new_date == prev_date:
-        print("Same date — but forcing update to sync")
+        print("Same date — forcing update anyway")
 
     def safe(key):
         if key in api:
