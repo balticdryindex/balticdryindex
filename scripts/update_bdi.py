@@ -88,12 +88,13 @@ def fetch_all_data():
         print("API failed.")
         return None
 
+print(f"[DEBUG] API DATE={api['bdi']['date']} PREVIOUS DATE={previous.get('date')}")
+
     new_date = api["bdi"]["date"]
     prev_date = previous.get("date")
 
     if new_date == prev_date:
-        print("No new data.")
-        return None
+        print("Same date — but forcing update to sync")
 
     def safe(key):
         if key in api:
