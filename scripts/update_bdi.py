@@ -202,18 +202,23 @@ def save_data(data):
 if __name__ == "__main__":
     data = fetch_all_data()
 
+    if __name__ == "__main__":
+    data = fetch_all_data()
+
     if not data:
-    print("No update from primary logic — forcing fallback update")
+        print("No update from primary logic — forcing fallback update")
 
-    previous = load_previous()
+        previous = load_previous()
 
-    if previous:
-        previous["updated"] = datetime.datetime.utcnow().strftime("%H:%M UTC")
-        previous["source"] = "No update — kept previous"
+        if previous:
+            previous["updated"] = datetime.datetime.utcnow().strftime("%H:%M UTC")
+            previous["source"] = "No update — kept previous"
 
-        save_data(previous)
-        sys.exit(0)
+            save_data(previous)
+            sys.exit(0)
+        else:
+            print("No previous data — exiting")
+            sys.exit(1)
 
-    else:
-        print("No previous data — exiting")
-        sys.exit(1)
+    save_data(data)
+    print("Update complete.")
