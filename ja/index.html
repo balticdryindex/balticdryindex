@@ -176,17 +176,44 @@
 <script>
 let chartInstance=null, histData=[], currentRange='1Y';
 BDI.load(function(data){
-  BDI.setHero(data.bdi.value,data.bdi.prev,data.bdi.date);
+
+  // Safety check (prevents full page failure)
+  if(!data || !data.bdi){
+    console.error("Data failed:", data);
+    return;
+  }
+
+  // Main values
+  BDI.setHero(data.bdi.value, data.bdi.prev, data.date);
+
   BDI.setSub('bci-val','bci-chg',data.bci.value,data.bci.prev);
   BDI.setSub('bpi-val','bpi-chg',data.bpi.value,data.bpi.prev);
   BDI.setSub('bsi-val','bsi-chg',data.bsi.value,data.bsi.prev);
   BDI.setSub('bhsi-val','bhsi-chg',data.bhsi.value,data.bhsi.prev);
+
   BDI.buildTicker(data);
-  histData=data.history;
-  chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
-  ['spark1','spark2','spark3','spark4'].forEach((id,i)=>BDI.drawSpark(id,['#4a9eff','#c8a84b','#a855f7','#00d084'][i],histData));
-  const cs=document.getElementById('chartStatus');
-  if(cs){cs.textContent=data.live?'● ライブ · Stooq':'最終更新: 2026年4月17日';cs.className='chart-status'+(data.live?' live':'');}
+
+  // 🔥 CRITICAL FIX (this was breaking your page)
+  histData = data.history || [];
+
+  // Only render chart if data exists
+  if(histData.length > 0){
+    chartInstance = BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+
+    ['spark1','spark2','spark3','spark4'].forEach((id,i)=>
+      BDI.drawSpark(id,['#4a9eff','#c8a84b','#a855f7','#00d084'][i],histData)
+    );
+  } else {
+    console.warn("No history data — skipping chart");
+  }
+
+  // Status label fix
+  const cs = document.getElementById('chartStatus');
+  if(cs){
+    cs.textContent = data.date ? ('最終更新: ' + data.date) : 'データ取得中…';
+    cs.className = 'chart-status';
+  }
+
 });
 document.querySelectorAll('.range-tab').forEach(btn=>{
   btn.addEventListener('click',()=>{
