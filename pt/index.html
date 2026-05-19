@@ -3,32 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Índice Báltico Seco (BDI) — Gráfico ao Vivo e Dados | BalticDryIndex.com</title>
-<meta name="description" content="Índice Báltico Seco (BDI) ao vivo — gráfico, dados em tempo real, sub-índices Capesize, Panamax, Supramax e análise diária do mercado de fretamento.">
-<meta name="keywords" content="índice báltico seco, BDI, baltic dry index, índice báltico, frete seco, mercado de fretamento, capesize, panamax">
-<link rel="canonical" href="https://www.balticdryindex.com/pt/">
+<title>Índice Báltico Seco — Gráfico BDI ao Vivo, Dados e Análise | BalticDryIndex.com</title>
+<meta name="description" content="Live Baltic Dry Index (BDI) today — real-time chart, Capesize, Panamax, Supramax sub-indices, freight route rates and daily shipping market analysis.">
+<meta name="keywords" content="baltic dry index, BDI, baltic dry index chart, BDI today, baltic index, dry bulk index, BDI live, shipping index, capesize index, panamax index">
+<meta property="og:title" content="Baltic Dry Index — Live BDI Chart & Data">
+<meta property="og:description" content="Track the Baltic Dry Index live. Real BDI data, sub-indices, route rates and daily analysis.">
+<meta property="og:url" content="https://www.balticdryindex.com/">
+<meta property="og:type" content="website">
 <link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/">
-<link rel="alternate" hreflang="pt" href="https://www.balticdryindex.com/pt/">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<meta name="theme-color" content="#090b0e">
+<link rel="alternate" hreflang="zh" href="https://www.balticdryindex.com/zh/">
+<link rel="alternate" hreflang="ja" href="https://www.balticdryindex.com/ja/">
+<link rel="alternate" hreflang="es" href="https://www.balticdryindex.com/es/">
+<link rel="alternate" hreflang="fr" href="https://www.balticdryindex.com/fr/">
+<link rel="alternate" hreflang="ar" href="https://www.balticdryindex.com/ar/">
+<link rel="alternate" hreflang="pt-BR" href="https://www.balticdryindex.com/pt/">
+<link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/">
+<link rel="canonical" href="https://www.balticdryindex.com/pt/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Baltic Dry Index",
+  "url": "https://www.balticdryindex.com",
+  "description": "Live Baltic Dry Index data, charts, analysis and shipping market intelligence.",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.balticdryindex.com/search?q={search_term_string}", "query-input": "required name=search_term_string" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "Baltic Dry Index",
+  "alternateName": ["BDI","BDIY","Baltic Dry"],
+  "description": "The Baltic Dry Index is a shipping freight-cost index issued daily by the London-based Baltic Exchange.",
+  "provider": { "@type": "Organization", "name": "Baltic Exchange", "url": "https://www.balticexchange.com" }
+}
+</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#090b0e">
 <link rel="stylesheet" href="/assets/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="ticker-bar"><div class="ticker-label">AO VIVO</div><div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div></div>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">AO VIVO</div>
+  <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div>
+</div>
+
+<!-- HEADER -->
 <header>
   <div class="header-inner">
-    <a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
-    <nav><a href="/pt/" class="active">Dados ao Vivo</a><a href="/what-is-the-baltic-dry-index/">Sobre o BDI</a><a href="/bdi-chart-historical-data/">Gráfico</a><a href="/news/">Notícias</a><a href="/" class="nav-cta">Alertas Grátis</a></nav>
-    <div class="lang-switcher"><a href="/">EN</a><a href="/zh/">中文</a><a href="/ja/">日本語</a><a href="/pt/" class="active">PT</a><a href="/ru/">RU</a></div>
+    <a href="/pt/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/pt/" class="active">Dados ao Vivo</a>
+      <a href="/pt/what-is-the-baltic-dry-index/">Sobre o BDI</a>
+      <a href="/pt/bdi-chart-historical-data/">Gráfico</a>
+      <a href="/pt/vessel-classes/">Embarcações</a>
+      <a href="/pt/shipping-stocks/">Ações</a>
+      <a href="/pt/analysis/">Análise</a>
+      <a href="/pt/glossary/">Glossário</a>
+      <a href="/pt/tools/">Ferramentas</a>
+      <a href="/pt/" class="nav-cta">Alertas Grátis</a>
+    </nav>
+            <div class="lang-switcher">
+      <a href="/">EN</a>
+      <a href="/zh/">中文</a>
+      <a href="/ja/">日本語</a>
+      <a href="/es/">ES</a>
+      <a href="/fr/">FR</a>
+      <a href="/ar/">AR</a>
+      <a href="/pt/" class="active">PT</a>
+      <a href="/ru/">RU</a>
+    </div>
   </div>
 </header>
+
+<!-- HERO -->
 <div class="hero">
   <div class="hero-top">
     <div class="hero-title-block">
       <div class="hero-eyebrow"><span class="live-dot"></span>Dados do Mercado de Fretamento ao Vivo</div>
-      <h1 class="hero-title" style="font-size:clamp(36px,5vw,66px);line-height:1.05;">Índice<br><span>Báltico Seco</span></h1>
+      <h1 class="hero-title">Índice<br><span>Báltico Seco</span></h1>
     </div>
     <div class="hero-bdi-block">
       <div class="bdi-current-label">BDI Hoje</div>
@@ -37,85 +98,160 @@
       <div class="bdi-timestamp" id="bdi-ts">Bolsa Báltica · Fechamento Diário</div>
     </div>
   </div>
+
+  <!-- CHART -->
   <div class="chart-card" style="margin-bottom:2px;">
     <div class="chart-controls">
-      <div class="chart-title">Índice Báltico Seco (BDI) — Histórico</div>
+      <div class="chart-title">BDI — Índice Báltico Seco</div>
       <div style="display:flex;align-items:center;gap:16px;">
-        <div class="range-tabs"><button class="range-tab" data-range="1M">1M</button><button class="range-tab" data-range="3M">3M</button><button class="range-tab active" data-range="1Y">1A</button><button class="range-tab" data-range="5Y">5A</button><button class="range-tab" data-range="ALL">TUDO</button></div>
+        <div class="range-tabs">
+          <button class="range-tab" data-range="1M">1M</button>
+          <button class="range-tab" data-range="3M">3M</button>
+          <button class="range-tab active" data-range="1Y">1Y</button>
+          <button class="range-tab" data-range="5Y">5Y</button>
+          <button class="range-tab" data-range="ALL">ALL</button>
+        </div>
         <div class="chart-status" id="chartStatus">Carregando…</div>
       </div>
     </div>
-    <div class="chart-wrap"><div class="chart-skeleton" id="chartSkeleton">Obtendo dados…</div><canvas id="bdiChart" style="display:none;"></canvas></div>
-    <div class="data-note">Fonte: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">Bolsa Báltica</a> · Atualizado diariamente</div>
+    <div class="chart-wrap">
+      <div class="chart-skeleton" id="chartSkeleton">Obtendo dados históricos…</div>
+      <canvas id="bdiChart" style="display:none;"></canvas>
+    </div>
+    <div class="data-note">Data via <a href="https://stooq.com" target="_blank" rel="noopener">Stooq.com</a> · Updated daily · Source: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">Baltic Exchange</a></div>
   </div>
 </div>
+
+<!-- SUB-INDICES -->
 <div class="sub-grid">
   <div class="sub-indices">
-    <div class="sub-card" data-type="cape"><div class="sub-label">BCI</div><div class="sub-name">Índice Capesize</div><div class="sub-value" id="bci-val">—</div><div class="sub-change" id="bci-chg" style="color:var(--text-muted)">Carregando…</div><canvas class="mini-spark" id="spark1"></canvas></div>
-    <div class="sub-card" data-type="pana"><div class="sub-label">BPI</div><div class="sub-name">Índice Panamax</div><div class="sub-value" id="bpi-val">—</div><div class="sub-change" id="bpi-chg" style="color:var(--text-muted)">Carregando…</div><canvas class="mini-spark" id="spark2"></canvas></div>
-    <div class="sub-card" data-type="supra"><div class="sub-label">BSI</div><div class="sub-name">Índice Supramax</div><div class="sub-value" id="bsi-val">—</div><div class="sub-change" id="bsi-chg" style="color:var(--text-muted)">Carregando…</div><canvas class="mini-spark" id="spark3"></canvas></div>
-    <div class="sub-card" data-type="handy"><div class="sub-label">BHSI</div><div class="sub-name">Índice Handysize</div><div class="sub-value" id="bhsi-val">—</div><div class="sub-change" id="bhsi-chg" style="color:var(--text-muted)">Carregando…</div><canvas class="mini-spark" id="spark4"></canvas></div>
+    <div class="sub-card" data-type="cape"><div class="sub-label">BCI</div><div class="sub-name">Capesize</div><div class="sub-value" id="bci-val">—</div><div class="sub-change" id="bci-chg" style="color:var(--text-muted)">Carregando…</div><canvas class="mini-spark" id="spark1"></canvas></div>
+    <div class="sub-card" data-type="pana"><div class="sub-label">BPI</div><div class="sub-name">Panamax</div><div class="sub-value" id="bpi-val">—</div><div class="sub-change" id="bpi-chg" style="color:var(--text-muted)">Carregando…</div><canvas class="mini-spark" id="spark2"></canvas></div>
+    <div class="sub-card" data-type="supra"><div class="sub-label">BSI</div><div class="sub-name">Supramax</div><div class="sub-value" id="bsi-val">—</div><div class="sub-change" id="bsi-chg" style="color:var(--text-muted)">Carregando…</div><canvas class="mini-spark" id="spark3"></canvas></div>
+    <div class="sub-card" data-type="handy"><div class="sub-label">BHSI</div><div class="sub-name">Handysize</div><div class="sub-value" id="bhsi-val">—</div><div class="sub-change" id="bhsi-chg" style="color:var(--text-muted)">Carregando…</div><canvas class="mini-spark" id="spark4"></canvas></div>
   </div>
 </div>
+
+<!-- MAIN GRID -->
 <div class="main-grid">
   <div class="main-left">
     <div class="alert-strip">
       <div class="alert-text">Receba <strong>alertas diários gratuitos do BDI</strong> no seu e-mail antes da abertura dos mercados.</div>
       <div class="alert-form"><input class="alert-input" type="email" placeholder="seu@email.com" id="alertEmail"><button class="alert-btn" onclick="BDI.subscribe('alertEmail')">Assinar</button></div>
     </div>
-    <div class="prose" style="background:var(--surface);border:1px solid var(--border);padding:24px;">
-      <h2>O que é o Índice Báltico Seco?</h2>
-      <p>O <strong>Índice Báltico Seco (BDI)</strong> é um índice diário de custo de frete publicado pela <strong>Bolsa Báltica de Londres</strong>. Ele mede o custo de transporte de mercadorias a granel seco — minério de ferro, carvão, grãos — em 23 rotas marítimas globais.</p>
-      <p>O BDI é calculado como média ponderada de três sub-índices: <strong>Capesize (BCI) com 40%</strong>, <strong>Panamax (BPI) com 30%</strong> e <strong>Supramax (BSI) com 30%</strong>.</p>
-      <p>O Brasil é um dos maiores exportadores mundiais de minério de ferro — principalmente pela rota C3 de Tubarão para Qingdao, na China — tornando o mercado Capesize especialmente relevante para o setor de mineração brasileiro.</p>
-      <p><a href="/what-is-the-baltic-dry-index/">→ Saiba mais sobre o Índice Báltico Seco</a></p>
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">Principais Rotas de Frete</div><div class="panel-meta">TCE Indicativo · Abr 2026</div></div>
+      <table class="route-table">
+        <thead><tr><th>Rota</th><th>Descrição</th><th>$/Dia</th><th>Var.</th></tr></thead>
+        <tbody>
+          <tr><td><span class="route-code">C3</span></td><td>Tubarão → Qingdao (Minério de Ferro)</td><td>$31,200</td><td class="up">+2.1%</td></tr>
+          <tr><td><span class="route-code">C5</span></td><td>Austrália Ocid. → Qingdao (Minério de Ferro)</td><td>$12,800</td><td class="dn">−0.8%</td></tr>
+          <tr><td><span class="route-code">C8_14</span></td><td>Gibraltar → Hamburgo (Grãos)</td><td>$28,575</td><td class="up">+1.2%</td></tr>
+          <tr><td><span class="route-code">P1A</span></td><td>Golfo do México → Skaw (Grãos)</td><td>$17,730</td><td class="up">+0.3%</td></tr>
+          <tr><td><span class="route-code">P2A</span></td><td>Skaw → Gibraltar (Carvão)</td><td>$14,700</td><td class="up">+0.5%</td></tr>
+          <tr><td><span class="route-code">S4A</span></td><td>Golfo do México → Skaw (Grãos)</td><td>$17,669</td><td class="up">+0.8%</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="main-right">
     <div class="panel-card">
-      <div class="panel-header"><div class="panel-title">Estatísticas do BDI</div><div class="panel-meta">2025–2026</div></div>
-      <div class="stats-row"><span class="stats-label">Máxima 52 semanas</span><span class="stats-value">2.845</span></div>
-      <div class="stats-row"><span class="stats-label">Mínima 52 semanas</span><span class="stats-value">1.261</span></div>
-      <div class="stats-row"><span class="stats-label">Variação no Ano</span><span class="stats-value up">+108,80%</span></div>
-      <div class="stats-row"><span class="stats-label">Ganho Capesize/dia</span><span class="stats-value">US$36.002</span></div>
-      <div class="stats-row"><span class="stats-label">Máxima Histórica</span><span class="stats-value">11.793 (2008)</span></div>
+      <div class="panel-header"><div class="panel-title">Estatísticas BDI</div><div class="panel-meta">2025–2026</div></div>
+      <div class="stats-row"><span class="stats-label">Máxima 52 Semanas</span><span class="stats-value">2,845</span></div>
+      <div class="stats-row"><span class="stats-label">Mínima 52 Semanas</span><span class="stats-value">1,261</span></div>
+      <div class="stats-row"><span class="stats-label">Variação no Ano</span><span class="stats-value up">+108.80%</span></div>
+      <div class="stats-row"><span class="stats-label">TCE Capesize</span><span class="stats-value">$36,002/day</span></div>
+      <div class="stats-row"><span class="stats-label">Máxima Histórica</span><span class="stats-value">11,793 (2008)</span></div>
       <div class="stats-row"><span class="stats-label">Mínima Histórica</span><span class="stats-value">290 (2016)</span></div>
     </div>
-    <div class="broker-strip" style="margin-top:2px;">
-      <div class="broker-label">Negocie Ações e Commodities Marítimas</div>
-      <div class="broker-grid" style="grid-template-columns:1fr 1fr;">
-        <a href="https://dukascopy.bank/swiss/open-mca-account/?ref=YJM-PUE&lang=en" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Dukascopy</div><div class="broker-desc">Banco e corretora suíça regulamentada.</div><div class="broker-cta">Abrir Conta →</div></a>
-        <a href="https://ibkr.com/referral/julio411" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">IBKR</div><div class="broker-desc">Acesso global a baixo custo. Negocie SBLK, GOGL e mais.</div><div class="broker-cta">Abrir Conta →</div></a>
-      </div>
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">Última Análise</div><a href="/pt/analysis/" style="font-family:var(--mono);font-size:10px;color:var(--gold-dim);text-decoration:none;">ALL →</a></div>
+      <a class="news-item" href="/pt/analysis/"><div class="news-source">Baltic Exchange</div><div class="news-headline">BDI sobe pela 11ª sessão consecutiva, atinge máximo desde dezembro</div><div class="news-time">Apr 22, 2026</div></a>
+      <a class="news-item" href="/pt/analysis/"><div class="news-source">TradeWinds</div><div class="news-headline">Fretes Capesize disparam com forte demanda brasileira por minério de ferro</div><div class="news-time">Apr 16, 2026</div></a>
+      <a class="news-item" href="/pt/analysis/"><div class="news-source">Lloyd's List</div><div class="news-headline">Panamax se fortalece com melhora nos volumes de grãos no Atlântico</div><div class="news-time">Apr 15, 2026</div></a>
+      <a class="news-item" href="/pt/analysis/"><div class="news-source">Splash247</div><div class="news-headline">Tráfego portuário chinês recupera, impulsionando sentimento do granel seco</div><div class="news-time">Apr 14, 2026</div></a>
     </div>
   </div>
 </div>
+
+<!-- ANALYSIS -->
+<div class="section">
+  <div class="section-header"><div class="section-title">Análise do <span>Mercado</span></div><a href="/pt/analysis/" class="section-link">Ver Tudo →</a></div>
+  <div class="article-grid">
+    <a href="/pt/analysis/" class="article-card featured">
+      <div class="article-category">Resumo Semanal · 22 abr. 2026</div>
+      <div class="article-title">BDI Sobe 16,6% em uma Semana com Demanda Capesize no Maior Nível em Quatro Meses</div>
+      <div class="article-excerpt">The Baltic Dry Index extended its rally for an eleventh consecutive session on Friday, climbing 1.7% to 2,567 — its highest reading since December 8. The capesize index jumped 2.5% to 4,128, driven by surging Brazilian iron ore export volumes and recovery in Chinese port activity.</div>
+      <div class="article-meta">Análise BDI · 5 min</div>
+    </a>
+    <a href="/pt/what-is-the-baltic-dry-index/" class="article-card">
+      <div class="article-category">Explicação</div>
+      <div class="article-title">O que é o Índice Báltico Seco e por que importa?</div>
+      <div class="article-excerpt">O guia completo para entender o índice de referência marítimo mais antigo do mundo.</div>
+      <div class="article-meta">Guia · 8 min</div>
+    </a>
+    <a href="/pt/shipping-stocks/" class="article-card">
+      <div class="article-category">Stocks</div>
+      <div class="article-title">5 Ações de Graneleiros Secos para Acompanhar quando o BDI Sobe</div>
+      <div class="article-excerpt">SBLK, GOGL, EGLE e mais — como negociar o BDI por meio de ações.</div>
+      <div class="article-meta">Investimento · 6 min</div>
+    </a>
+  </div>
+</div>
+
+<!-- BROKERS -->
+<div class="section" style="margin-bottom:40px;">
+  <div class="broker-strip">
+    <div class="broker-label">Trade Shipping Stocks & Commodities — Partner Brokers</div>
+    <div class="broker-grid">
+      <a href="https://ibkr.com/referral/julio411" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">IBKR</div><div class="broker-desc">Acesso de baixo custo a mercados globais. Favorito da indústria para traders sérios.</div><div class="broker-cta">Abrir Conta →</div></a>
+      <a href="https://dukascopy.bank/swiss/open-mca-account/?ref=YJM-PUE&lang=en" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Dukascopy</div><div class="broker-desc">Banco e corretora suíços regulamentados. Negocie commodities e mercados globais.</div><div class="broker-cta">Abrir Conta →</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div><a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">A fonte independente de dados do Índice Báltico Seco e inteligência do mercado de fretamento.</div></div>
-    <div><div class="footer-col-title">Dados</div><ul class="footer-links"><li><a href="/pt/">Gráfico BDI ao Vivo</a></li><li><a href="/bdi-chart-historical-data/">Dados Históricos</a></li><li><a href="/news/">Notícias BDI</a></li></ul></div>
-    <div><div class="footer-col-title">Empresa</div><ul class="footer-links"><li><a href="/about/">Sobre</a></li><li><a href="/contact/">Contato</a></li><li><a href="/privacy-policy/">Privacidade</a></li><li><a href="/disclaimer/">Aviso Legal</a></li></ul></div>
-    <div><div class="footer-col-title">Idiomas</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
+    <div><a href="/pt/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">A fonte independente de dados do Índice Báltico Seco, análise marítima e inteligência de fretes. Atualizado diariamente.</div></div>
+    <div><div class="footer-col-title">Dados</div><ul class="footer-links"><li><a href="/pt/">Gráfico BDI ao Vivo</a></li><li><a href="/pt/bdi-chart-historical-data/">Dados Históricos</a></li><li><a href="/pt/vessel-classes/">Classes de Embarcações</a></li><li><a href="/pt/analysis/">Notícias BDI</a></li><li><a href="/pt/shipping-stocks/">Ações Marítimas</a></li></ul></div>
+    <div><div class="footer-col-title">Aprender</div><ul class="footer-links"><li><a href="/pt/what-is-the-baltic-dry-index/">O que é o BDI?</a></li><li><a href="/pt/analysis/">Análise Diária</a></li><li><a href="/pt/glossary/">Glossário</a></li><li><a href="/pt/tools/">Ferramentas</a></li></ul></div>
+        <div><div class="footer-col-title">Languages</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/es/">Español</a></li><li><a href="/fr/">Français</a></li><li><a href="/ar/">العربية</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
   </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div><div class="footer-disclaimer">Dados apenas indicativos. Não constitui aconselhamento financeiro.</div></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div>
+    <div class="footer-disclaimer">Dados apenas indicativos. Não constitui aconselhamento financeiro.</div>
+  </div>
 </footer>
+
 <script src="/assets/bdi.js"></script>
 <script>
-let chartInstance=null,histData=[],currentRange='1Y';
-BDI.load(function(data){
+let chartInstance = null, histData = [], currentRange = '1Y';
+
+BDI.load(function(data) {
   BDI.setHero(data);
-  BDI.setSub('bci-val','bci-chg',data.bci);
-  BDI.setSub('bpi-val','bpi-chg',data.bpi);
-  BDI.setSub('bsi-val','bsi-chg',data.bsi);
-  BDI.setSub('bhsi-val','bhsi-chg',data.bhsi);
+  BDI.setSub('bci-val','bci-chg', data.bci);
+  BDI.setSub('bpi-val','bpi-chg', data.bpi);
+  BDI.setSub('bsi-val','bsi-chg', data.bsi);
+  BDI.setSub('bhsi-val','bhsi-chg', data.bhsi);
   BDI.buildTicker(data);
-  histData=data.history;
-  chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  histData = data.history;
+  chartInstance = BDI.renderChart(histData, currentRange, 'bdiChart', chartInstance);
   ['spark1','spark2','spark3','spark4'].forEach((id,i)=>BDI.drawSpark(id,['#4a9eff','#c8a84b','#a855f7','#00d084'][i],histData));
+  const cs = document.getElementById('chartStatus');
+  if(cs) { cs.textContent = data.live ? '● Ao Vivo · Stooq' : 'Último dado: 22 abr. 2026'; cs.className = 'chart-status'+(data.live?' live':''); }
 });
-document.querySelectorAll('.range-tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentRange=btn.dataset.range;chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);});
+
+document.querySelectorAll('.range-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentRange = btn.dataset.range;
+    chartInstance = BDI.renderChart(histData, currentRange, 'bdiChart', chartInstance);
+  });
 });
+
+setInterval(()=>location.reload(), 4*60*60*1000);
 </script>
 </body>
 </html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphique BDI et Données Historiques | BalticDryIndex.com</title>
+<meta name="description" content="Graphique interactif du Baltic Dry Index avec données historiques depuis 1985. Vues 1M, 3M, 1A, 5A et tout l'historique. Mis à jour quotidiennement.">
+<meta name="keywords" content="baltic dry index chart, BDI chart, baltic dry index historical data, BDI history, baltic index chart, BDI graph, baltic dry index data">
+<link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="zh" href="https://www.balticdryindex.com/zh/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ja" href="https://www.balticdryindex.com/ja/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="es" href="https://www.balticdryindex.com/es/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="fr" href="https://www.balticdryindex.com/fr/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ar" href="https://www.balticdryindex.com/ar/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="pt-BR" href="https://www.balticdryindex.com/pt/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/bdi-chart-historical-data/">
+<link rel="canonical" href="https://www.balticdryindex.com/fr/bdi-chart-historical-data/">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="ticker-bar">
+  <div class="ticker-label">EN DIRECT</div>
+  <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="/fr/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/fr/">Données Live</a>
+      <a href="/fr/what-is-the-baltic-dry-index/">À propos BDI</a>
+      <a href="/fr/bdi-chart-historical-data/" class="active">Graphique</a>
+      <a href="/fr/vessel-classes/">Navires</a>
+      <a href="/fr/shipping-stocks/">Actions</a>
+      <a href="/fr/analysis/">Analyse</a>
+      <a href="/fr/glossary/">Glossaire</a>
+      <a href="/fr/tools/">Outils</a>
+      <a href="/fr/" class="nav-cta">Alertes Gratuites</a>
+    </nav>
+            <div class="lang-switcher">
+      <a href="/bdi-chart-historical-data/">EN</a>
+      <a href="/zh/bdi-chart-historical-data/">中文</a>
+      <a href="/ja/bdi-chart-historical-data/">日本語</a>
+      <a href="/es/bdi-chart-historical-data/">ES</a>
+      <a href="/fr/bdi-chart-historical-data/" class="active">FR</a>
+      <a href="/ar/bdi-chart-historical-data/">AR</a>
+      <a href="/pt/bdi-chart-historical-data/">PT</a>
+      <a href="/ru/bdi-chart-historical-data/">RU</a>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="/fr/">Accueil</a><span>›</span>Graphique et Historique BDI</div>
+
+<div class="page-hero">
+  <div class="page-eyebrow"><span class="live-dot"></span>Mis à Jour Quotidiennement · Source : Stooq / Baltic Exchange</div>
+  <h1 class="page-title">Baltic Dry Index <span>Graphique</span></h1>
+  <p class="page-desc">Graphique BDI interactif avec données historiques depuis 1985 jusqu'à aujourd'hui. Basculez entre les vues 1 mois, 3 mois, 1 an, 5 ans et tout l'historique. Mis à jour chaque jour de bourse.</p>
+</div>
+
+<!-- HERO STATS ROW -->
+<div style="max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-bottom:2px;position:relative;z-index:1;">
+  <div class="stat-box"><div class="stat-value" id="bdi-val">—</div><div class="stat-label">BDI Aujourd'hui</div><div class="stat-change" id="bdi-chg">—</div></div>
+  <div class="stat-box"><div class="stat-value" id="bci-v">—</div><div class="stat-label">Capesize (BCI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bpi-v">—</div><div class="stat-label">Panamax (BPI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bsi-v">—</div><div class="stat-label">Supramax (BSI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bhsi-v">—</div><div class="stat-label">Handysize (BHSI)</div></div>
+</div>
+
+<!-- MAIN CHART -->
+<div style="max-width:var(--max);margin:0 auto 2px;padding:0 24px;position:relative;z-index:1;">
+  <div class="chart-card">
+    <div class="chart-controls">
+      <div class="chart-title">Baltic Dry Index (BDI) — Graphique Historique</div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="range-tabs">
+          <button class="range-tab" data-range="1M">1M</button>
+          <button class="range-tab" data-range="3M">3M</button>
+          <button class="range-tab active" data-range="1Y">1Y</button>
+          <button class="range-tab" data-range="5Y">5Y</button>
+          <button class="range-tab" data-range="ALL">TOUT</button>
+        </div>
+        <div class="chart-status" id="chartStatus">Chargement…</div>
+      </div>
+    </div>
+    <div class="chart-wrap" style="height:420px;">
+      <div class="chart-skeleton" id="chartSkeleton">Chargement des données BDI…</div>
+      <canvas id="bdiChart" style="display:none;"></canvas>
+    </div>
+    <div class="data-note">Données via <a href="https://stooq.com" target="_blank" rel="noopener">Stooq.com</a> · Source : <a href="https://www.balticexchange.com" target="_blank" rel="noopener">Baltic Exchange</a> · Mis à jour quotidiennement après 13h00 GMT</div>
+  </div>
+</div>
+
+<!-- KEY MILESTONES TABLE -->
+<div style="max-width:var(--max);margin:32px auto;padding:0 24px;position:relative;z-index:1;">
+  <div class="section-header"><div class="section-title">BDI <span>Jalons Clés</span></div></div>
+  <div class="panel-card">
+    <table class="route-table">
+      <thead><tr><th>Date</th><th>Niveau BDI</th><th>Événement</th><th>Contexte</th></tr></thead>
+      <tbody>
+        <tr><td>4 Jan 1985</td><td>1,000</td><td>Lancement du BDI</td><td>Niveau de base établi par la Baltic Exchange</td></tr>
+        <tr><td>Juin 2008</td><td class="up">11,793</td><td>Record Historique</td><td>Supercycle d'infrastructure chinois, demande record de matières premières</td></tr>
+        <tr><td>Déc 2008</td><td class="dn">663</td><td>Effondrement de la Crise Financière</td><td>Récession mondiale — demande effondrée −94% en 6 mois</td></tr>
+        <tr><td>Fév 2016</td><td class="dn">290</td><td>Plancher Historique</td><td>Surcapacité navires + ralentissement Chine — pire en 30 ans</td></tr>
+        <tr><td>Mai 2020</td><td class="dn">393</td><td>Creux COVID-19</td><td>Fermetures commerciales liées à la pandémie</td></tr>
+        <tr><td>Oct 2021</td><td class="up">5,650</td><td>Pic Post-COVID</td><td>Perturbations chaîne logistique, congestion portuaire, boom matières premières</td></tr>
+        <tr><td>Jan 2022</td><td>2,200</td><td>Post-Supercycle</td><td>Normalisation avec la décongestion portuaire</td></tr>
+        <tr><td>Déc 2025</td><td class="up">2,845</td><td>Plus Haut 52 Semaines</td><td>15 sessions consécutives en hausse, surge Capesize</td></tr>
+        <tr><td>Avr 2026</td><td class="up">2,567</td><td>Actuel</td><td>11 sessions consécutives en hausse, Capesize au plus haut en 4 mois</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div><a href="/fr/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">La source indépendante de données du Baltic Dry Index.</div></div>
+    <div><div class="footer-col-title">Données</div><ul class="footer-links"><li><a href="/fr/">Données Live</a></li><li><a href="/fr/bdi-chart-historical-data/">Graphique</a></li><li><a href="/fr/vessel-classes/">Navires</a></li><li><a href="/fr/analysis/">Analyse</a></li><li><a href="/fr/shipping-stocks/">Actions</a></li></ul></div>
+    <div><div class="footer-col-title">Apprendre</div><ul class="footer-links"><li><a href="/fr/what-is-the-baltic-dry-index/">À propos BDI</a></li><li><a href="/fr/analysis/">Analyse</a></li><li><a href="/fr/glossary/">Glossaire</a></li><li><a href="/fr/tools/">Outils</a></li></ul></div>
+    <div><div class="footer-col-title">Langues</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/es/">Español</a></li><li><a href="/fr/">Français</a></li><li><a href="/ar/">العربية</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div><div class="footer-disclaimer">Données à titre indicatif uniquement. Pas de conseil financier.</div></div>
+</footer>
+
+<script src="/assets/bdi.js"></script>
+<script>
+let chartInstance=null, histData=[], currentRange='1Y';
+BDI.load(function(data){
+  BDI.buildTicker(data);
+  BDI.el('bdi-val',BDI.fmt(data.bdi.value));
+  BDI.el('bci-v',BDI.fmt(data.bci.value));
+  BDI.el('bpi-v',BDI.fmt(data.bpi.value));
+  BDI.el('bsi-v',BDI.fmt(data.bsi.value));
+  BDI.el('bhsi-v',BDI.fmt(data.bhsi.value));
+  const ch=BDI.chg(data.bdi.value,data.bdi.prev);
+  BDI.el('bdi-chg',ch.text); BDI.elClass('bdi-chg','stat-change '+(ch.up?'up':'dn'));
+  histData=data.history;
+  chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  const cs=document.getElementById('chartStatus');
+  if(cs){cs.textContent=data.live?'● En Direct · Stooq':'Dernier connu : 22 avr. 2026';cs.className='chart-status'+(data.live?' live':'');}
+});
+document.querySelectorAll('.range-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); currentRange=btn.dataset.range;
+    chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,17 +1,14 @@
 User-agent: *
 Allow: /
+Disallow: /data/
 
 Sitemap: https://www.balticdryindex.com/sitemap.xml
 
-# Allow all major search engines
 User-agent: Googlebot
 Allow: /
-
 User-agent: Bingbot
 Allow: /
-
 User-agent: Baiduspider
 Allow: /
-
 User-agent: YandexBot
 Allow: /

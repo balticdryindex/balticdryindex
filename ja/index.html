@@ -3,21 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>バルチック海運指数 (BDI) — リアルタイムチャートとデータ | BalticDryIndex.com</title>
-<meta name="description" content="バルチック海運指数（BDI）のリアルタイムデータ・チャート・ケープサイズ・パナマックス・スープラマックス副指数と毎日の海運市場分析。毎日更新。">
-<meta name="keywords" content="バルチック海運指数,バルチック指数,BDI指数,バルチック 海運 指数,海運指数,ドライバルク指数,バルチック海運指数チャート,BCI指数,BPI指数,バルチック指数リアルタイム">
-<link rel="canonical" href="https://www.balticdryindex.com/ja/">
+<title>バルチック海運指数 — リアルタイムBDIチャート・データ・分析 | BalticDryIndex.com</title>
+<meta name="description" content="Live Baltic Dry Index (BDI) today — real-time chart, Capesize, Panamax, Supramax sub-indices, freight route rates and daily shipping market analysis.">
+<meta name="keywords" content="baltic dry index, BDI, baltic dry index chart, BDI today, baltic index, dry bulk index, BDI live, shipping index, capesize index, panamax index">
+<meta property="og:title" content="Baltic Dry Index — Live BDI Chart & Data">
+<meta property="og:description" content="Track the Baltic Dry Index live. Real BDI data, sub-indices, route rates and daily analysis.">
+<meta property="og:url" content="https://www.balticdryindex.com/">
+<meta property="og:type" content="website">
 <link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/">
 <link rel="alternate" hreflang="zh" href="https://www.balticdryindex.com/zh/">
 <link rel="alternate" hreflang="ja" href="https://www.balticdryindex.com/ja/">
+<link rel="alternate" hreflang="es" href="https://www.balticdryindex.com/es/">
+<link rel="alternate" hreflang="fr" href="https://www.balticdryindex.com/fr/">
+<link rel="alternate" hreflang="ar" href="https://www.balticdryindex.com/ar/">
+<link rel="alternate" hreflang="pt-BR" href="https://www.balticdryindex.com/pt/">
+<link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/">
+<link rel="canonical" href="https://www.balticdryindex.com/ja/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "バルチック海運指数 (BDI)",
-  "description": "バルチック海運指数のリアルタイムデータとチャート",
-  "url": "https://www.balticdryindex.com/ja/",
-  "inLanguage": "ja"
+  "@type": "WebSite",
+  "name": "Baltic Dry Index",
+  "url": "https://www.balticdryindex.com",
+  "description": "Live Baltic Dry Index data, charts, analysis and shipping market intelligence.",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.balticdryindex.com/search?q={search_term_string}", "query-input": "required name=search_term_string" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "Baltic Dry Index",
+  "alternateName": ["BDI","BDIY","Baltic Dry"],
+  "description": "The Baltic Dry Index is a shipping freight-cost index issued daily by the London-based Baltic Exchange.",
+  "provider": { "@type": "Organization", "name": "Baltic Exchange", "url": "https://www.balticexchange.com" }
 }
 </script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -27,29 +46,41 @@
   <meta name="theme-color" content="#090b0e">
 <link rel="stylesheet" href="/assets/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<style>
-  body { font-family: 'IBM Plex Sans', 'Hiragino Sans', 'Yu Gothic', sans-serif; }
-</style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
 </head>
 <body>
 
+<!-- TICKER -->
 <div class="ticker-bar">
   <div class="ticker-label">LIVE</div>
   <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div>
 </div>
 
+<!-- HEADER -->
 <header>
   <div class="header-inner">
-    <a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <a href="/ja/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
     <nav>
-      <a href="/" class="active">リアルタイム</a>
-      <a href="/what-is-the-baltic-dry-index/">BDIとは</a>
-      <a href="/">English</a>
-      <a href="/zh/">中文</a>
-      <a href="/" class="nav-cta">無料アラート</a>
+      <a href="/ja/" class="active">リアルタイム</a>
+      <a href="/ja/what-is-the-baltic-dry-index/">BDIとは</a>
+      <a href="/ja/bdi-chart-historical-data/">チャート</a>
+      <a href="/ja/vessel-classes/">船型</a>
+      <a href="/ja/shipping-stocks/">海運株</a>
+      <a href="/ja/analysis/">分析</a>
+      <a href="/ja/glossary/">用語集</a>
+      <a href="/ja/tools/">ツール</a>
+      <a href="/ja/" class="nav-cta">無料アラート</a>
     </nav>
-    <div class="lang-switcher"><a href="/">EN</a><a href="/zh/">中文</a><a href="/" class="active">日本語</a></div>
+            <div class="lang-switcher">
+      <a href="/">EN</a>
+      <a href="/zh/">中文</a>
+      <a href="/ja/" class="active">日本語</a>
+      <a href="/es/">ES</a>
+      <a href="/fr/">FR</a>
+      <a href="/ar/">AR</a>
+      <a href="/pt/">PT</a>
+      <a href="/ru/">RU</a>
+    </div>
   </div>
 </header>
 
@@ -58,7 +89,7 @@
   <div class="hero-top">
     <div class="hero-title-block">
       <div class="hero-eyebrow"><span class="live-dot"></span>リアルタイム海運市場データ</div>
-      <h1 class="hero-title" style="font-size:clamp(30px,4.5vw,58px);line-height:1.1;">バルチック<br><span>海運指数</span></h1>
+      <h1 class="hero-title">バルチック<br><span>海運指数</span></h1>
     </div>
     <div class="hero-bdi-block">
       <div class="bdi-current-label">本日のBDI</div>
@@ -68,16 +99,17 @@
     </div>
   </div>
 
+  <!-- CHART -->
   <div class="chart-card" style="margin-bottom:2px;">
     <div class="chart-controls">
-      <div class="chart-title">バルチック海運指数 (BDI) — 推移チャート</div>
+      <div class="chart-title">バルチック海運指数 (BDI)</div>
       <div style="display:flex;align-items:center;gap:16px;">
         <div class="range-tabs">
-          <button class="range-tab" data-range="1M">1ヶ月</button>
-          <button class="range-tab" data-range="3M">3ヶ月</button>
-          <button class="range-tab active" data-range="1Y">1年</button>
-          <button class="range-tab" data-range="5Y">5年</button>
-          <button class="range-tab" data-range="ALL">全期間</button>
+          <button class="range-tab" data-range="1M">1M</button>
+          <button class="range-tab" data-range="3M">3M</button>
+          <button class="range-tab active" data-range="1Y">1Y</button>
+          <button class="range-tab" data-range="5Y">5Y</button>
+          <button class="range-tab" data-range="ALL">ALL</button>
         </div>
         <div class="chart-status" id="chartStatus">読み込み中…</div>
       </div>
@@ -86,17 +118,17 @@
       <div class="chart-skeleton" id="chartSkeleton">データを取得中…</div>
       <canvas id="bdiChart" style="display:none;"></canvas>
     </div>
-    <div class="data-note">データ提供: <a href="https://stooq.com" target="_blank" rel="noopener">Stooq.com</a> · 出典: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">バルチック海運取引所</a> · 毎営業日更新</div>
+    <div class="data-note">Data via <a href="https://stooq.com" target="_blank" rel="noopener">Stooq.com</a> · Updated daily · Source: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">Baltic Exchange</a></div>
   </div>
 </div>
 
 <!-- SUB-INDICES -->
 <div class="sub-grid">
   <div class="sub-indices">
-    <div class="sub-card" data-type="cape"><div class="sub-label">BCI</div><div class="sub-name">ケープサイズ指数</div><div class="sub-value" id="bci-val">—</div><div class="sub-change" id="bci-chg" style="color:var(--text-muted)">取得中…</div><canvas class="mini-spark" id="spark1"></canvas></div>
-    <div class="sub-card" data-type="pana"><div class="sub-label">BPI</div><div class="sub-name">パナマックス指数</div><div class="sub-value" id="bpi-val">—</div><div class="sub-change" id="bpi-chg" style="color:var(--text-muted)">取得中…</div><canvas class="mini-spark" id="spark2"></canvas></div>
-    <div class="sub-card" data-type="supra"><div class="sub-label">BSI</div><div class="sub-name">スープラマックス指数</div><div class="sub-value" id="bsi-val">—</div><div class="sub-change" id="bsi-chg" style="color:var(--text-muted)">取得中…</div><canvas class="mini-spark" id="spark3"></canvas></div>
-    <div class="sub-card" data-type="handy"><div class="sub-label">BHSI</div><div class="sub-name">ハンディサイズ指数</div><div class="sub-value" id="bhsi-val">—</div><div class="sub-change" id="bhsi-chg" style="color:var(--text-muted)">取得中…</div><canvas class="mini-spark" id="spark4"></canvas></div>
+    <div class="sub-card" data-type="cape"><div class="sub-label">BCI</div><div class="sub-name">ケープサイズ</div><div class="sub-value" id="bci-val">—</div><div class="sub-change" id="bci-chg" style="color:var(--text-muted)">読み込み中…</div><canvas class="mini-spark" id="spark1"></canvas></div>
+    <div class="sub-card" data-type="pana"><div class="sub-label">BPI</div><div class="sub-name">パナマックス</div><div class="sub-value" id="bpi-val">—</div><div class="sub-change" id="bpi-chg" style="color:var(--text-muted)">読み込み中…</div><canvas class="mini-spark" id="spark2"></canvas></div>
+    <div class="sub-card" data-type="supra"><div class="sub-label">BSI</div><div class="sub-name">スープラマックス</div><div class="sub-value" id="bsi-val">—</div><div class="sub-change" id="bsi-chg" style="color:var(--text-muted)">読み込み中…</div><canvas class="mini-spark" id="spark3"></canvas></div>
+    <div class="sub-card" data-type="handy"><div class="sub-label">BHSI</div><div class="sub-name">ハンディサイズ</div><div class="sub-value" id="bhsi-val">—</div><div class="sub-change" id="bhsi-chg" style="color:var(--text-muted)">読み込み中…</div><canvas class="mini-spark" id="spark4"></canvas></div>
   </div>
 </div>
 
@@ -104,124 +136,122 @@
 <div class="main-grid">
   <div class="main-left">
     <div class="alert-strip">
-      <div class="alert-text"><strong>無料BDIアラート</strong>を購読 — 毎朝、市場開場前にBDIの最新情報をお届けします。</div>
+      <div class="alert-text"><strong>無料BDIアラート</strong>を購読 — 毎朝、市場開場前にBDIをお届けします。</div>
       <div class="alert-form"><input class="alert-input" type="email" placeholder="メールアドレス" id="alertEmail"><button class="alert-btn" onclick="BDI.subscribe('alertEmail')">購読する</button></div>
     </div>
-
     <div class="panel-card">
       <div class="panel-header"><div class="panel-title">主要航路運賃</div><div class="panel-meta">参考TCE · 2026年4月</div></div>
       <table class="route-table">
-        <thead><tr><th>航路</th><th>区間</th><th>米ドル/日</th><th>増減</th></tr></thead>
+        <thead><tr><th>航路</th><th>説明</th><th>米ドル/日</th><th>変動</th></tr></thead>
         <tbody>
           <tr><td><span class="route-code">C3</span></td><td>チュバロン → 青島（鉄鉱石）</td><td>$31,200</td><td class="up">+2.1%</td></tr>
           <tr><td><span class="route-code">C5</span></td><td>西豪州 → 青島（鉄鉱石）</td><td>$12,800</td><td class="dn">−0.8%</td></tr>
+          <tr><td><span class="route-code">C8_14</span></td><td>ジブラルタル → ハンブルク（穀物）</td><td>$28,575</td><td class="up">+1.2%</td></tr>
           <tr><td><span class="route-code">P1A</span></td><td>米湾 → スコー（穀物）</td><td>$17,730</td><td class="up">+0.3%</td></tr>
+          <tr><td><span class="route-code">P2A</span></td><td>スコー → ジブラルタル（石炭）</td><td>$14,700</td><td class="up">+0.5%</td></tr>
           <tr><td><span class="route-code">S4A</span></td><td>米湾 → スコー（穀物）</td><td>$17,669</td><td class="up">+0.8%</td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="prose" style="background:var(--surface);border:1px solid var(--border);padding:24px;margin-top:2px;">
-      <h2>バルチック海運指数（BDI）とは？</h2>
-      <p>バルチック海運指数（BDI）は、ロンドンに拠点を置くバルチック海運取引所が毎日発表する航運運賃コスト指数です。鉄鉱石・石炭・穀物などのドライバルク貨物を23の主要世界航路で輸送するコストを測定します。</p>
-      <p>BDIは3つのサブ指数の加重平均で算出されます：<strong>ケープサイズ指数（BCI）40%</strong>、<strong>パナマックス指数（BPI）30%</strong>、<strong>スープラマックス指数（BSI）30%</strong>。</p>
-      <p>中国が世界の海上鉄鉱石消費量の約70%を占めるため、BDIは中国の工業活動のリアルタイム代理指標として広く使用されています。</p>
-      <p><a href="/what-is-the-baltic-dry-index/">→ バルチック海運指数についてもっと詳しく</a></p>
-    </div>
   </div>
-
   <div class="main-right">
     <div class="panel-card">
-      <div class="panel-header"><div class="panel-title">BDI 統計データ</div><div class="panel-meta">2025–2026</div></div>
+      <div class="panel-header"><div class="panel-title">BDI統計データ</div><div class="panel-meta">2025–2026</div></div>
       <div class="stats-row"><span class="stats-label">52週高値</span><span class="stats-value">2,845</span></div>
       <div class="stats-row"><span class="stats-label">52週安値</span><span class="stats-value">1,261</span></div>
-      <div class="stats-row"><span class="stats-label">年初来騰落率</span><span class="stats-value up">+103.57%</span></div>
-      <div class="stats-row"><span class="stats-label">ケープサイズ収益</span><span class="stats-value">$33,012/日</span></div>
-      <div class="stats-row"><span class="stats-label">史上最高値</span><span class="stats-value">11,793（2008年）</span></div>
-      <div class="stats-row"><span class="stats-label">史上最安値</span><span class="stats-value">290（2016年）</span></div>
+      <div class="stats-row"><span class="stats-label">年初来騰落率</span><span class="stats-value up">+108.80%</span></div>
+      <div class="stats-row"><span class="stats-label">ケープサイズTCE</span><span class="stats-value">$36,002/day</span></div>
+      <div class="stats-row"><span class="stats-label">史上最高値</span><span class="stats-value">11,793 (2008)</span></div>
+      <div class="stats-row"><span class="stats-label">史上最安値</span><span class="stats-value">290 (2016)</span></div>
     </div>
     <div class="panel-card">
-      <div class="panel-header"><div class="panel-title">最新ニュース</div></div>
-      <a class="news-item" href="#"><div class="news-source">バルチック海運取引所</div><div class="news-headline">BDIが11営業日連続上昇、12月以来の高値を記録</div><div class="news-time">2026年4月17日</div></a>
-      <a class="news-item" href="#"><div class="news-source">TradeWinds</div><div class="news-headline">ブラジルの鉄鉱石輸出需要の強さでケープサイズ運賃が急騰</div><div class="news-time">2026年4月16日</div></a>
-      <a class="news-item" href="#"><div class="news-source">Lloyd's List</div><div class="news-headline">大西洋の穀物量改善でパナマックスが強含み</div><div class="news-time">2026年4月15日</div></a>
+      <div class="panel-header"><div class="panel-title">最新分析</div><a href="/ja/analysis/" style="font-family:var(--mono);font-size:10px;color:var(--gold-dim);text-decoration:none;">ALL →</a></div>
+      <a class="news-item" href="/ja/analysis/"><div class="news-source">Baltic Exchange</div><div class="news-headline">BDIが11営業日連続上昇、12月以来の高値を記録</div><div class="news-time">Apr 22, 2026</div></a>
+      <a class="news-item" href="/ja/analysis/"><div class="news-source">TradeWinds</div><div class="news-headline">ブラジルの鉄鉱石需要でケープサイズ運賃急騰</div><div class="news-time">Apr 16, 2026</div></a>
+      <a class="news-item" href="/ja/analysis/"><div class="news-source">Lloyd's List</div><div class="news-headline">大西洋の穀物量改善でパナマックス強含み</div><div class="news-time">Apr 15, 2026</div></a>
+      <a class="news-item" href="/ja/analysis/"><div class="news-source">Splash247</div><div class="news-headline">中国港口の回復がドライバルク市場を支援</div><div class="news-time">Apr 14, 2026</div></a>
     </div>
+  </div>
+</div>
+
+<!-- ANALYSIS -->
+<div class="section">
+  <div class="section-header"><div class="section-title">市場<span>分析</span></div><a href="/ja/analysis/" class="section-link">全て →</a></div>
+  <div class="article-grid">
+    <a href="/ja/analysis/" class="article-card featured">
+      <div class="article-category">週次レポート · 2026年4月22日</div>
+      <div class="article-title">BDIが1週間で16.6%急騰、ケープサイズ需要が4ヶ月ぶり高水準</div>
+      <div class="article-excerpt">バルチック海運指数は金曜日に11営業日連続の上昇を記録し、1.7%上昇して2,567ポイントとなった。ケープサイズ指数はブラジルの鉄鉱石輸出量急増と中国の港湾活動回復を受けて2.5%上昇し4,128に達した。</div>
+      <div class="article-meta">BDI分析 · 5分</div>
+    </a>
+    <a href="/ja/what-is-the-baltic-dry-index/" class="article-card">
+      <div class="article-category">解説</div>
+      <div class="article-title">バルチック海運指数とは何か、なぜ重要なのか？</div>
+      <div class="article-excerpt">世界最古の海運指標を理解するための完全ガイド。</div>
+      <div class="article-meta">ガイド · 8分</div>
+    </a>
+    <a href="/ja/shipping-stocks/" class="article-card">
+      <div class="article-category">Stocks</div>
+      <div class="article-title">BDI上昇時に注目すべき5つのドライバルク海運株</div>
+      <div class="article-excerpt">SBLK、GOGL、EGLEなど — 株式でBDIを取引する方法。</div>
+      <div class="article-meta">投資 · 6分</div>
+    </a>
   </div>
 </div>
 
 <!-- BROKERS -->
 <div class="section" style="margin-bottom:40px;">
   <div class="broker-strip">
-    <div class="broker-label">航運株式・商品取引 — パートナーブローカー</div>
+    <div class="broker-label">Trade Shipping Stocks & Commodities — Partner Brokers</div>
     <div class="broker-grid">
-      <a href="https://www.etoro.com/?utm_source=balticdryindex" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">eToro</div><div class="broker-desc">ドライバルク株式・商品を取引。トップ航運トレーダーをコピー。</div><div class="broker-cta">口座開設 →</div></a>
-      <a href="https://www.home.saxo/?utm_source=balticdryindex" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Saxo</div><div class="broker-desc">グローバル商品先物・航運株式へのプロフェッショナルアクセス。</div><div class="broker-cta">口座開設 →</div></a>
-      <a href="https://ibkr.com/referral/julio411" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">IBKR</div><div class="broker-desc">低コストで世界市場にアクセス。本格的なトレーダー向け。</div><div class="broker-cta">口座開設 →</div></a>
-      <a href="https://dukascopy.bank/swiss/open-mca-account/?ref=YJM-PUE&lang=en" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Dukascopy</div><div class="broker-desc">商品指数・航運株式のスプレッドベット。英国規制対応。</div><div class="broker-cta">口座開設 →</div></a>
+      <a href="https://ibkr.com/referral/julio411" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">IBKR</div><div class="broker-desc">低コストでグローバル市場にアクセス。本格的なトレーダーに選ばれています。</div><div class="broker-cta">口座開設 →</div></a>
+      <a href="https://dukascopy.bank/swiss/open-mca-account/?ref=YJM-PUE&lang=en" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Dukascopy</div><div class="broker-desc">スイス規制の銀行・ブローカー。コモディティと世界市場を取引。</div><div class="broker-cta">口座開設 →</div></a>
     </div>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div><a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">バルチック海運指数データ、海運市場分析、運賃インテリジェンスの独立した情報源。毎日更新。</div></div>
-    <div><div class="footer-col-title">データ</div><ul class="footer-links"><li><a href="/">リアルタイムBDIチャート</a></li><li><a href="/bdi-chart-historical-data/">過去データ</a></li><li><a href="/vessel-classes/">船型の説明</a></li></ul></div>
-    <div><div class="footer-col-title">学習</div><ul class="footer-links"><li><a href="/what-is-the-baltic-dry-index/">BDIとは？</a></li><li><a href="/analysis/">市場分析</a></li><li><a href="/glossary/">用語集</a></li></ul></div>
-    <div><div class="footer-col-title">言語</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/">日本語</a></li></ul></div>
+    <div><a href="/ja/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">バルチック海運指数データ、海運市場分析、運賃インテリジェンスの独立した情報源。毎日更新。</div></div>
+    <div><div class="footer-col-title">データ</div><ul class="footer-links"><li><a href="/ja/">リアルタイムBDIチャート</a></li><li><a href="/ja/bdi-chart-historical-data/">過去データ</a></li><li><a href="/ja/vessel-classes/">船型分類</a></li><li><a href="/ja/analysis/">BDIニュース</a></li><li><a href="/ja/shipping-stocks/">海運株</a></li></ul></div>
+    <div><div class="footer-col-title">学習</div><ul class="footer-links"><li><a href="/ja/what-is-the-baltic-dry-index/">BDIとは？</a></li><li><a href="/ja/analysis/">日次分析</a></li><li><a href="/ja/glossary/">用語集</a></li><li><a href="/ja/tools/">ツール</a></li></ul></div>
+        <div><div class="footer-col-title">Languages</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/es/">Español</a></li><li><a href="/fr/">Français</a></li><li><a href="/ar/">العربية</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
   </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div><div class="footer-disclaimer">投資助言ではありません。データ出典：バルチック海運取引所 via Stooq。</div></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div>
+    <div class="footer-disclaimer">データは参考値のみ。投資アドバイスではありません。</div>
+  </div>
 </footer>
 
 <script src="/assets/bdi.js"></script>
 <script>
-let chartInstance=null, histData=[], currentRange='1Y';
-BDI.load(function(data){
+let chartInstance = null, histData = [], currentRange = '1Y';
 
-  // Safety check (prevents full page failure)
-  if(!data || !data.bdi){
-    console.error("Data failed:", data);
-    return;
-  }
-
-  // Main values
-  BDI.setHero(data.bdi.value, data.bdi.prev, data.date);
-
-  BDI.setSub('bci-val','bci-chg',data.bci.value,data.bci.prev);
-  BDI.setSub('bpi-val','bpi-chg',data.bpi.value,data.bpi.prev);
-  BDI.setSub('bsi-val','bsi-chg',data.bsi.value,data.bsi.prev);
-  BDI.setSub('bhsi-val','bhsi-chg',data.bhsi.value,data.bhsi.prev);
-
+BDI.load(function(data) {
+  BDI.setHero(data);
+  BDI.setSub('bci-val','bci-chg', data.bci);
+  BDI.setSub('bpi-val','bpi-chg', data.bpi);
+  BDI.setSub('bsi-val','bsi-chg', data.bsi);
+  BDI.setSub('bhsi-val','bhsi-chg', data.bhsi);
   BDI.buildTicker(data);
-
-  // 🔥 CRITICAL FIX (this was breaking your page)
-  histData = data.history || [];
-
-  // Only render chart if data exists
-  if(histData.length > 0){
-    chartInstance = BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
-
-    ['spark1','spark2','spark3','spark4'].forEach((id,i)=>
-      BDI.drawSpark(id,['#4a9eff','#c8a84b','#a855f7','#00d084'][i],histData)
-    );
-  } else {
-    console.warn("No history data — skipping chart");
-  }
-
-  // Status label fix
+  histData = data.history;
+  chartInstance = BDI.renderChart(histData, currentRange, 'bdiChart', chartInstance);
+  ['spark1','spark2','spark3','spark4'].forEach((id,i)=>BDI.drawSpark(id,['#4a9eff','#c8a84b','#a855f7','#00d084'][i],histData));
   const cs = document.getElementById('chartStatus');
-  if(cs){
-    cs.textContent = data.date ? ('最終更新: ' + data.date) : 'データ取得中…';
-    cs.className = 'chart-status';
-  }
-
+  if(cs) { cs.textContent = data.live ? '● ライブ · Stooq' : '最終更新: 2026年4月22日'; cs.className = 'chart-status'+(data.live?' live':''); }
 });
-document.querySelectorAll('.range-tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
+
+document.querySelectorAll('.range-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
     document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active'); currentRange=btn.dataset.range;
-    chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+    btn.classList.add('active');
+    currentRange = btn.dataset.range;
+    chartInstance = BDI.renderChart(histData, currentRange, 'bdiChart', chartInstance);
   });
 });
+
+setInterval(()=>location.reload(), 4*60*60*1000);
 </script>
 </body>
 </html>

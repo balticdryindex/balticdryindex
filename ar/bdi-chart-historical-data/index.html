@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رسم بياني BDI وبيانات تاريخية | BalticDryIndex.com</title>
+<meta name="description" content="رسم بياني تفاعلي لمؤشر البلطيق مع بيانات تاريخية كاملة من 1985 حتى اليوم. يدعم عروض 1ش، 3ش، 1س، 5س وكل الفترات. يُحدَّث يومياً.">
+<meta name="keywords" content="baltic dry index chart, BDI chart, baltic dry index historical data, BDI history, baltic index chart, BDI graph, baltic dry index data">
+<link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="zh" href="https://www.balticdryindex.com/zh/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ja" href="https://www.balticdryindex.com/ja/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="es" href="https://www.balticdryindex.com/es/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="fr" href="https://www.balticdryindex.com/fr/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ar" href="https://www.balticdryindex.com/ar/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="pt-BR" href="https://www.balticdryindex.com/pt/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/bdi-chart-historical-data/">
+<link rel="canonical" href="https://www.balticdryindex.com/ar/bdi-chart-historical-data/">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="ticker-bar">
+  <div class="ticker-label">مباشر</div>
+  <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="/ar/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/ar/">البيانات المباشرة</a>
+      <a href="/ar/what-is-the-baltic-dry-index/">عن المؤشر</a>
+      <a href="/ar/bdi-chart-historical-data/" class="active">الرسم البياني</a>
+      <a href="/ar/vessel-classes/">أنواع السفن</a>
+      <a href="/ar/shipping-stocks/">أسهم الشحن</a>
+      <a href="/ar/analysis/">التحليل</a>
+      <a href="/ar/glossary/">المصطلحات</a>
+      <a href="/ar/tools/">الأدوات</a>
+      <a href="/ar/" class="nav-cta">تنبيهات مجانية</a>
+    </nav>
+            <div class="lang-switcher">
+      <a href="/bdi-chart-historical-data/">EN</a>
+      <a href="/zh/bdi-chart-historical-data/">中文</a>
+      <a href="/ja/bdi-chart-historical-data/">日本語</a>
+      <a href="/es/bdi-chart-historical-data/">ES</a>
+      <a href="/fr/bdi-chart-historical-data/">FR</a>
+      <a href="/ar/bdi-chart-historical-data/" class="active">AR</a>
+      <a href="/pt/bdi-chart-historical-data/">PT</a>
+      <a href="/ru/bdi-chart-historical-data/">RU</a>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="/ar/">الرئيسية</a><span>›</span>الرسم البياني والبيانات التاريخية لـ BDI</div>
+
+<div class="page-hero">
+  <div class="page-eyebrow"><span class="live-dot"></span>يُحدَّث يومياً · المصدر: Stooq / بورصة البلطيق</div>
+  <h1 class="page-title">مؤشر البلطيق <span>الرسم البياني</span></h1>
+  <p class="page-desc">رسم بياني تفاعلي لـ BDI مع بيانات تاريخية من عام 1985 حتى الآن. قم بالتبديل بين عروض 1 شهر و3 أشهر وسنة و5 سنوات وكل الفترات. يُحدَّث كل يوم تداول.</p>
+</div>
+
+<!-- HERO STATS ROW -->
+<div style="max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-bottom:2px;position:relative;z-index:1;">
+  <div class="stat-box"><div class="stat-value" id="bdi-val">—</div><div class="stat-label">BDI اليوم</div><div class="stat-change" id="bdi-chg">—</div></div>
+  <div class="stat-box"><div class="stat-value" id="bci-v">—</div><div class="stat-label">كيبسايز (BCI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bpi-v">—</div><div class="stat-label">باناماكس (BPI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bsi-v">—</div><div class="stat-label">سوبراماكس (BSI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bhsi-v">—</div><div class="stat-label">هانديسايز (BHSI)</div></div>
+</div>
+
+<!-- MAIN CHART -->
+<div style="max-width:var(--max);margin:0 auto 2px;padding:0 24px;position:relative;z-index:1;">
+  <div class="chart-card">
+    <div class="chart-controls">
+      <div class="chart-title">مؤشر البلطيق للبضائع الجافة (BDI) — الرسم البياني التاريخي</div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="range-tabs">
+          <button class="range-tab" data-range="1M">1M</button>
+          <button class="range-tab" data-range="3M">3M</button>
+          <button class="range-tab active" data-range="1Y">1Y</button>
+          <button class="range-tab" data-range="5Y">5Y</button>
+          <button class="range-tab" data-range="ALL">الكل</button>
+        </div>
+        <div class="chart-status" id="chartStatus">جارٍ التحميل…</div>
+      </div>
+    </div>
+    <div class="chart-wrap" style="height:420px;">
+      <div class="chart-skeleton" id="chartSkeleton">جارٍ تحميل بيانات BDI…</div>
+      <canvas id="bdiChart" style="display:none;"></canvas>
+    </div>
+    <div class="data-note">البيانات عبر <a href="https://stooq.com" target="_blank" rel="noopener">Stooq.com</a> · المصدر: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">Baltic Exchange</a> · يُحدَّث يومياً بعد 13:00 بتوقيت غرينيتش</div>
+  </div>
+</div>
+
+<!-- KEY MILESTONES TABLE -->
+<div style="max-width:var(--max);margin:32px auto;padding:0 24px;position:relative;z-index:1;">
+  <div class="section-header"><div class="section-title">BDI <span>المحطات الرئيسية</span></div></div>
+  <div class="panel-card">
+    <table class="route-table">
+      <thead><tr><th>التاريخ</th><th>مستوى BDI</th><th>الحدث</th><th>السياق</th></tr></thead>
+      <tbody>
+        <tr><td>4 يناير 1985</td><td>1,000</td><td>إطلاق BDI</td><td>تحديد المستوى الأساسي من قِبَل بورصة البلطيق</td></tr>
+        <tr><td>يونيو 2008</td><td class="up">11,793</td><td>أعلى مستوى تاريخي</td><td>دورة البنية التحتية الصينية الفائقة، طلب قياسي على السلع</td></tr>
+        <tr><td>ديسمبر 2008</td><td class="dn">663</td><td>انهيار الأزمة المالية</td><td>الركود العالمي — انهار الطلب بنسبة 94% في 6 أشهر</td></tr>
+        <tr><td>فبراير 2016</td><td class="dn">290</td><td>أدنى مستوى تاريخي</td><td>فائض السفن + تباطؤ الصين — الأسوأ في 30 عاماً</td></tr>
+        <tr><td>مايو 2020</td><td class="dn">393</td><td>أدنى مستوى كوفيد-19</td><td>إغلاق التجارة المرتبط بالجائحة</td></tr>
+        <tr><td>أكتوبر 2021</td><td class="up">5,650</td><td>ذروة ما بعد كوفيد</td><td>اضطرابات سلسلة التوريد، تراكم الموانئ، طفرة السلع</td></tr>
+        <tr><td>يناير 2022</td><td>2,200</td><td>ما بعد الدورة الفائقة</td><td>التطبيع مع تراجع الاختناق في الموانئ</td></tr>
+        <tr><td>ديسمبر 2025</td><td class="up">2,845</td><td>أعلى مستوى 52 أسبوع</td><td>15 جلسة صعود متتالية، قفزة كيبسايز</td></tr>
+        <tr><td>أبريل 2026</td><td class="up">2,567</td><td>الحالي</td><td>11 جلسة صعود متتالية، كيبسايز عند أعلى مستوى في 4 أشهر</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div><a href="/ar/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">المصدر المستقل لبيانات مؤشر البلطيق للبضائع الجافة.</div></div>
+    <div><div class="footer-col-title">البيانات</div><ul class="footer-links"><li><a href="/ar/">البيانات المباشرة</a></li><li><a href="/ar/bdi-chart-historical-data/">الرسم البياني</a></li><li><a href="/ar/vessel-classes/">أنواع السفن</a></li><li><a href="/ar/analysis/">التحليل</a></li><li><a href="/ar/shipping-stocks/">أسهم الشحن</a></li></ul></div>
+    <div><div class="footer-col-title">تعلم</div><ul class="footer-links"><li><a href="/ar/what-is-the-baltic-dry-index/">عن المؤشر</a></li><li><a href="/ar/analysis/">التحليل</a></li><li><a href="/ar/glossary/">المصطلحات</a></li><li><a href="/ar/tools/">الأدوات</a></li></ul></div>
+    <div><div class="footer-col-title">اللغات</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/es/">Español</a></li><li><a href="/fr/">Français</a></li><li><a href="/ar/">العربية</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div><div class="footer-disclaimer">البيانات استرشادية فقط. ليست نصيحة مالية.</div></div>
+</footer>
+
+<script src="/assets/bdi.js"></script>
+<script>
+let chartInstance=null, histData=[], currentRange='1Y';
+BDI.load(function(data){
+  BDI.buildTicker(data);
+  BDI.el('bdi-val',BDI.fmt(data.bdi.value));
+  BDI.el('bci-v',BDI.fmt(data.bci.value));
+  BDI.el('bpi-v',BDI.fmt(data.bpi.value));
+  BDI.el('bsi-v',BDI.fmt(data.bsi.value));
+  BDI.el('bhsi-v',BDI.fmt(data.bhsi.value));
+  const ch=BDI.chg(data.bdi.value,data.bdi.prev);
+  BDI.el('bdi-chg',ch.text); BDI.elClass('bdi-chg','stat-change '+(ch.up?'up':'dn'));
+  histData=data.history;
+  chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  const cs=document.getElementById('chartStatus');
+  if(cs){cs.textContent=data.live?'● مباشر · Stooq':'آخر تحديث: 22 أبريل 2026';cs.className='chart-status'+(data.live?' live':'');}
+});
+document.querySelectorAll('.range-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); currentRange=btn.dataset.range;
+    chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  });
+});
+</script>
+</body>
+</html>

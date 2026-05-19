@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ばら積み貨物計算ツール | BalticDryIndex.com</title>
+<meta name="description" content="ドライバルク海運計算ツール — TCE計算機、運賃収入、航次コスト、積付係数計算機、単位変換ツール。">
+<meta name="keywords" content="bulk shipping calculator, TCE calculator, freight rate calculator, stowage factor, DWT converter, voyage cost calculator, demurrage calculator, laytime calculator, cargo intake calculator, speed consumption calculator, maritime tools">
+<link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/tools/">
+<link rel="alternate" hreflang="zh" href="https://www.balticdryindex.com/zh/tools/">
+<link rel="alternate" hreflang="ja" href="https://www.balticdryindex.com/ja/tools/">
+<link rel="alternate" hreflang="es" href="https://www.balticdryindex.com/es/tools/">
+<link rel="alternate" hreflang="fr" href="https://www.balticdryindex.com/fr/tools/">
+<link rel="alternate" hreflang="ar" href="https://www.balticdryindex.com/ar/tools/">
+<link rel="alternate" hreflang="pt-BR" href="https://www.balticdryindex.com/pt/tools/">
+<link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/tools/">
+<link rel="canonical" href="https://www.balticdryindex.com/ja/tools/">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
+<style>
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px;}
+.calc-card{background:var(--surface);border:1px solid var(--border);padding:24px;position:relative;overflow:hidden;}
+.calc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold) 0%,transparent 70%);}
+.calc-title{font-family:var(--display);font-size:20px;color:#fff;letter-spacing:.03em;margin-bottom:5px;}
+.calc-desc{font-size:12px;color:var(--text-dim);margin-bottom:16px;line-height:1.5;}
+.calc-form{display:flex;flex-direction:column;gap:10px;}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:end;}
+.field-group{display:flex;flex-direction:column;gap:4px;}
+.field-label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--text-dim);text-transform:uppercase;}
+.field-input{background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:13px;padding:8px 12px;outline:none;width:100%;transition:border-color .2s;}
+.field-input:focus{border-color:var(--gold-dim);}
+.field-select{background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:11px;padding:8px 12px;outline:none;width:100%;cursor:pointer;}
+.calc-btn{background:var(--gold);color:#000;border:none;font-family:var(--mono);font-size:11px;letter-spacing:.1em;font-weight:600;padding:10px;cursor:pointer;text-transform:uppercase;transition:background .2s;width:100%;margin-top:4px;}
+.calc-btn:hover{background:#d4b45a;}
+.calc-result{background:var(--bg);border:1px solid var(--border2);padding:12px;font-family:var(--mono);font-size:12px;color:var(--text);margin-top:10px;display:none;line-height:1.9;}
+.calc-result.show{display:block;}
+.rv{color:var(--gold);font-size:18px;font-family:var(--display);display:block;margin-bottom:4px;}
+.rd{font-size:11px;color:var(--text-dim);}
+.conv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:2px;}
+.conv-card{background:var(--surface);border:1px solid var(--border);padding:18px;}
+.conv-title{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.conv-result{font-family:var(--mono);font-size:11px;color:var(--text-dim);line-height:2.1;margin-top:8px;min-height:60px;}
+.ref-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-bottom:2px;}
+.ref-card{background:rgba(200,168,75,.05);border:1px solid rgba(200,168,75,.15);padding:18px;}
+.ref-title{font-family:var(--display);font-size:17px;color:#fff;letter-spacing:.03em;margin-bottom:10px;}
+.ref-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px;}
+.ref-table th{color:var(--text-muted);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:5px 0;border-bottom:1px solid var(--border);text-align:left;}
+.ref-table td{color:var(--text-dim);padding:6px 0;border-bottom:1px solid rgba(30,37,48,.5);}
+.ref-table tr:last-child td{border-bottom:none;}
+.ref-table td:last-child{color:var(--text);text-align:right;}
+@media(max-width:1000px){.calc-grid{grid-template-columns:1fr;}.conv-grid{grid-template-columns:1fr 1fr;}.ref-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){.conv-grid{grid-template-columns:1fr;}.calc-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="ticker-bar">
+  <div class="ticker-label">LIVE</div>
+  <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="/ja/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/ja/">リアルタイム</a>
+      <a href="/ja/what-is-the-baltic-dry-index/">BDIとは</a>
+      <a href="/ja/bdi-chart-historical-data/">チャート</a>
+      <a href="/ja/vessel-classes/">船型</a>
+      <a href="/ja/shipping-stocks/">海運株</a>
+      <a href="/ja/analysis/">分析</a>
+      <a href="/ja/glossary/">用語集</a>
+      <a href="/ja/tools/" class="active">ツール</a>
+      <a href="/ja/" class="nav-cta">無料アラート</a>
+    </nav>
+<div class="lang-switcher">
+      <a href="/tools/">EN</a>
+      <a href="/zh/tools/">中文</a>
+      <a href="/ja/tools/" class="active">日本語</a>
+      <a href="/es/tools/">ES</a>
+      <a href="/fr/tools/">FR</a>
+      <a href="/ar/tools/">AR</a>
+      <a href="/pt/tools/">PT</a>
+      <a href="/ru/tools/">RU</a>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="/ja/">ホーム</a><span>›</span>ツール＆計算機</div>
+
+<div class="page-hero">
+  <div class="page-eyebrow">無料海運ツール</div>
+  <h1 class="page-title">ばら積み海運<span>ツール</span></h1>
+  <p class="page-desc">ドライバルク海運のプロ、トレーダー、ブローカー、乗組員向けの計算機と単位変換ツール。TCE、運賃収入、航次コスト、積付係数など。</p>
+</div>
+
+<div style="max-width:1400px;margin:0 auto;padding:0 24px 60px;position:relative;z-index:1;">
+
+<!-- ══ SECTION: VOYAGE CALCULATORS ══════════════════════════════════════════ -->
+<div style="font-family:var(--display);font-size:22px;color:#fff;letter-spacing:.03em;margin-bottom:14px;">航次<span style="color:var(--gold);">計算ツール</span></div>
+<div class="calc-grid">
+
+  <!-- TCE -->
+  <div class="calc-card">
+    <div class="calc-title">TCE計算機</div>
+    <div class="calc-desc">タイムチャーター換算（TCE）——航次費用を差し引いた日次船舶収益。航路間の運賃比較に使われる標準指標。</div>
+    <div class="calc-form">
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">運賃総収入（USD）</div><input class="field-input" type="number" id="tce-rev" placeholder="e.g. 1,850,000"></div>
+        <div class="field-group"><div class="field-label">航次日数（積載+バラスト）</div><input class="field-input" type="number" id="tce-days" placeholder="e.g. 52"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">バンカーコスト（USD/日）</div><input class="field-input" type="number" id="tce-fuel" placeholder="e.g. 9,200"></div>
+        <div class="field-group"><div class="field-label">港湾・運河費（USD合計）</div><input class="field-input" type="number" id="tce-port" placeholder="e.g. 65,000"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">アドレス手数料（%）</div><input class="field-input" type="number" id="tce-acom" placeholder="e.g. 3.75"></div>
+        <div class="field-group"><div class="field-label">仲介手数料（%）</div><input class="field-input" type="number" id="tce-bcom" placeholder="e.g. 1.25"></div>
+      </div>
+      <button class="calc-btn" onclick="calcTCE()">TCEを計算</button>
+      <div class="calc-result" id="tce-res"><span class="rv" id="tce-rv">—</span><span class="rd" id="tce-rd"></span></div>
+    </div>
+  </div>
+
+  <!-- VOYAGE COST -->
+  <div class="calc-card">
+    <div class="calc-title">航次コスト見積もり</div>
+    <div class="calc-desc">航路距離と船速から、燃料・港湾費・運河通行料・手数料など航次総コストを見積もります。</div>
+    <div class="calc-form">
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">距離 (Nautical Miles)</div><input class="field-input" type="number" id="vc-dist" placeholder="e.g. 11,500"></div>
+        <div class="field-group"><div class="field-label">速力 (Knots)</div><input class="field-input" type="number" id="vc-spd" placeholder="e.g. 13.5" step="0.1"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">バンカー価格（USD/MT）</div><input class="field-input" type="number" id="vc-bpr" placeholder="e.g. 530"></div>
+        <div class="field-group"><div class="field-label">日次消費量（MT/日）</div><input class="field-input" type="number" id="vc-bco" placeholder="e.g. 28" step="0.5"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">Port / Canal Costs (USD)</div><input class="field-input" type="number" id="vc-port" placeholder="e.g. 55,000"></div>
+        <div class="field-group"><div class="field-label">Commission (%)</div><input class="field-input" type="number" id="vc-com" placeholder="e.g. 5.0"></div>
+      </div>
+      <button class="calc-btn" onclick="calcVoyage()">航次コストを見積もる</button>
+      <div class="calc-result" id="vc-res"><span class="rv" id="vc-rv">—</span><span class="rd" id="vc-rd"></span></div>
+    </div>
+  </div>
+
+  <!-- FREIGHT REVENUE -->
+  <div class="calc-card">
+    <div class="calc-title">運賃収入計算機</div>
+    <div class="calc-desc">貨物量と一括払いまたは$/MT運賃から、アドレス手数料・仲介料控除後の運賃総収入と純収入を計算します。</div>
+    <div class="calc-form">
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">貨物量（MT）</div><input class="field-input" type="number" id="fr-qty" placeholder="e.g. 82,000"></div>
+        <div class="field-group"><div class="field-label">Freight Rate (USD/MT)</div><input class="field-input" type="number" id="fr-rate" placeholder="e.g. 22.50" step="0.01"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">または一括払い（USD）（$/MTを上書き）</div><input class="field-input" type="number" id="fr-lump" placeholder="Optional — overrides $/MT"></div>
+        <div class="field-group"><div class="field-label">ワールドスケール基本レート</div><input class="field-input" type="number" id="fr-ws" placeholder="WS flat (leave 0 if $/MT)"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">アドレス手数料（%）</div><input class="field-input" type="number" id="fr-acom" placeholder="e.g. 3.75"></div>
+        <div class="field-group"><div class="field-label">Brokerage (%)</div><input class="field-input" type="number" id="fr-brok" placeholder="e.g. 1.25"></div>
+      </div>
+      <button class="calc-btn" onclick="calcFreight()">収入を計算</button>
+      <div class="calc-result" id="fr-res"><span class="rv" id="fr-rv">—</span><span class="rd" id="fr-rd"></span></div>
+    </div>
+  </div>
+
+  <!-- STOWAGE FACTOR -->
+  <div class="calc-card">
+    <div class="calc-title">積付係数・貨物搭載量計算機</div>
+    <div class="calc-desc">船倉容積に対する最大積載量、または指定貨物量に必要な容積を算出します。一般的な積付係数のプリセットを収録。</div>
+    <div class="calc-form">
+      <div class="field-group"><div class="field-label">貨物種別（SF設定）</div>
+        <select class="field-select" id="sf-type" onchange="sfSet()">
+          <option value="0.50">Iron Ore (SF 0.40–0.60 m³/MT)</option>
+          <option value="1.25">Thermal Coal (SF 1.10–1.40 m³/MT)</option>
+          <option value="1.38">Coking Coal (SF 1.25–1.50 m³/MT)</option>
+          <option value="1.45">Wheat / Grain (SF 1.35–1.55 m³/MT)</option>
+          <option value="1.60">Soyabeans (SF 1.50–1.70 m³/MT)</option>
+          <option value="1.20">Fertiliser Bulk (SF 1.10–1.30 m³/MT)</option>
+          <option value="0.90">Bauxite (SF 0.80–1.00 m³/MT)</option>
+          <option value="1.85">Woodchips (SF 1.70–2.00 m³/MT)</option>
+          <option value="1.15">Sugar Raw (SF 1.05–1.25 m³/MT)</option>
+          <option value="1.00">Cement Bulk (SF 0.90–1.10 m³/MT)</option>
+          <option value="1.55">Petcoke (SF 1.40–1.70 m³/MT)</option>
+          <option value="custom">Custom SF</option>
+        </select>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">積付係数（m³/MT）</div><input class="field-input" type="number" id="sf-val" step="0.01" placeholder="e.g. 1.45"></div>
+        <div class="field-group"><div class="field-label">デッドスペース（%）</div><input class="field-input" type="number" id="sf-bs" placeholder="e.g. 5" value="0"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">船倉容積（m³）→ 積載量</div><input class="field-input" type="number" id="sf-vol" placeholder="e.g. 52,000"></div>
+        <div class="field-group"><div class="field-label">貨物量（MT）→ 必要容積</div><input class="field-input" type="number" id="sf-mt" placeholder="e.g. 75,000"></div>
+      </div>
+      <button class="calc-btn" onclick="calcStow()">計算する</button>
+      <div class="calc-result" id="sf-res"><span class="rv" id="sf-rv">—</span><span class="rd" id="sf-rd"></span></div>
+    </div>
+  </div>
+
+  <!-- BUNKER COST -->
+  <div class="calc-card">
+    <div class="calc-title">バンカーコスト計算機</div>
+    <div class="calc-desc">日次および航次総バンカーコストを計算。VLSFO、LSMGO、スクラバー搭載船（IFO 380換算）に対応。</div>
+    <div class="calc-form">
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">日次消費量（MT/日）</div><input class="field-input" type="number" id="b-cons" placeholder="e.g. 30" step="0.5" oninput="doBunker()"></div>
+        <div class="field-group"><div class="field-label">バンカー価格（USD/MT）</div><input class="field-input" type="number" id="b-pr" placeholder="e.g. 530" oninput="doBunker()"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">積載航海日数</div><input class="field-input" type="number" id="b-sea" placeholder="e.g. 35" oninput="doBunker()"></div>
+        <div class="field-group"><div class="field-label">港湾日数（待機）</div><input class="field-input" type="number" id="b-port" placeholder="e.g. 5" oninput="doBunker()"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">港湾消費量（MT/日）</div><input class="field-input" type="number" id="b-pco" placeholder="e.g. 5" step="0.5" oninput="doBunker()"></div>
+        <div class="field-group"><div class="field-label">バラスト係数（航海日数%）</div><input class="field-input" type="number" id="b-bal" placeholder="e.g. 15 (ballast voyage %)"></div>
+      </div>
+      <div class="calc-result show" id="b-res"><span class="rv" id="b-rv">Enter consumption and price above</span><span class="rd" id="b-rd"></span></div>
+    </div>
+  </div>
+
+  <!-- DEMURRAGE / LAYTIME -->
+  <div class="calc-card">
+    <div class="calc-title">デマレージ計算機</div>
+    <div class="calc-desc">使用済み停泊時間、残余停泊時間、デマレージまたはディスパッチを計算します。許容停泊時間、積揚速度、実際の使用時間を入力してください。</div>
+    <div class="calc-form">
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">貨物量（MT）</div><input class="field-input" type="number" id="dm-qty" placeholder="e.g. 80,000"></div>
+        <div class="field-group"><div class="field-label">積載速度（MT/日）</div><input class="field-input" type="number" id="dm-rate" placeholder="e.g. 8,000"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">デマレージレート（USD/日）</div><input class="field-input" type="number" id="dm-drate" placeholder="e.g. 22,000"></div>
+        <div class="field-group"><div class="field-label">実際の使用日数</div><input class="field-input" type="number" id="dm-actual" placeholder="e.g. 12.5" step="0.1"></div>
+      </div>
+      <div class="field-group"><div class="field-label">ディスパッチ（適用可能な場合はデマレージレートの½）</div>
+        <select class="field-select" id="dm-desp">
+          <option value="0.5">Half despatch (standard)</option>
+          <option value="1.0">Full despatch</option>
+          <option value="0">No despatch</option>
+        </select>
+      </div>
+      <button class="calc-btn" onclick="calcDemurrage()">デマレージを計算</button>
+      <div class="calc-result" id="dm-res"><span class="rv" id="dm-rv">—</span><span class="rd" id="dm-rd"></span></div>
+    </div>
+  </div>
+
+  <!-- SPEED / CONSUMPTION -->
+  <div class="calc-card">
+    <div class="calc-title">速力 & Consumption Calculator</div>
+    <div class="calc-desc">速力に応じた燃料消費量の変化（三乗則）を計算し、スロースチーミングの節燃料効果またはコストを算出します。</div>
+    <div class="calc-form">
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">Design 速力 (knots)</div><input class="field-input" type="number" id="sp-ds" placeholder="e.g. 14.5" step="0.1"></div>
+        <div class="field-group"><div class="field-label">設計消費量（MT/日）</div><input class="field-input" type="number" id="sp-dc" placeholder="e.g. 35" step="0.5"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">Actual 速力 (knots)</div><input class="field-input" type="number" id="sp-as" placeholder="e.g. 12.0" step="0.1"></div>
+        <div class="field-group"><div class="field-label">バンカー価格（USD/MT）</div><input class="field-input" type="number" id="sp-bp" placeholder="e.g. 530"></div>
+      </div>
+      <div class="field-group"><div class="field-label">Route 距離 (nm)</div><input class="field-input" type="number" id="sp-dist" placeholder="e.g. 11,500"></div>
+      <button class="calc-btn" onclick="calc速力()">スロースチーム節約を計算</button>
+      <div class="calc-result" id="sp-res"><span class="rv" id="sp-rv">—</span><span class="rd" id="sp-rd"></span></div>
+    </div>
+  </div>
+
+  <!-- GRAIN / CARGO CAPACITY -->
+  <div class="calc-card">
+    <div class="calc-title">船舶容量チェッカー</div>
+    <div class="calc-desc">穀物容積、載貨重量トン数、喫水制限を考慮して、指定貨物量が船舶に積めるか確認します。</div>
+    <div class="calc-form">
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">船舶粒量容積（m³）</div><input class="field-input" type="number" id="vc2-gr" placeholder="e.g. 88,500"></div>
+        <div class="field-group"><div class="field-label">船舶載貨重量トン数（MT）</div><input class="field-input" type="number" id="vc2-dwt" placeholder="e.g. 76,000"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">貨物量（MT）</div><input class="field-input" type="number" id="vc2-qty" placeholder="e.g. 74,000"></div>
+        <div class="field-group"><div class="field-label">積付係数（m³/MT）</div><input class="field-input" type="number" id="vc2-sf" placeholder="e.g. 1.20" step="0.01"></div>
+      </div>
+      <div class="calc-row">
+        <div class="field-group"><div class="field-label">定数・搭載バンカー（MT）</div><input class="field-input" type="number" id="vc2-const" placeholder="e.g. 2,500"></div>
+        <div class="field-group"></div>
+      </div>
+      <button class="calc-btn" onclick="calcCapacity()">容量を確認</button>
+      <div class="calc-result" id="vc2-res"><span class="rv" id="vc2-rv">—</span><span class="rd" id="vc2-rd"></span></div>
+    </div>
+  </div>
+
+</div><!-- /calc-grid -->
+
+<!-- ══ SECTION: UNIT CONVERTERS ═════════════════════════════════════════════ -->
+<div style="font-family:var(--display);font-size:22px;color:#fff;letter-spacing:.03em;margin-bottom:14px;">単位<span style="color:var(--gold);">変換</span></div>
+<div class="conv-grid">
+
+  <div class="conv-card">
+    <div class="conv-title">重量 / 質量</div>
+    <input class="field-input" type="number" id="w-v" placeholder="Value" oninput="doW()" style="margin-bottom:8px;">
+    <select class="field-select" id="w-f" onchange="doW()">
+      <option value="mt">Metric Tonnes (MT)</option>
+      <option value="lt">Long Tonnes (LT)</option>
+      <option value="st">Short Tonnes (ST)</option>
+      <option value="kg">Kilograms (kg)</option>
+      <option value="lb">Pounds (lb)</option>
+      <option value="g">Grams (g)</option>
+    </select>
+    <div class="conv-result" id="w-r"></div>
+  </div>
+
+  <div class="conv-card">
+    <div class="conv-title">体積 / 容量</div>
+    <input class="field-input" type="number" id="v-v" placeholder="Value" oninput="doV()" style="margin-bottom:8px;">
+    <select class="field-select" id="v-f" onchange="doV()">
+      <option value="m3">Cubic Metres (m³)</option>
+      <option value="ft3">Cubic Feet (ft³)</option>
+      <option value="bbl">Barrels (bbl)</option>
+      <option value="gus">US Gallons</option>
+      <option value="guk">UK Gallons</option>
+      <option value="l">Litres</option>
+    </select>
+    <div class="conv-result" id="v-r"></div>
+  </div>
+
+  <div class="conv-card">
+    <div class="conv-title">力 / 荷重（SWL, kN）</div>
+    <input class="field-input" type="number" id="f-v" placeholder="Value" oninput="doF()" style="margin-bottom:8px;">
+    <select class="field-select" id="f-f" onchange="doF()">
+      <option value="kn">Kilonewtons (kN)</option>
+      <option value="kgf">kgf (kg-force)</option>
+      <option value="lbf">lbf (lb-force)</option>
+      <option value="tf">Tonnes-force</option>
+      <option value="n">Newtons (N)</option>
+    </select>
+    <div class="conv-result" id="f-r"></div>
+  </div>
+
+  <div class="conv-card">
+    <div class="conv-title">距離</div>
+    <input class="field-input" type="number" id="d-v" placeholder="Value" oninput="doD()" style="margin-bottom:8px;">
+    <select class="field-select" id="d-f" onchange="doD()">
+      <option value="nm">Nautical Miles (nm)</option>
+      <option value="km">Kilometres (km)</option>
+      <option value="mi">Statute Miles (mi)</option>
+      <option value="m">Metres (m)</option>
+      <option value="ft">Feet (ft)</option>
+    </select>
+    <div class="conv-result" id="d-r"></div>
+  </div>
+
+  <div class="conv-card">
+    <div class="conv-title">速力</div>
+    <input class="field-input" type="number" id="s-v" placeholder="Value" oninput="doS()" style="margin-bottom:8px;">
+    <select class="field-select" id="s-f" onchange="doS()">
+      <option value="kn">Knots (kn)</option>
+      <option value="kmh">km/h</option>
+      <option value="mph">mph</option>
+      <option value="ms">m/s</option>
+    </select>
+    <div class="conv-result" id="s-r"></div>
+  </div>
+
+  <div class="conv-card">
+    <div class="conv-title">温度</div>
+    <input class="field-input" type="number" id="t-v" placeholder="Value" oninput="doT()" style="margin-bottom:8px;">
+    <select class="field-select" id="t-f" onchange="doT()">
+      <option value="c">Celsius (°C)</option>
+      <option value="f">Fahrenheit (°F)</option>
+      <option value="k">Kelvin (K)</option>
+    </select>
+    <div class="conv-result" id="t-r"></div>
+  </div>
+
+  <div class="conv-card">
+    <div class="conv-title">圧力</div>
+    <input class="field-input" type="number" id="p-v" placeholder="Value" oninput="doP()" style="margin-bottom:8px;">
+    <select class="field-select" id="p-f" onchange="doP()">
+      <option value="bar">Bar</option>
+      <option value="psi">PSI (lb/in²)</option>
+      <option value="kpa">kPa</option>
+      <option value="atm">Atmospheres (atm)</option>
+      <option value="mpa">MPa</option>
+    </select>
+    <div class="conv-result" id="p-r"></div>
+  </div>
+
+  <div class="conv-card">
+    <div class="conv-title">出力 / エネルギー</div>
+    <input class="field-input" type="number" id="e-v" placeholder="Value" oninput="doE()" style="margin-bottom:8px;">
+    <select class="field-select" id="e-f" onchange="doE()">
+      <option value="kw">Kilowatts (kW)</option>
+      <option value="hp">Horsepower (hp)</option>
+      <option value="mw">Megawatts (MW)</option>
+      <option value="bhp">BHP</option>
+    </select>
+    <div class="conv-result" id="e-r"></div>
+  </div>
+
+</div><!-- /conv-grid -->
+
+<!-- ══ SECTION: REFERENCE TABLES ════════════════════════════════════════════ -->
+<div style="font-family:var(--display);font-size:22px;color:#fff;letter-spacing:.03em;margin-bottom:14px;">参考<span style="color:var(--gold);">テーブル</span></div>
+<div class="ref-grid">
+
+  <div class="ref-card">
+    <div class="ref-title">積付係数</div>
+    <table class="ref-table">
+      <thead><tr><th>貨物</th><th>積付係数 (m³/MT)</th></tr></thead>
+      <tbody>
+        <tr><td>Iron Ore</td><td>0.40–0.60</td></tr>
+        <tr><td>Coal (thermal)</td><td>1.10–1.40</td></tr>
+        <tr><td>Coal (coking)</td><td>1.25–1.50</td></tr>
+        <tr><td>Wheat</td><td>1.35–1.55</td></tr>
+        <tr><td>Soyabeans</td><td>1.50–1.70</td></tr>
+        <tr><td>Maize / Corn</td><td>1.28–1.48</td></tr>
+        <tr><td>Fertiliser (bulk)</td><td>1.10–1.30</td></tr>
+        <tr><td>Bauxite</td><td>0.80–1.00</td></tr>
+        <tr><td>Petcoke</td><td>1.40–1.70</td></tr>
+        <tr><td>Woodchips</td><td>1.70–2.20</td></tr>
+        <tr><td>Sugar (raw)</td><td>1.05–1.25</td></tr>
+        <tr><td>Cement (bulk)</td><td>0.90–1.10</td></tr>
+        <tr><td>Steel (coils/plate)</td><td>0.20–0.35</td></tr>
+        <tr><td>Salt</td><td>0.90–1.10</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ref-card">
+    <div class="ref-title">Key Maritime 距離s</div>
+    <table class="ref-table">
+      <thead><tr><th>航路</th><th>海里</th><th>日数@13kn</th></tr></thead>
+      <tbody>
+        <tr><td>Tubarao → Qingdao (C3)</td><td>11,500</td><td>~37</td></tr>
+        <tr><td>W Australia → Qingdao (C5)</td><td>4,600</td><td>~15</td></tr>
+        <tr><td>Richards Bay → Rotterdam</td><td>6,500</td><td>~21</td></tr>
+        <tr><td>US Gulf → Japan (P1)</td><td>9,200</td><td>~30</td></tr>
+        <tr><td>US Gulf → ARA (P2)</td><td>4,800</td><td>~15</td></tr>
+        <tr><td>Black Sea → China</td><td>12,800</td><td>~41</td></tr>
+        <tr><td>Australia → Japan (coal)</td><td>3,800</td><td>~12</td></tr>
+        <tr><td>Indonesia → China (coal)</td><td>2,200</td><td>~7</td></tr>
+        <tr><td>Rotterdam → Singapore</td><td>8,300</td><td>~27</td></tr>
+        <tr><td>Constanta → China (Black Sea)</td><td>13,200</td><td>~42</td></tr>
+        <tr><td>Santos → Rotterdam</td><td>5,200</td><td>~17</td></tr>
+        <tr><td>New Orleans → Rotterdam</td><td>4,780</td><td>~15</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ref-card">
+    <div class="ref-title">クイック単位変換</div>
+    <table class="ref-table">
+      <thead><tr><th>変換元 → 変換先</th><th>係数</th></tr></thead>
+      <tbody>
+        <tr><td>1 MT → Long Tonnes</td><td>× 0.9842</td></tr>
+        <tr><td>1 MT → Short Tonnes</td><td>× 1.1023</td></tr>
+        <tr><td>1 MT → kg</td><td>× 1,000</td></tr>
+        <tr><td>1 nm → km</td><td>× 1.852</td></tr>
+        <tr><td>1 nm → statute mi</td><td>× 1.1508</td></tr>
+        <tr><td>1 knot → km/h</td><td>× 1.852</td></tr>
+        <tr><td>1 kN → kgf</td><td>× 101.97</td></tr>
+        <tr><td>1 tf → kN</td><td>× 9.807</td></tr>
+        <tr><td>1 lbf → N</td><td>× 4.448</td></tr>
+        <tr><td>1 m³ → ft³</td><td>× 35.315</td></tr>
+        <tr><td>1 bbl → litres</td><td>× 158.99</td></tr>
+        <tr><td>1 bar → PSI</td><td>× 14.504</td></tr>
+        <tr><td>1 kW → HP</td><td>× 1.341</td></tr>
+        <tr><td>°F → °C</td><td>(°F−32)÷1.8</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /ref-grid -->
+
+<!-- BROKER STRIP -->
+<div class="broker-strip" style="margin-top:8px;">
+  <div class="broker-label">Trade Shipping Stocks &amp; Commodities — Partner Brokers</div>
+  <div class="broker-grid" style="grid-template-columns:repeat(2,1fr);">
+    <a href="https://ibkr.com/referral/julio411" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">IBKR</div><div class="broker-desc">低コストでグローバル市場にアクセス。本格的なトレーダーに選ばれています。</div><div class="broker-cta">口座開設 →</div></a>
+    <a href="https://dukascopy.bank/swiss/open-mca-account/?ref=YJM-PUE&lang=en" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Dukascopy</div><div class="broker-desc">スイス規制の銀行・ブローカー。コモディティと世界市場を取引。</div><div class="broker-cta">口座開設 →</div></a>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-inner">
+    <div><a href="/ja/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">The independent source for Baltic Dry Index data, shipping market analysis, and freight rate intelligence.</div></div>
+    <div><div class="footer-col-title">Data</div><ul class="footer-links"><li><a href="/ja/">Live BDI Chart</a></li><li><a href="/ja/bdi-chart-historical-data/">Historical Data</a></li><li><a href="/ja/vessel-classes/">Vessel Classes</a></li><li><a href="/ja/analysis/">BDI News</a></li><li><a href="/ja/shipping-stocks/">Shipping Stocks</a></li></ul></div>
+    <div><div class="footer-col-title">Learn</div><ul class="footer-links"><li><a href="/ja/what-is-the-baltic-dry-index/">What is the BDI?</a></li><li><a href="/ja/analysis/">Analysis</a></li><li><a href="/ja/glossary/">Glossary</a></li><li><a href="/ja/tools/">Tools</a></li></ul></div>
+    <div><div class="footer-col-title">Languages</div><ul class="footer-links"><li><a href="/ja/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/es/">Español</a></li><li><a href="/fr/">Français</a></li><li><a href="/ar/">العربية</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div>
+    <div class="footer-disclaimer">Calculations are indicative only. Not financial advice. <a href="/disclaimer/" style="color:var(--text-muted);">Disclaimer</a></div>
+  </div>
+</footer>
+
+<script src="/assets/bdi.js"></script>
+<script>
+BDI.load(function(d){BDI.buildTicker(d);});
+
+const f0=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(n);
+const f2=n=>new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+const f3=n=>new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:3}).format(n);
+const usd=n=>'$'+f0(Math.round(n));
+const g=id=>parseFloat(document.getElementById(id).value)||0;
+const setRes=(id,rv,rd)=>{const el=document.getElementById(id);el.className='calc-result show';document.getElementById(id.replace('-res','-rv')).textContent=rv;const rdEl=document.getElementById(id.replace('-res','-rd'));if(rdEl)rdEl.innerHTML=rd;};
+
+// TCE
+function calcTCE(){
+  const rev=g('tce-rev'),days=g('tce-days'),fuel=g('tce-fuel'),port=g('tce-port'),acom=g('tce-acom'),bcom=g('tce-bcom');
+  if(!rev||!days) return;
+  const comDeduct=rev*((acom+bcom)/100);
+  const netRev=rev-comDeduct-(fuel*days)-port;
+  const tce=netRev/days;
+  setRes('tce-res',usd(tce)+'/day TCE',
+    `Gross freight: ${usd(rev)}<br>Commission deduct: ${usd(comDeduct)}<br>Bunker cost: ${usd(fuel*days)}<br>Port costs: ${usd(port)}<br>Net revenue: ${usd(netRev)}<br>Voyage days: ${days}`);
+}
+
+// Voyage Cost
+function calcVoyage(){
+  const dist=g('vc-dist'),spd=g('vc-spd'),bpr=g('vc-bpr'),bco=g('vc-bco'),port=g('vc-port'),com=g('vc-com');
+  if(!dist||!spd||!bpr||!bco) return;
+  const days=dist/(spd*24);
+  const bunkerCost=days*bco*bpr;
+  const commissionAmt=bunkerCost*com/100;
+  const total=bunkerCost+port+commissionAmt;
+  setRes('vc-res',usd(total)+' total voyage cost',
+    `Sea days: ${f2(days)} days at ${spd} knots<br>Bunker: ${f2(days*bco)} MT × ${usd(bpr)} = ${usd(bunkerCost)}<br>Port/canal: ${usd(port)}<br>Commission (${com}%): ${usd(commissionAmt)}<br>Daily average: ${usd(total/days)}/day`);
+}
+
+// Freight Revenue
+function calcFreight(){
+  const qty=g('fr-qty'),rate=g('fr-rate'),lump=g('fr-lump'),acom=g('fr-acom'),brok=g('fr-brok');
+  if(!qty&&!lump&&!rate) return;
+  const gross=lump||qty*rate;
+  const comDeduct=gross*((acom+brok)/100);
+  const net=gross-comDeduct;
+  setRes('fr-res',usd(net)+' net freight',
+    `Gross: ${usd(gross)} ${lump?'(lumpsum)':`(${f0(qty)} MT × $${rate}/MT)`}<br>Address comm (${acom}%): −${usd(gross*acom/100)}<br>Brokerage (${brok}%): −${usd(gross*brok/100)}<br>Net to owner: ${usd(net)}`);
+}
+
+// Stowage
+function sfSet(){const v=document.getElementById('sf-type').value;if(v!=='custom')document.getElementById('sf-val').value=v;}
+sfSet();
+function calcStow(){
+  const sf=g('sf-val'),vol=g('sf-vol'),mt=g('sf-mt'),bs=g('sf-bs');
+  if(!sf) return;
+  const bsFactor=1-(bs/100);
+  if(vol){
+    const intake=vol/sf*bsFactor;
+    setRes('sf-res',f0(intake)+' MT cargo intake',`Hold: ${f0(vol)} m³ ÷ SF ${sf}${bs?` (BS ${bs}%)`:''} = ${f0(intake)} MT`);
+  } else if(mt){
+    const volNeeded=mt*sf/bsFactor;
+    setRes('sf-res',f0(volNeeded)+' m³ required',`${f0(mt)} MT × SF ${sf}${bs?` ÷ (1−${bs}%)`:''} = ${f0(volNeeded)} m³`);
+  }
+}
+
+// Bunker
+function doBunker(){
+  const cons=g('b-cons'),pr=g('b-pr'),sea=g('b-sea'),port=g('b-port'),pco=g('b-pco');
+  if(!cons||!pr){document.getElementById('b-rv').textContent='Enter consumption and price above';return;}
+  const seaCost=cons*pr*(sea||1);
+  const portCost=pco*pr*(port||0);
+  const total=seaCost+portCost;
+  const totalMT=cons*(sea||1)+pco*(port||0);
+  document.getElementById('b-rv').textContent=sea||port?usd(total)+' total bunker cost':usd(cons*pr)+'/day';
+  document.getElementById('b-rd').innerHTML=`Daily cost: ${usd(cons*pr)}/day${sea?`<br>Sea bunkers: ${f2(cons*sea)} MT = ${usd(seaCost)}`:''}${port&&pco?`<br>Port bunkers: ${f2(pco*port)} MT = ${usd(portCost)}`:''}${sea||port?`<br>Total: ${f2(totalMT)} MT × avg $${f2(total/totalMT)}/MT = ${usd(total)}`:''}`;
+}
+
+// Demurrage
+function calcDemurrage(){
+  const qty=g('dm-qty'),rate=g('dm-rate'),drate=g('dm-drate'),actual=g('dm-actual');
+  const despFactor=parseFloat(document.getElementById('dm-desp').value)||0.5;
+  if(!qty||!rate||!drate) return;
+  const allowed=qty/rate;
+  const diff=actual-allowed;
+  const amount=diff>0?diff*drate:Math.abs(diff)*drate*despFactor;
+  const label=diff>0?'DEMURRAGE DUE':'DESPATCH DUE';
+  setRes('dm-res',`${usd(amount)} ${label}`,
+    `Cargo: ${f0(qty)} MT at ${f0(rate)} MT/day<br>Allowed laytime: ${f2(allowed)} days<br>Actual time used: ${actual} days<br>${diff>0?`Overage: ${f2(diff)} days × ${usd(drate)}/day`:`Saved: ${f2(Math.abs(diff))} days × ${usd(drate*despFactor)}/day`}`);
+}
+
+// 速力
+function calc速力(){
+  const ds=g('sp-ds'),dc=g('sp-dc'),as_=g('sp-as'),bp=g('sp-bp'),dist=g('sp-dist');
+  if(!ds||!dc||!as_||!bp) return;
+  const acCons=dc*Math.pow(as_/ds,3);
+  const saving=dc-acCons;
+  const designDays=dist?dist/(ds*24):null;
+  const actualDays=dist?dist/(as_*24):null;
+  const extraDays=dist?actualDays-designDays:null;
+  const fuelSaved=designDays?saving*designDays:null;
+  const dollarSaved=fuelSaved?fuelSaved*bp:null;
+  setRes('sp-res',`${f2(acCons)} MT/day at ${as_} kn`,
+    `Design: ${ds} kn = ${f2(dc)} MT/day<br>Actual: ${as_} kn = ${f2(acCons)} MT/day (cubic law)<br>Fuel saving: ${f2(saving)} MT/day${dist?`<br>Voyage days: ${f2(designDays)} → ${f2(actualDays)} (+${f2(extraDays)} days)<br>Total fuel saved: ${f2(fuelSaved)} MT = ${usd(dollarSaved)}`:''}`);
+}
+
+// Capacity
+function calcCapacity(){
+  const gr=g('vc2-gr'),dwt=g('vc2-dwt'),qty=g('vc2-qty'),sf=g('vc2-sf'),con=g('vc2-const');
+  if(!gr||!dwt||!qty||!sf) return;
+  const volNeeded=qty*sf;
+  const deadwFree=dwt-con;
+  const grOk=volNeeded<=gr;
+  const dwtOk=qty<=deadwFree;
+  const limiting=!grOk?'GRAIN CAPACITY':'DWT';
+  const status=(grOk&&dwtOk)?'✓ CARGO FITS':'✗ OVER '+limiting;
+  setRes('vc2-res',status,
+    `Volume needed: ${f0(volNeeded)} m³ / Grain: ${f0(gr)} m³ → ${grOk?'OK':'EXCEEDS by '+f0(volNeeded-gr)+' m³'}<br>Cargo weight: ${f0(qty)} MT / DWT free: ${f0(deadwFree)} MT → ${dwtOk?'OK':'EXCEEDS by '+f0(qty-deadwFree)+' MT'}`);
+}
+
+// ── UNIT CONVERTERS ──────────────────────────────────────────────────────────
+const W={mt:1,lt:1.01605,st:0.907185,kg:0.001,lb:0.000453592,g:0.000001};
+const WN={mt:'MT',lt:'Long T',st:'Short T',kg:'kg',lb:'lb',g:'g'};
+function doW(){const v=parseFloat(document.getElementById('w-v').value),f=document.getElementById('w-f').value;if(isNaN(v)){document.getElementById('w-r').innerHTML='';return;}const b=v*W[f];document.getElementById('w-r').innerHTML=Object.entries(W).filter(([k])=>k!==f).map(([k,w])=>`<span style="color:var(--text)">${f3(b/w)}</span> ${WN[k]}`).join('<br>');}
+
+const V={m3:1,ft3:0.0283168,bbl:0.158987,gus:0.00378541,guk:0.00454609,l:0.001};
+const VN={m3:'m³',ft3:'ft³',bbl:'bbl',gus:'US gal',guk:'UK gal',l:'L'};
+function doV(){const v=parseFloat(document.getElementById('v-v').value),f=document.getElementById('v-f').value;if(isNaN(v)){document.getElementById('v-r').innerHTML='';return;}const b=v*V[f];document.getElementById('v-r').innerHTML=Object.entries(V).filter(([k])=>k!==f).map(([k,w])=>`<span style="color:var(--text)">${f3(b/w)}</span> ${VN[k]}`).join('<br>');}
+
+const F={kn:1,kgf:0.00980665,lbf:0.00444822,tf:9.80665,n:0.001};
+const FN={kn:'kN',kgf:'kgf',lbf:'lbf',tf:'tf',n:'N'};
+function doF(){const v=parseFloat(document.getElementById('f-v').value),f=document.getElementById('f-f').value;if(isNaN(v)){document.getElementById('f-r').innerHTML='';return;}const b=v*F[f];document.getElementById('f-r').innerHTML=Object.entries(F).filter(([k])=>k!==f).map(([k,w])=>`<span style="color:var(--text)">${f3(b/w)}</span> ${FN[k]}`).join('<br>');}
+
+const D={nm:1,km:0.539957,mi:0.868976,m:539.957,ft:1770.00};
+const DN={nm:'nm',km:'km',mi:'mi',m:'m',ft:'ft'};
+function doD(){const v=parseFloat(document.getElementById('d-v').value),f=document.getElementById('d-f').value;if(isNaN(v)){document.getElementById('d-r').innerHTML='';return;}const b=v/D[f];document.getElementById('d-r').innerHTML=Object.entries(D).filter(([k])=>k!==f).map(([k,w])=>`<span style="color:var(--text)">${f3(b*w)}</span> ${DN[k]}`).join('<br>');}
+
+const SP={kn:1,kmh:0.539957,mph:0.868976,ms:1.94384};
+const SPN={kn:'knots',kmh:'km/h',mph:'mph',ms:'m/s'};
+function doS(){const v=parseFloat(document.getElementById('s-v').value),f=document.getElementById('s-f').value;if(isNaN(v)){document.getElementById('s-r').innerHTML='';return;}const b=v/SP[f];document.getElementById('s-r').innerHTML=Object.entries(SP).filter(([k])=>k!==f).map(([k,w])=>`<span style="color:var(--text)">${f2(b*w)}</span> ${SPN[k]}`).join('<br>');}
+
+function doT(){const v=parseFloat(document.getElementById('t-v').value),f=document.getElementById('t-f').value;if(isNaN(v)){document.getElementById('t-r').innerHTML='';return;}let c;if(f==='c')c=v;else if(f==='f')c=(v-32)/1.8;else c=v-273.15;const res=[['°C',c],['°F',c*1.8+32],['K',c+273.15]].filter(([k])=>k!==({c:'°C',f:'°F',k:'K'}[f]));document.getElementById('t-r').innerHTML=res.map(([k,val])=>`<span style="color:var(--text)">${f2(val)}</span> ${k}`).join('<br>');}
+
+const PR={bar:1,psi:0.0689476,kpa:0.01,atm:1.01325,mpa:10};
+const PRN={bar:'bar',psi:'PSI',kpa:'kPa',atm:'atm',mpa:'MPa'};
+function doP(){const v=parseFloat(document.getElementById('p-v').value),f=document.getElementById('p-f').value;if(isNaN(v)){document.getElementById('p-r').innerHTML='';return;}const b=v*PR[f];document.getElementById('p-r').innerHTML=Object.entries(PR).filter(([k])=>k!==f).map(([k,w])=>`<span style="color:var(--text)">${f3(b/w)}</span> ${PRN[k]}`).join('<br>');}
+
+const EN={kw:1,hp:0.745700,mw:1000,bhp:0.745700};
+const ENN={kw:'kW',hp:'HP',mw:'MW',bhp:'BHP'};
+function doE(){const v=parseFloat(document.getElementById('e-v').value),f=document.getElementById('e-f').value;if(isNaN(v)){document.getElementById('e-r').innerHTML='';return;}const b=v*EN[f];document.getElementById('e-r').innerHTML=Object.entries(EN).filter(([k])=>k!==f).map(([k,w])=>`<span style="color:var(--text)">${f2(b/w)}</span> ${ENN[k]}`).join('<br>');}
+</script>
+</body>
+</html>

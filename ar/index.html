@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مؤشر البلطيق للبضائع الجافة — رسم بياني مباشر وبيانات | BalticDryIndex.com</title>
+<meta name="description" content="Live Baltic Dry Index (BDI) today — real-time chart, Capesize, Panamax, Supramax sub-indices, freight route rates and daily shipping market analysis.">
+<meta name="keywords" content="baltic dry index, BDI, baltic dry index chart, BDI today, baltic index, dry bulk index, BDI live, shipping index, capesize index, panamax index">
+<meta property="og:title" content="Baltic Dry Index — Live BDI Chart & Data">
+<meta property="og:description" content="Track the Baltic Dry Index live. Real BDI data, sub-indices, route rates and daily analysis.">
+<meta property="og:url" content="https://www.balticdryindex.com/">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/">
+<link rel="alternate" hreflang="zh" href="https://www.balticdryindex.com/zh/">
+<link rel="alternate" hreflang="ja" href="https://www.balticdryindex.com/ja/">
+<link rel="alternate" hreflang="es" href="https://www.balticdryindex.com/es/">
+<link rel="alternate" hreflang="fr" href="https://www.balticdryindex.com/fr/">
+<link rel="alternate" hreflang="ar" href="https://www.balticdryindex.com/ar/">
+<link rel="alternate" hreflang="pt-BR" href="https://www.balticdryindex.com/pt/">
+<link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/">
+<link rel="canonical" href="https://www.balticdryindex.com/ar/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Baltic Dry Index",
+  "url": "https://www.balticdryindex.com",
+  "description": "Live Baltic Dry Index data, charts, analysis and shipping market intelligence.",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.balticdryindex.com/search?q={search_term_string}", "query-input": "required name=search_term_string" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "Baltic Dry Index",
+  "alternateName": ["BDI","BDIY","Baltic Dry"],
+  "description": "The Baltic Dry Index is a shipping freight-cost index issued daily by the London-based Baltic Exchange.",
+  "provider": { "@type": "Organization", "name": "Baltic Exchange", "url": "https://www.balticexchange.com" }
+}
+</script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">مباشر</div>
+  <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="/ar/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/ar/" class="active">البيانات المباشرة</a>
+      <a href="/ar/what-is-the-baltic-dry-index/">عن المؤشر</a>
+      <a href="/ar/bdi-chart-historical-data/">الرسم البياني</a>
+      <a href="/ar/vessel-classes/">أنواع السفن</a>
+      <a href="/ar/shipping-stocks/">أسهم الشحن</a>
+      <a href="/ar/analysis/">التحليل</a>
+      <a href="/ar/glossary/">المصطلحات</a>
+      <a href="/ar/tools/">الأدوات</a>
+      <a href="/ar/" class="nav-cta">تنبيهات مجانية</a>
+    </nav>
+            <div class="lang-switcher">
+      <a href="/">EN</a>
+      <a href="/zh/">中文</a>
+      <a href="/ja/">日本語</a>
+      <a href="/es/">ES</a>
+      <a href="/fr/">FR</a>
+      <a href="/ar/" class="active">AR</a>
+      <a href="/pt/">PT</a>
+      <a href="/ru/">RU</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-title-block">
+      <div class="hero-eyebrow"><span class="live-dot"></span>بيانات سوق الشحن في الوقت الفعلي</div>
+      <h1 class="hero-title">مؤشر البلطيق<br><span>للبضائع الجافة</span></h1>
+    </div>
+    <div class="hero-bdi-block">
+      <div class="bdi-current-label">BDI اليوم</div>
+      <div class="bdi-current-value" id="bdi-val"><span class="spin"></span></div>
+      <div class="bdi-change" id="bdi-change" style="color:var(--text-muted)">جارٍ تحميل البيانات…</div>
+      <div class="bdi-timestamp" id="bdi-ts">بورصة البلطيق · التسوية اليومية</div>
+    </div>
+  </div>
+
+  <!-- CHART -->
+  <div class="chart-card" style="margin-bottom:2px;">
+    <div class="chart-controls">
+      <div class="chart-title">BDI — مؤشر البلطيق للبضائع الجافة</div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="range-tabs">
+          <button class="range-tab" data-range="1M">1M</button>
+          <button class="range-tab" data-range="3M">3M</button>
+          <button class="range-tab active" data-range="1Y">1Y</button>
+          <button class="range-tab" data-range="5Y">5Y</button>
+          <button class="range-tab" data-range="ALL">ALL</button>
+        </div>
+        <div class="chart-status" id="chartStatus">جارٍ التحميل…</div>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-skeleton" id="chartSkeleton">جارٍ تحميل البيانات التاريخية…</div>
+      <canvas id="bdiChart" style="display:none;"></canvas>
+    </div>
+    <div class="data-note">Data via <a href="https://stooq.com" target="_blank" rel="noopener">Stooq.com</a> · Updated daily · Source: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">Baltic Exchange</a></div>
+  </div>
+</div>
+
+<!-- SUB-INDICES -->
+<div class="sub-grid">
+  <div class="sub-indices">
+    <div class="sub-card" data-type="cape"><div class="sub-label">BCI</div><div class="sub-name">كيبسايز</div><div class="sub-value" id="bci-val">—</div><div class="sub-change" id="bci-chg" style="color:var(--text-muted)">جارٍ التحميل…</div><canvas class="mini-spark" id="spark1"></canvas></div>
+    <div class="sub-card" data-type="pana"><div class="sub-label">BPI</div><div class="sub-name">باناماكس</div><div class="sub-value" id="bpi-val">—</div><div class="sub-change" id="bpi-chg" style="color:var(--text-muted)">جارٍ التحميل…</div><canvas class="mini-spark" id="spark2"></canvas></div>
+    <div class="sub-card" data-type="supra"><div class="sub-label">BSI</div><div class="sub-name">سوبراماكس</div><div class="sub-value" id="bsi-val">—</div><div class="sub-change" id="bsi-chg" style="color:var(--text-muted)">جارٍ التحميل…</div><canvas class="mini-spark" id="spark3"></canvas></div>
+    <div class="sub-card" data-type="handy"><div class="sub-label">BHSI</div><div class="sub-name">هانديسايز</div><div class="sub-value" id="bhsi-val">—</div><div class="sub-change" id="bhsi-chg" style="color:var(--text-muted)">جارٍ التحميل…</div><canvas class="mini-spark" id="spark4"></canvas></div>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main-grid">
+  <div class="main-left">
+    <div class="alert-strip">
+      <div class="alert-text">احصل على <strong>تنبيهات BDI يومية مجانية</strong> في بريدك الإلكتروني قبل افتتاح الأسواق.</div>
+      <div class="alert-form"><input class="alert-input" type="email" placeholder="بريدك@الإلكتروني.com" id="alertEmail"><button class="alert-btn" onclick="BDI.subscribe('alertEmail')">اشترك</button></div>
+    </div>
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">أهم مسارات الشحن</div><div class="panel-meta">TCE استرشادي · أبريل 2026</div></div>
+      <table class="route-table">
+        <thead><tr><th>المسار</th><th>الوصف</th><th>$/يوم</th><th>التغيير</th></tr></thead>
+        <tbody>
+          <tr><td><span class="route-code">C3</span></td><td>توباراو → تشينغداو (خام الحديد)</td><td>$31,200</td><td class="up">+2.1%</td></tr>
+          <tr><td><span class="route-code">C5</span></td><td>غرب أستراليا → تشينغداو (خام الحديد)</td><td>$12,800</td><td class="dn">−0.8%</td></tr>
+          <tr><td><span class="route-code">C8_14</span></td><td>جبل طارق → هامبورغ (حبوب)</td><td>$28,575</td><td class="up">+1.2%</td></tr>
+          <tr><td><span class="route-code">P1A</span></td><td>خليج المكسيك → سكاو (حبوب)</td><td>$17,730</td><td class="up">+0.3%</td></tr>
+          <tr><td><span class="route-code">P2A</span></td><td>سكاو → جبل طارق (فحم)</td><td>$14,700</td><td class="up">+0.5%</td></tr>
+          <tr><td><span class="route-code">S4A</span></td><td>خليج المكسيك → سكاو (حبوب)</td><td>$17,669</td><td class="up">+0.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="main-right">
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">إحصائيات BDI</div><div class="panel-meta">2025–2026</div></div>
+      <div class="stats-row"><span class="stats-label">أعلى مستوى 52 أسبوع</span><span class="stats-value">2,845</span></div>
+      <div class="stats-row"><span class="stats-label">أدنى مستوى 52 أسبوع</span><span class="stats-value">1,261</span></div>
+      <div class="stats-row"><span class="stats-label">التغيير منذ بداية العام</span><span class="stats-value up">+108.80%</span></div>
+      <div class="stats-row"><span class="stats-label">TCE كيبسايز</span><span class="stats-value">$36,002/day</span></div>
+      <div class="stats-row"><span class="stats-label">أعلى مستوى تاريخي</span><span class="stats-value">11,793 (2008)</span></div>
+      <div class="stats-row"><span class="stats-label">أدنى مستوى تاريخي</span><span class="stats-value">290 (2016)</span></div>
+    </div>
+    <div class="panel-card">
+      <div class="panel-header"><div class="panel-title">أحدث التحليلات</div><a href="/ar/analysis/" style="font-family:var(--mono);font-size:10px;color:var(--gold-dim);text-decoration:none;">ALL →</a></div>
+      <a class="news-item" href="/ar/analysis/"><div class="news-source">Baltic Exchange</div><div class="news-headline">BDI يرتفع للجلسة الحادية عشرة على التوالي، يسجل أعلى مستوى منذ ديسمبر</div><div class="news-time">Apr 22, 2026</div></a>
+      <a class="news-item" href="/ar/analysis/"><div class="news-source">TradeWinds</div><div class="news-headline">أسعار كيبسايز ترتفع بقوة مع تنامي الطلب البرازيلي على خام الحديد</div><div class="news-time">Apr 16, 2026</div></a>
+      <a class="news-item" href="/ar/analysis/"><div class="news-source">Lloyd's List</div><div class="news-headline">باناماكس يتعزز مع تحسن أحجام الحبوب في الأطلسي</div><div class="news-time">Apr 15, 2026</div></a>
+      <a class="news-item" href="/ar/analysis/"><div class="news-source">Splash247</div><div class="news-headline">تعافي إنتاجية الموانئ الصينية يدعم معنويات قطاع الجاف</div><div class="news-time">Apr 14, 2026</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- ANALYSIS -->
+<div class="section">
+  <div class="section-header"><div class="section-title">تحليل <span>السوق</span></div><a href="/ar/analysis/" class="section-link">عرض الكل →</a></div>
+  <div class="article-grid">
+    <a href="/ar/analysis/" class="article-card featured">
+      <div class="article-category">الملخص الأسبوعي · 22 أبريل 2026</div>
+      <div class="article-title">BDI يقفز 16.6% في أسبوع واحد مع بلوغ طلب كيبسايز أعلى مستوياته في أربعة أشهر</div>
+      <div class="article-excerpt">The Baltic Dry Index extended its rally for an eleventh consecutive session on Friday, climbing 1.7% to 2,567 — its highest reading since December 8. The capesize index jumped 2.5% to 4,128, driven by surging Brazilian iron ore export volumes and recovery in Chinese port activity.</div>
+      <div class="article-meta">تحليل BDI · 5 دقائق</div>
+    </a>
+    <a href="/ar/what-is-the-baltic-dry-index/" class="article-card">
+      <div class="article-category">شرح</div>
+      <div class="article-title">ما هو مؤشر البلطيق للبضائع الجافة ولماذا يهم؟</div>
+      <div class="article-excerpt">الدليل الشامل لفهم أقدم مؤشر مرجعي للشحن البحري في العالم.</div>
+      <div class="article-meta">دليل · 8 دقائق</div>
+    </a>
+    <a href="/ar/shipping-stocks/" class="article-card">
+      <div class="article-category">Stocks</div>
+      <div class="article-title">5 أسهم شحن جاف يجب مراقبتها عند ارتفاع BDI</div>
+      <div class="article-excerpt">SBLK وGOGL وEGLE والمزيد — كيفية تداول BDI عبر الأسهم.</div>
+      <div class="article-meta">استثمار · 6 دقائق</div>
+    </a>
+  </div>
+</div>
+
+<!-- BROKERS -->
+<div class="section" style="margin-bottom:40px;">
+  <div class="broker-strip">
+    <div class="broker-label">Trade Shipping Stocks & Commodities — Partner Brokers</div>
+    <div class="broker-grid">
+      <a href="https://ibkr.com/referral/julio411" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">IBKR</div><div class="broker-desc">وصول منخفض التكلفة للأسواق العالمية. المفضل لدى المتداولين الجادين.</div><div class="broker-cta">فتح حساب →</div></a>
+      <a href="https://dukascopy.bank/swiss/open-mca-account/?ref=YJM-PUE&lang=en" class="broker-card" target="_blank" rel="noopener sponsored"><div class="broker-name">Dukascopy</div><div class="broker-desc">بنك وسيط سويسري منظم. تداول السلع والأسواق العالمية.</div><div class="broker-cta">فتح حساب →</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div><a href="/ar/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">المصدر المستقل لبيانات مؤشر البلطيق للبضائع الجافة وتحليل سوق الشحن. يُحدَّث يومياً.</div></div>
+    <div><div class="footer-col-title">البيانات</div><ul class="footer-links"><li><a href="/ar/">رسم بياني BDI مباشر</a></li><li><a href="/ar/bdi-chart-historical-data/">بيانات تاريخية</a></li><li><a href="/ar/vessel-classes/">فئات السفن</a></li><li><a href="/ar/analysis/">أخبار BDI</a></li><li><a href="/ar/shipping-stocks/">أسهم الشحن</a></li></ul></div>
+    <div><div class="footer-col-title">تعلم</div><ul class="footer-links"><li><a href="/ar/what-is-the-baltic-dry-index/">ما هو BDI؟</a></li><li><a href="/ar/analysis/">تحليل يومي</a></li><li><a href="/ar/glossary/">المصطلحات</a></li><li><a href="/ar/tools/">الأدوات</a></li></ul></div>
+        <div><div class="footer-col-title">Languages</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/es/">Español</a></li><li><a href="/fr/">Français</a></li><li><a href="/ar/">العربية</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div>
+    <div class="footer-disclaimer">البيانات استرشادية فقط. ليست نصيحة مالية.</div>
+  </div>
+</footer>
+
+<script src="/assets/bdi.js"></script>
+<script>
+let chartInstance = null, histData = [], currentRange = '1Y';
+
+BDI.load(function(data) {
+  BDI.setHero(data);
+  BDI.setSub('bci-val','bci-chg', data.bci);
+  BDI.setSub('bpi-val','bpi-chg', data.bpi);
+  BDI.setSub('bsi-val','bsi-chg', data.bsi);
+  BDI.setSub('bhsi-val','bhsi-chg', data.bhsi);
+  BDI.buildTicker(data);
+  histData = data.history;
+  chartInstance = BDI.renderChart(histData, currentRange, 'bdiChart', chartInstance);
+  ['spark1','spark2','spark3','spark4'].forEach((id,i)=>BDI.drawSpark(id,['#4a9eff','#c8a84b','#a855f7','#00d084'][i],histData));
+  const cs = document.getElementById('chartStatus');
+  if(cs) { cs.textContent = data.live ? '● مباشر · Stooq' : 'آخر تحديث: 22 أبريل 2026'; cs.className = 'chart-status'+(data.live?' live':''); }
+});
+
+document.querySelectorAll('.range-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentRange = btn.dataset.range;
+    chartInstance = BDI.renderChart(histData, currentRange, 'bdiChart', chartInstance);
+  });
+});
+
+setInterval(()=>location.reload(), 4*60*60*1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>График BDI и исторические данные | BalticDryIndex.com</title>
+<meta name="description" content="Интерактивный график BDI с историческими данными с 1985 года. Доступны режимы 1М, 3М, 1Г, 5Л и за всё время. Обновляется ежедневно.">
+<meta name="keywords" content="baltic dry index chart, BDI chart, baltic dry index historical data, BDI history, baltic index chart, BDI graph, baltic dry index data">
+<link rel="alternate" hreflang="en" href="https://www.balticdryindex.com/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="zh" href="https://www.balticdryindex.com/zh/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ja" href="https://www.balticdryindex.com/ja/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="es" href="https://www.balticdryindex.com/es/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="fr" href="https://www.balticdryindex.com/fr/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ar" href="https://www.balticdryindex.com/ar/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="pt-BR" href="https://www.balticdryindex.com/pt/bdi-chart-historical-data/">
+<link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/bdi-chart-historical-data/">
+<link rel="canonical" href="https://www.balticdryindex.com/ru/bdi-chart-historical-data/">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9696700979125307" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="ticker-bar">
+  <div class="ticker-label">ОНЛАЙН</div>
+  <div class="ticker-overflow"><div class="ticker-track" id="tickerTrack"><div class="ticker-item"><span class="t-name">BDI</span><span class="t-val"><span class="spin"></span></span></div></div></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="/ru/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/ru/">Данные</a>
+      <a href="/ru/what-is-the-baltic-dry-index/">О BDI</a>
+      <a href="/ru/bdi-chart-historical-data/" class="active">График</a>
+      <a href="/ru/vessel-classes/">Суда</a>
+      <a href="/ru/shipping-stocks/">Акции</a>
+      <a href="/ru/analysis/">Анализ</a>
+      <a href="/ru/glossary/">Глоссарий</a>
+      <a href="/ru/tools/">Инструменты</a>
+      <a href="/ru/" class="nav-cta">Оповещения</a>
+    </nav>
+            <div class="lang-switcher">
+      <a href="/bdi-chart-historical-data/">EN</a>
+      <a href="/zh/bdi-chart-historical-data/">中文</a>
+      <a href="/ja/bdi-chart-historical-data/">日本語</a>
+      <a href="/es/bdi-chart-historical-data/">ES</a>
+      <a href="/fr/bdi-chart-historical-data/">FR</a>
+      <a href="/ar/bdi-chart-historical-data/">AR</a>
+      <a href="/pt/bdi-chart-historical-data/">PT</a>
+      <a href="/ru/bdi-chart-historical-data/" class="active">RU</a>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="/ru/">Главная</a><span>›</span>График и исторические данные BDI</div>
+
+<div class="page-hero">
+  <div class="page-eyebrow"><span class="live-dot"></span>Обновляется ежедневно · Источник: Stooq / Балтийская биржа</div>
+  <h1 class="page-title">Балтийский индекс сухогрузов <span>График</span></h1>
+  <p class="page-desc">Интерактивный график BDI с историческими данными с 1985 года по настоящее время. Переключайтесь между режимами 1М, 3М, 1Г, 5Л и за всё время. Обновляется каждый торговый день.</p>
+</div>
+
+<!-- HERO STATS ROW -->
+<div style="max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-bottom:2px;position:relative;z-index:1;">
+  <div class="stat-box"><div class="stat-value" id="bdi-val">—</div><div class="stat-label">BDI Сегодня</div><div class="stat-change" id="bdi-chg">—</div></div>
+  <div class="stat-box"><div class="stat-value" id="bci-v">—</div><div class="stat-label">Кейпсайз (BCI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bpi-v">—</div><div class="stat-label">Панамакс (BPI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bsi-v">—</div><div class="stat-label">Супрамакс (BSI)</div></div>
+  <div class="stat-box"><div class="stat-value" id="bhsi-v">—</div><div class="stat-label">Хэндисайз (BHSI)</div></div>
+</div>
+
+<!-- MAIN CHART -->
+<div style="max-width:var(--max);margin:0 auto 2px;padding:0 24px;position:relative;z-index:1;">
+  <div class="chart-card">
+    <div class="chart-controls">
+      <div class="chart-title">Балтийский индекс сухогрузов (BDI) — Исторический график</div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="range-tabs">
+          <button class="range-tab" data-range="1M">1M</button>
+          <button class="range-tab" data-range="3M">3M</button>
+          <button class="range-tab active" data-range="1Y">1Y</button>
+          <button class="range-tab" data-range="5Y">5Y</button>
+          <button class="range-tab" data-range="ALL">ВСЁ</button>
+        </div>
+        <div class="chart-status" id="chartStatus">Загрузка…</div>
+      </div>
+    </div>
+    <div class="chart-wrap" style="height:420px;">
+      <div class="chart-skeleton" id="chartSkeleton">Загрузка данных BDI…</div>
+      <canvas id="bdiChart" style="display:none;"></canvas>
+    </div>
+    <div class="data-note">Данные через <a href="https://stooq.com" target="_blank" rel="noopener">Stooq.com</a> · Источник: <a href="https://www.balticexchange.com" target="_blank" rel="noopener">Baltic Exchange</a> · Обновляется ежедневно после 13:00 по Гринвичу</div>
+  </div>
+</div>
+
+<!-- KEY MILESTONES TABLE -->
+<div style="max-width:var(--max);margin:32px auto;padding:0 24px;position:relative;z-index:1;">
+  <div class="section-header"><div class="section-title">BDI <span>Ключевые вехи</span></div></div>
+  <div class="panel-card">
+    <table class="route-table">
+      <thead><tr><th>Дата</th><th>Уровень BDI</th><th>Событие</th><th>Контекст</th></tr></thead>
+      <tbody>
+        <tr><td>4 янв 1985</td><td>1,000</td><td>Запуск BDI</td><td>Базовый уровень установлен Балтийской биржей</td></tr>
+        <tr><td>Июн 2008</td><td class="up">11,793</td><td>Исторический максимум</td><td>Суперцикл инфраструктуры Китая, рекордный спрос на сырьё</td></tr>
+        <tr><td>Дек 2008</td><td class="dn">663</td><td>Обвал во время финансового кризиса</td><td>Мировая рецессия — спрос рухнул на 94% за 6 месяцев</td></tr>
+        <tr><td>Фев 2016</td><td class="dn">290</td><td>Исторический минимум</td><td>Перепредложение судов + замедление Китая — худший за 30 лет</td></tr>
+        <tr><td>Май 2020</td><td class="dn">393</td><td>Минимум COVID-19</td><td>Торговые остановки из-за пандемии</td></tr>
+        <tr><td>Окт 2021</td><td class="up">5,650</td><td>Пик после COVID</td><td>Сбои в цепочках поставок, портовые заторы, бум сырьевых товаров</td></tr>
+        <tr><td>Янв 2022</td><td>2,200</td><td>После суперцикла</td><td>Нормализация по мере снижения портовых заторов</td></tr>
+        <tr><td>Дек 2025</td><td class="up">2,845</td><td>Максимум 52 недель</td><td>15 сессий роста подряд, рост Capesize</td></tr>
+        <tr><td>Апр 2026</td><td class="up">2,567</td><td>Текущий</td><td>11 сессий роста подряд, Capesize на 4-месячном максимуме</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div><a href="/ru/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">Независимый источник данных Балтийского индекса сухогрузов.</div></div>
+    <div><div class="footer-col-title">Данные</div><ul class="footer-links"><li><a href="/ru/">Данные</a></li><li><a href="/ru/bdi-chart-historical-data/">График</a></li><li><a href="/ru/vessel-classes/">Суда</a></li><li><a href="/ru/analysis/">Анализ</a></li><li><a href="/ru/shipping-stocks/">Акции</a></li></ul></div>
+    <div><div class="footer-col-title">Учёба</div><ul class="footer-links"><li><a href="/ru/what-is-the-baltic-dry-index/">О BDI</a></li><li><a href="/ru/analysis/">Анализ</a></li><li><a href="/ru/glossary/">Глоссарий</a></li><li><a href="/ru/tools/">Инструменты</a></li></ul></div>
+    <div><div class="footer-col-title">Языки</div><ul class="footer-links"><li><a href="/">English</a></li><li><a href="/zh/">中文</a></li><li><a href="/ja/">日本語</a></li><li><a href="/es/">Español</a></li><li><a href="/fr/">Français</a></li><li><a href="/ar/">العربية</a></li><li><a href="/pt/">Português</a></li><li><a href="/ru/">Русский</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Sea Blast LTD · BalticDryIndex.com</div><div class="footer-disclaimer">Данные носят ориентировочный характер. Не является финансовой рекомендацией.</div></div>
+</footer>
+
+<script src="/assets/bdi.js"></script>
+<script>
+let chartInstance=null, histData=[], currentRange='1Y';
+BDI.load(function(data){
+  BDI.buildTicker(data);
+  BDI.el('bdi-val',BDI.fmt(data.bdi.value));
+  BDI.el('bci-v',BDI.fmt(data.bci.value));
+  BDI.el('bpi-v',BDI.fmt(data.bpi.value));
+  BDI.el('bsi-v',BDI.fmt(data.bsi.value));
+  BDI.el('bhsi-v',BDI.fmt(data.bhsi.value));
+  const ch=BDI.chg(data.bdi.value,data.bdi.prev);
+  BDI.el('bdi-chg',ch.text); BDI.elClass('bdi-chg','stat-change '+(ch.up?'up':'dn'));
+  histData=data.history;
+  chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  const cs=document.getElementById('chartStatus');
+  if(cs){cs.textContent=data.live?'● Онлайн · Stooq':'Последнее известное: 22 апр. 2026';cs.className='chart-status'+(data.live?' live':'');}
+});
+document.querySelectorAll('.range-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.range-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); currentRange=btn.dataset.range;
+    chartInstance=BDI.renderChart(histData,currentRange,'bdiChart',chartInstance);
+  });
+});
+</script>
+</body>
+</html>
