@@ -196,7 +196,7 @@ window.BDI = {
   load: async function(callback) {
     const statusEl=document.getElementById('chartStatus');
     try {
-      const r=await fetch('https://raw.githubusercontent.com/balticdryindex/balticdryindex/gh-pages/data/latest.json?t='+Date.now(),{cache:'no-store'});
+      const r=await fetch('/data/latest.json?t=' + Date.now(), { cache: 'no-store' });
       if(!r.ok) throw new Error('not found');
       const d=await r.json();
       const daysDiff=(new Date()-new Date(d.date+'T00:00:00'))/86400000;
