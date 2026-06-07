@@ -1,36 +1,36 @@
 {
   "date": "2026-06-05",
-  "updated": "16:10 UTC",
+  "updated": "14:00 UTC",
   "source": "Baltic Exchange",
   "bdi": {
     "value": 2981,
-    "prev": 3037,
-    "change": -56,
-    "pct": -1.84
+    "prev": 2981,
+    "change": 0,
+    "pct": 0.0
   },
   "bci": {
     "value": 4893,
-    "prev": 5040,
-    "change": -147,
-    "pct": -2.92
+    "prev": 4893,
+    "change": 0,
+    "pct": 0.0
   },
   "bpi": {
     "value": 2236,
-    "prev": 2254,
-    "change": -18,
-    "pct": -0.8
+    "prev": 2236,
+    "change": 0,
+    "pct": 0.0
   },
   "bsi": {
     "value": 1588,
-    "prev": 1584,
-    "change": 4,
-    "pct": 0.25
+    "prev": 1588,
+    "change": 0,
+    "pct": 0.0
   },
   "bhsi": {
     "value": 864,
-    "prev": 862,
-    "change": 2,
-    "pct": 0.23
+    "prev": 864,
+    "change": 0,
+    "pct": 0.0
   },
   "stats": {
     "week52High": 2845,
