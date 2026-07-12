@@ -13,7 +13,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/"/>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://www.balticdryindex.com/zh/</loc>
@@ -573,7 +573,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.balticdryindex.com/ru/analysis/"/>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://www.balticdryindex.com/zh/analysis/</loc>
@@ -1464,4 +1464,5 @@
   <url><loc>https://www.balticdryindex.com/analysis/bdi-2026-06-19/</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-06-19</lastmod></url>
   <url><loc>https://www.balticdryindex.com/analysis/bdi-2026-06-26/</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-06-26</lastmod></url>
   <url><loc>https://www.balticdryindex.com/analysis/bdi-2026-07-03/</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-07-03</lastmod></url>
+  <url><loc>https://www.balticdryindex.com/analysis/bdi-2026-07-10/</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-07-10</lastmod></url>
 </urlset>
