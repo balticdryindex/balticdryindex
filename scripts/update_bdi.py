@@ -35,12 +35,19 @@ from pathlib import Path
 import requests
 
 ROOT         = Path(__file__).parent.parent
-DATA_FILE    = ROOT / "data" / "latest.json"
+DATA_DIR     = ROOT / "data"
+DATA_FILE    = DATA_DIR / "latest.json"
+HISTORY_FILE = DATA_DIR / "history.json"      # grows one row per trading day
+SIGNALS_FILE = DATA_DIR / "signals.json"      # precomputed API artifact
+FORECAST_FILE= DATA_DIR / "forecast.json"     # precomputed API artifact
+BRIEF_FILE   = DATA_DIR / "brief.json"        # precomputed API artifact
 ANALYSIS_DIR = ROOT / "analysis"
 SITEMAP_FILE = ROOT / "sitemap.xml"
 FEED_FILE    = ROOT / "feed.xml"
 INDEX_FILE   = ROOT / "index.html"
 SITE_URL     = "https://www.balticdryindex.com"
+# First day we started recording real data (shown on the homepage note).
+LAUNCH_NOTE_DATE = "2026-05-22"
 
 DATA_ONLY = "--data-only" in sys.argv
 
@@ -69,6 +76,184 @@ def build_index(cur, prev):
     chg = cur - prev
     pct = round((chg / prev) * 100, 2) if prev else 0
     return {"value": cur, "prev": prev, "change": chg, "pct": pct}
+
+def save_json(path, obj):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(obj, f, indent=2)
+    print(f"OK {path.relative_to(ROOT)}")
+
+# ── HISTORY (collect-forward time series) ─────────────────────────────────────
+
+def load_history():
+    try:
+        with open(HISTORY_FILE) as f:
+            data = json.load(f)
+            return data if isinstance(data, list) else data.get("series", [])
+    except Exception:
+        return []
+
+def append_history(data):
+    """Append today's row to data/history.json, de-duplicating by date.
+    Row = {date, bdi, bci, bpi, bsi, bhsi}. This file only grows."""
+    series = load_history()
+    row = {
+        "date": data["date"],
+        "bdi":  data["bdi"]["value"],
+        "bci":  data["bci"]["value"],
+        "bpi":  data["bpi"]["value"],
+        "bsi":  data["bsi"]["value"],
+        "bhsi": data["bhsi"]["value"],
+    }
+    by_date = {r["date"]: r for r in series}
+    by_date[row["date"]] = row                      # upsert today
+    series = [by_date[d] for d in sorted(by_date)]  # keep chronological
+    save_json(HISTORY_FILE, series)
+    print(f"   history now {len(series)} rows ({series[0]['date']} → {series[-1]['date']})")
+    return series
+
+# ── DERIVED ANALYTICS (your IP — computed, not the raw index) ─────────────────
+
+def _sma(vals, n):
+    return round(sum(vals[-n:]) / min(n, len(vals)), 1) if vals else None
+
+def _trend(vals, n):
+    """Direction of the last n points vs the SMA — 'up'/'down'/'neutral'."""
+    if len(vals) < max(3, n // 2):
+        return "insufficient_data"
+    sma = sum(vals[-n:]) / min(n, len(vals))
+    last = vals[-1]
+    diff = (last - sma) / sma if sma else 0
+    return "up" if diff > 0.01 else "down" if diff < -0.01 else "neutral"
+
+def _stdev(vals):
+    if len(vals) < 2:
+        return 0.0
+    m = sum(vals) / len(vals)
+    return (sum((v - m) ** 2 for v in vals) / (len(vals) - 1)) ** 0.5
+
+def compute_signals(series, stats):
+    """Derived indicators over the BDI series. Pure computation = your output."""
+    vals  = [r["bdi"] for r in series]
+    dates = [r["date"] for r in series]
+    n = len(vals)
+    ath = stats.get("allTimeHigh") or (max(vals) if vals else None)
+
+    # daily % returns for volatility
+    rets = [(vals[i] - vals[i-1]) / vals[i-1] for i in range(1, n) if vals[i-1]]
+    vol_annual = round(_stdev(rets) * (252 ** 0.5), 3) if len(rets) >= 5 else None
+
+    # momentum z-score over available window (max 90d)
+    win = vals[-90:] if n >= 10 else vals
+    z = None
+    if len(win) >= 10:
+        sd = _stdev(win)
+        z = round((vals[-1] - sum(win) / len(win)) / sd, 2) if sd else 0.0
+
+    return {
+        "date": dates[-1] if dates else None,
+        "points_available": n,
+        "sma": {"7d": _sma(vals, 7), "30d": _sma(vals, 30),
+                "90d": _sma(vals, 90), "200d": _sma(vals, 200)},
+        "trend": {"30d": _trend(vals, 30), "90d": _trend(vals, 90)},
+        "momentum_z": z,
+        "volatility_annualized": vol_annual,
+        "pct_from_ath": round((vals[-1] - ath) / ath * 100, 1) if ath and vals else None,
+        "regime": _regime(vals),
+        "note": None if n >= 30 else "History is still building; indicators stabilise after ~30 trading days.",
+        "attribution": "Underlying BDI values \u00a9 Baltic Exchange. Indicators computed by BalticDryIndex.com.",
+        "disclaimer": "Indicative only. Not financial advice.",
+    }
+
+def _regime(vals):
+    if len(vals) < 20:
+        return "insufficient_data"
+    short, long = sum(vals[-10:]) / 10, sum(vals[-40:]) / min(40, len(vals))
+    if short > long * 1.03: return "expansion"
+    if short < long * 0.97: return "contraction"
+    return "range_bound"
+
+def compute_forecast(series, horizon=7):
+    """Simple, honest baseline projection (Holt-style drift + damping).
+    Clearly labelled model output — this is your creation, not the index."""
+    vals = [r["bdi"] for r in series]
+    n = len(vals)
+    if n < 10:
+        return {
+            "horizon_days": horizon, "available": False,
+            "note": f"Need ~10 trading days of history to forecast; have {n}.",
+            "disclaimer": "Model output, indicative only, not financial advice.",
+        }
+    # average daily drift over last up-to-20 days, damped
+    recent = vals[-20:]
+    drift = (recent[-1] - recent[0]) / (len(recent) - 1)
+    last  = vals[-1]
+    proj, damp = [], 0.85
+    step = drift
+    for _ in range(horizon):
+        last = last + step
+        proj.append(int(round(last)))
+        step *= damp
+    band = max(30, int(_stdev([(vals[i]-vals[i-1]) for i in range(1, n)]) * (horizon ** 0.5)))
+    direction = "up" if proj[-1] > vals[-1] else "down" if proj[-1] < vals[-1] else "flat"
+    return {
+        "horizon_days": horizon, "available": True,
+        "as_of": series[-1]["date"],
+        "last_value": vals[-1],
+        "projection": proj,
+        "point": proj[-1],
+        "band": [proj[-1] - band, proj[-1] + band],
+        "direction": direction,
+        "method": "damped-drift baseline",
+        "confidence": "low" if n < 60 else "moderate",
+        "disclaimer": "Model output, indicative only, not financial advice.",
+    }
+
+def compute_brief(data, series, signals):
+    """Machine-readable authored summary — editorial output you own."""
+    bdi = data["bdi"]
+    drivers, events = [], []
+    movers = {"capesize": data["bci"], "panamax": data["bpi"],
+              "supramax": data["bsi"], "handysize": data["bhsi"]}
+    lead = max(movers.items(), key=lambda kv: abs(kv[1]["pct"]))
+    drivers.append(f"{lead[0]}_{'strength' if lead[1]['change'] >= 0 else 'weakness'}")
+
+    # streak detection from real history
+    vals = [r["bdi"] for r in series]
+    streak = 0
+    for i in range(len(vals) - 1, 0, -1):
+        s = 1 if vals[i] > vals[i-1] else -1 if vals[i] < vals[i-1] else 0
+        if streak == 0: streak = s
+        elif (streak > 0 and s > 0) or (streak < 0 and s < 0): streak += s
+        else: break
+    if abs(streak) >= 2:
+        events.append({"tag": "streak",
+                       "detail": f"{abs(streak)} consecutive {'gains' if streak>0 else 'declines'}"})
+
+    dirw = "rose" if bdi["change"] >= 0 else "fell"
+    summary = (f"BDI {dirw} {abs(bdi['change'])} pts ({bdi['pct']:+.2f}%) to "
+               f"{bdi['value']:,} on {data['date']}, led by {lead[0].title()}.")
+    return {
+        "date": data["date"],
+        "summary": summary,
+        "drivers": drivers,
+        "events": events,
+        "vessel_notes": {k: ("leading" if v["change"] > 0 else "soft" if v["change"] < 0 else "flat")
+                         for k, v in movers.items()},
+        "trend": signals.get("trend", {}),
+        "attribution": "Underlying BDI values \u00a9 Baltic Exchange. Summary by BalticDryIndex.com.",
+        "disclaimer": "Indicative only. Not financial advice.",
+    }
+
+def precompute_api_artifacts(data, series):
+    """Write the three defensible API payloads the Cloudflare Functions will serve."""
+    stats    = data.get("stats", {})
+    signals  = compute_signals(series, stats)
+    forecast = compute_forecast(series, horizon=7)
+    brief    = compute_brief(data, series, signals)
+    save_json(SIGNALS_FILE, signals)
+    save_json(FORECAST_FILE, forecast)
+    save_json(BRIEF_FILE, brief)
 
 # ── 1. FETCH DATA ─────────────────────────────────────────────────────────────
 
@@ -157,6 +342,18 @@ def prerender_homepage(data):
         rf'\g<1>{date_display} · Baltic Exchange\g<2>',
         html, flags=re.DOTALL
     )
+
+    # ── CTR FIX: bake the live value + date into <title> and meta description ──
+    arrow_txt = "up" if bdi["change"] >= 0 else "down"
+    new_title = (f"Baltic Dry Index Today: {fmt(bdi['value'])} "
+                 f"({s}{fmt(bdi['change'])}) — {date_display} | BalticDryIndex.com")
+    html = re.sub(r'<title>.*?</title>', f'<title>{new_title}</title>',
+                  html, count=1, flags=re.DOTALL)
+    new_desc = (f"Baltic Dry Index (BDI) is {fmt(bdi['value'])} on {date_display}, "
+                f"{arrow_txt} {abs(bdi['change'])} pts ({s}{bdi['pct']:.2f}%). "
+                f"Live BDI chart, Capesize/Panamax/Supramax sub-indices and daily analysis.")
+    html = re.sub(r'(<meta name="description" content=")[^"]*(">)',
+                  rf'\g<1>{new_desc}\g<2>', html, count=1)
 
     # Upsert Dataset schema
     dataset = (
@@ -656,19 +853,25 @@ if __name__ == "__main__":
     # Always save the JSON data
     save_data(data)
 
+    # ── DAILY, EVERY RUN ──────────────────────────────────────────────────────
+    # 1. append today's row to the growing real history series
+    # 2. precompute the defensible API artifacts (signals / forecast / brief)
+    # 3. bake the live value + date into index.html, <title> and meta (SEO/CTR)
+    # These are cheap and safe, so they run in BOTH daily and weekly modes.
+    series = append_history(data)
+    precompute_api_artifacts(data, series)
+    prerender_homepage(data)
+
     if DATA_ONLY:
         # ── DAILY MODE ────────────────────────────────────────────────────────
-        # Only data/latest.json is updated.
-        # The GitHub Actions workflow pushes this to gh-pages only.
-        # Netlify never sees this commit → zero credits burned.
-        print("Data-only mode complete. gh-pages will be updated by workflow.")
+        # Data, history, API artifacts and homepage render committed to main.
+        # Cloudflare Pages rebuilds automatically on push.
+        print("Daily mode complete: data + history + API artifacts + homepage render.")
 
     else:
         # ── WEEKLY MODE ───────────────────────────────────────────────────────
-        # Full update: articles, homepage pre-render, sitemap, RSS, cleanup.
-        # GitHub Actions commits to main → ONE Netlify deploy per week.
-        prerender_homepage(data)
-
+        # Full update: weekly analysis article, sitemap, RSS, cleanup.
+        # (data + history + artifacts + homepage render already done above.)
         slug, url_path, headline, excerpt, article_html = generate_article(data)
         save_article(slug, article_html)
         update_analysis_index(slug, url_path, headline, excerpt, data["date"])

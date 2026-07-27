@@ -1,0 +1,20 @@
+{
+  "date": "2026-05-22",
+  "summary": "BDI rose 27 pts (+0.91%) to 2,991 on 2026-05-22, led by Capesize.",
+  "drivers": [
+    "capesize_strength"
+  ],
+  "events": [],
+  "vessel_notes": {
+    "capesize": "leading",
+    "panamax": "soft",
+    "supramax": "soft",
+    "handysize": "soft"
+  },
+  "trend": {
+    "30d": "insufficient_data",
+    "90d": "insufficient_data"
+  },
+  "attribution": "Underlying BDI values \u00a9 Baltic Exchange. Summary by BalticDryIndex.com.",
+  "disclaimer": "Indicative only. Not financial advice."
+}
