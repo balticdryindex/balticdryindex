@@ -1,13 +1,13 @@
 {
-  "date": "2026-07-27",
-  "summary": "BDI fell 47 pts (-1.71%) to 2,696 on 2026-07-27, led by Capesize.",
+  "date": "2026-07-28",
+  "summary": "BDI fell 32 pts (-1.19%) to 2,664 on 2026-07-28, led by Capesize.",
   "drivers": [
     "capesize_weakness"
   ],
   "events": [
     {
       "tag": "streak",
-      "detail": "2 consecutive declines"
+      "detail": "3 consecutive declines"
     }
   ],
   "vessel_notes": {
