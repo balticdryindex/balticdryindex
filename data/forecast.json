@@ -1,6 +1,6 @@
 {
   "horizon_days": 7,
   "available": false,
-  "note": "Need ~10 trading days of history to forecast; have 4.",
+  "note": "Need ~10 trading days of history to forecast; have 5.",
   "disclaimer": "Model output, indicative only, not financial advice."
 }
