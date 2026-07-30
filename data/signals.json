@@ -1,19 +1,19 @@
 {
-  "date": "2026-07-29",
-  "points_available": 5,
+  "date": "2026-07-30",
+  "points_available": 6,
   "sma": {
-    "7d": 2745.2,
-    "30d": 2745.2,
-    "90d": 2745.2,
-    "200d": 2745.2
+    "7d": 2733.2,
+    "30d": 2733.2,
+    "90d": 2733.2,
+    "200d": 2733.2
   },
   "trend": {
     "30d": "insufficient_data",
     "90d": "insufficient_data"
   },
   "momentum_z": null,
-  "volatility_annualized": null,
-  "pct_from_ath": -77.7,
+  "volatility_annualized": 0.58,
+  "pct_from_ath": -77.3,
   "regime": "insufficient_data",
   "note": "History is still building; indicators stabilise after ~30 trading days.",
   "attribution": "Underlying BDI values \u00a9 Baltic Exchange. Indicators computed by BalticDryIndex.com.",
