@@ -1,6 +1,24 @@
 {
   "horizon_days": 7,
-  "available": false,
-  "note": "Need ~10 trading days of history to forecast; have 9.",
+  "available": true,
+  "as_of": "2026-08-05",
+  "last_value": 3063,
+  "projection": [
+    3071,
+    3078,
+    3084,
+    3088,
+    3093,
+    3096,
+    3099
+  ],
+  "point": 3099,
+  "band": [
+    2793,
+    3405
+  ],
+  "direction": "up",
+  "method": "damped-drift baseline",
+  "confidence": "low",
   "disclaimer": "Model output, indicative only, not financial advice."
 }
