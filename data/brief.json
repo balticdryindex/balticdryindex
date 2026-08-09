@@ -1,8 +1,8 @@
 {
   "date": "2026-08-07",
-  "summary": "BDI rose 26 pts (+0.85%) to 3,089 on 2026-08-07, led by Panamax.",
+  "summary": "BDI rose 0 pts (+0.00%) to 3,089 on 2026-08-07, led by Capesize.",
   "drivers": [
-    "panamax_strength"
+    "capesize_strength"
   ],
   "events": [
     {
@@ -11,10 +11,10 @@
     }
   ],
   "vessel_notes": {
-    "capesize": "leading",
-    "panamax": "leading",
-    "supramax": "soft",
-    "handysize": "soft"
+    "capesize": "flat",
+    "panamax": "flat",
+    "supramax": "flat",
+    "handysize": "flat"
   },
   "trend": {
     "30d": "insufficient_data",
