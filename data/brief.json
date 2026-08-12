@@ -1,19 +1,19 @@
 {
-  "date": "2026-08-11",
-  "summary": "BDI fell 37 pts (-1.20%) to 3,046 on 2026-08-11, led by Capesize.",
+  "date": "2026-08-12",
+  "summary": "BDI fell 107 pts (-3.51%) to 2,939 on 2026-08-12, led by Capesize.",
   "drivers": [
     "capesize_weakness"
   ],
   "events": [
     {
       "tag": "streak",
-      "detail": "2 consecutive declines"
+      "detail": "3 consecutive declines"
     }
   ],
   "vessel_notes": {
     "capesize": "soft",
-    "panamax": "leading",
-    "supramax": "soft",
+    "panamax": "soft",
+    "supramax": "leading",
     "handysize": "soft"
   },
   "trend": {
