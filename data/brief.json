@@ -1,17 +1,12 @@
 {
-  "date": "2026-08-19",
-  "summary": "BDI fell 39 pts (-1.39%) to 2,776 on 2026-08-19, led by Panamax.",
+  "date": "2026-08-20",
+  "summary": "BDI rose 15 pts (+0.54%) to 2,791 on 2026-08-20, led by Capesize.",
   "drivers": [
-    "panamax_weakness"
+    "capesize_strength"
   ],
-  "events": [
-    {
-      "tag": "streak",
-      "detail": "2 consecutive declines"
-    }
-  ],
+  "events": [],
   "vessel_notes": {
-    "capesize": "soft",
+    "capesize": "leading",
     "panamax": "soft",
     "supramax": "leading",
     "handysize": "leading"
