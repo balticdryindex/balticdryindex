@@ -1,13 +1,13 @@
 {
-  "date": "2026-08-24",
-  "summary": "BDI rose 41 pts (+1.44%) to 2,882 on 2026-08-24, led by Capesize.",
+  "date": "2026-08-25",
+  "summary": "BDI rose 44 pts (+1.53%) to 2,926 on 2026-08-25, led by Capesize.",
   "drivers": [
     "capesize_strength"
   ],
   "events": [
     {
       "tag": "streak",
-      "detail": "3 consecutive gains"
+      "detail": "4 consecutive gains"
     }
   ],
   "vessel_notes": {
@@ -17,7 +17,7 @@
     "handysize": "leading"
   },
   "trend": {
-    "30d": "neutral",
+    "30d": "up",
     "90d": "insufficient_data"
   },
   "attribution": "Underlying BDI values \u00a9 Baltic Exchange. Summary by BalticDryIndex.com.",
