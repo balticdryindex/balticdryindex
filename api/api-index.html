@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API — Baltic Dry Index Data, Shipping Calculators & Forecasts | BalticDryIndex.com</title>
+<meta name="description" content="Pay-per-call API for Baltic Dry Index analytics and dry-bulk shipping calculators (TCE, freight cost, bunker, voyage P&amp;L, CO2). USDC micropayments via x402, or an API key subscription. Built for AI agents and logistics tools.">
+<link rel="canonical" href="https://www.balticdryindex.com/api/">
+<meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .api-wrap{max-width:920px;margin:0 auto;padding:32px 20px 80px}
+  .api-wrap h1{font-size:2rem;margin:.2em 0}
+  .api-lede{color:var(--text-muted,#9aa4b2);font-size:1.05rem;line-height:1.6;margin-bottom:1.6em}
+  .api-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 22px;margin:18px 0}
+  .api-card h2{margin:.1em 0 .5em;font-size:1.25rem}
+  .api-card h3{margin:1.1em 0 .3em;font-size:1rem}
+  code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  code{background:rgba(255,255,255,.07);padding:.12em .4em;border-radius:5px;font-size:.9em}
+  pre{background:#0c0f14;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:.85rem;line-height:1.5}
+  table{width:100%;border-collapse:collapse;margin:.6em 0;font-size:.92rem}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top}
+  th{color:var(--text-muted,#9aa4b2);font-weight:600}
+  .price{color:#4ade80;font-weight:600;white-space:nowrap}
+  .free{color:#38bdf8;font-weight:600}
+  .method{display:inline-block;background:#1e40af;color:#fff;font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:5px;margin-right:6px;vertical-align:middle}
+  .muted{color:var(--text-muted,#9aa4b2)}
+  a{color:#7dd3fc}
+  .back{display:inline-block;margin-bottom:14px;font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="api-wrap">
+  <a class="back" href="/">&larr; BalticDryIndex.com</a>
+  <h1>BalticDryIndex API</h1>
+  <p class="api-lede">Machine-readable Baltic Dry Index analytics and dry-bulk shipping calculators, built for AI agents and logistics tools. One endpoint is free; the rest are pay-per-call with USDC micropayments over <a href="https://x402.org" target="_blank" rel="noopener">x402</a> — no signup, no card — or an API-key subscription for regular users.</p>
+
+  <div class="api-card">
+    <h2>Base URL</h2>
+    <pre>https://www.balticdryindex.com/v1</pre>
+    <p class="muted">All endpoints are <code>GET</code> and return JSON. CORS is open.</p>
+  </div>
+
+  <div class="api-card">
+    <h2>Paying for a call</h2>
+    <p>Paid endpoints use the <strong>x402</strong> protocol. The flow is automatic if your client supports it:</p>
+    <ol class="muted">
+      <li>Request the endpoint with no payment &rarr; you get <code>HTTP 402</code> with the price, token (USDC), network and pay-to address.</li>
+      <li>Your wallet pays and retries with an <code>X-PAYMENT</code> header.</li>
+      <li>The payment is verified and the data is returned.</li>
+    </ol>
+    <p>Prefer a subscription? Send a header <code>X-API-Key: &lt;your-key&gt;</code> and the payment step is skipped. <a href="/contact/">Contact us</a> for a key.</p>
+    <p class="muted">Settlement: USDC on Base (Solana coming). Prices are per successful call.</p>
+  </div>
+
+  <div class="api-card">
+    <h2>Free endpoint</h2>
+    <table>
+      <tr><th>Endpoint</th><th>Price</th><th>Returns</th></tr>
+      <tr><td><span class="method">GET</span><code>/v1/latest</code></td><td class="free">Free</td><td>Today's headline BDI value, change and date.</td></tr>
+    </table>
+    <h3>Example</h3>
+    <pre>curl https://www.balticdryindex.com/v1/latest</pre>
+    <pre>{
+  "index": "BDI",
+  "value": 2991,
+  "change": 27,
+  "pct": 0.91,
+  "date": "2026-05-22",
+  "source": "Baltic Exchange"
+}</pre>
+  </div>
+
+  <div class="api-card">
+    <h2>Index analytics <span class="muted">(paid)</span></h2>
+    <p class="muted">Computed from our own recorded history. These are our analytics, not a copy of the index.</p>
+    <table>
+      <tr><th>Endpoint</th><th>Price</th><th>Returns</th></tr>
+      <tr><td><span class="method">GET</span><code>/v1/signals</code></td><td class="price">$0.01</td><td>Trend states, momentum z-score, volatility, regime, distance from ATH.</td></tr>
+      <tr><td><span class="method">GET</span><code>/v1/brief</code></td><td class="price">$0.02</td><td>Machine-readable market summary with drivers, streaks and per-vessel notes.</td></tr>
+      <tr><td><span class="method">GET</span><code>/v1/forecast</code></td><td class="price">$0.05</td><td>Directional projection with confidence band. Param: <code>horizon</code> (1&ndash;30 days, default 7).</td></tr>
+    </table>
+  </div>
+
+  <div class="api-card">
+    <h2>Shipping calculators <span class="muted">(paid)</span></h2>
+    <p class="muted">Pure computation with built-in vessel, route and commodity reference data. All assumptions are returned and overridable. Estimates, not firm quotes.</p>
+    <table>
+      <tr><th>Endpoint</th><th>Price</th><th>Key parameters</th></tr>
+      <tr><td><span class="method">GET</span><code>/v1/distance</code></td><td class="price">$0.01</td><td><code>from</code>,<code>to</code> or <code>route</code> or <code>distance_nm</code>; <code>speed_kn</code></td></tr>
+      <tr><td><span class="method">GET</span><code>/v1/bunker</code></td><td class="price">$0.02</td><td><code>vessel</code>, route/<code>distance_nm</code>, <code>speed_kn</code>, <code>fuel_price_usd_per_t</code></td></tr>
+      <tr><td><span class="method">GET</span><code>/v1/tce</code></td><td class="price">$0.03</td><td><code>vessel</code>, route, <code>freight_rate_usd_per_t</code>, <code>cargo_t</code>, <code>commission_pct</code></td></tr>
+      <tr><td><span class="method">GET</span><code>/v1/freight-estimate</code></td><td class="price">$0.03</td><td><code>commodity</code>, route, <code>vessel</code>, <code>daily_hire_usd</code>, <code>fuel_price_usd_per_t</code></td></tr>
+      <tr><td><span class="method">GET</span><code>/v1/voyage</code></td><td class="price">$0.05</td><td><code>vessel</code>, route, <code>freight_rate_usd_per_t</code> (optional), <code>cargo_t</code></td></tr>
+      <tr><td><span class="method">GET</span><code>/v1/co2</code></td><td class="price">$0.02</td><td><code>fuel_tonnes</code> or (<code>vessel</code>+route), <code>fuel_type</code>, <code>cargo_t</code></td></tr>
+    </table>
+    <h3>Example — cost to ship iron ore Brazil &rarr; China</h3>
+    <pre>curl "https://www.balticdryindex.com/v1/freight-estimate?route=tubarao-qingdao&vessel=capesize&commodity=iron_ore"</pre>
+    <pre>{
+  "estimated_cost_per_tonne_usd": 12.18,
+  "estimated_total_cost_usd": 2082363,
+  "cargo_t": 171000,
+  "vessel": "capesize",
+  "distance_nm": 11067,
+  "voyage_days": 38.94,
+  "cost_breakdown": { "bunker_usd": 1115738, "port_usd": 110000, "hire_usd": 856625 },
+  "disclaimer": "Estimate only..."
+}</pre>
+    <p class="muted">Known routes include Dampier&ndash;Qingdao, Tubarao&ndash;Qingdao, Newcastle&ndash;Qingdao, US Gulf&ndash;Qingdao, Richards Bay&ndash;Rotterdam and more. Any pair can be priced by passing <code>distance_nm</code>.</p>
+  </div>
+
+  <p class="muted" style="font-size:.85rem;margin-top:2em">Underlying BDI values &copy; Baltic Exchange, served with attribution. Shipping figures are independent estimates and not financial or commercial advice. An MCP server exposing these as agent tools is coming soon.</p>
+</div>
+</body>
+</html>
