@@ -20,7 +20,7 @@ import { calcDistance, calcBunker, calcTCE, calcFreightEstimate, calcVoyage, cal
 // ─────────────────────────────────────────────────────────────────────────
 // CONFIG — the only lines you touch.
 // ─────────────────────────────────────────────────────────────────────────
-const PAY_TO_WALLET = "0xYOUR_WALLET_ADDRESS_HERE"; // ← your receiving address
+const PAY_TO_WALLET = "0xC58F8Eff2B6f46b9f5e75432FCdeBD5Dd949B09F"; // ← your receiving address
 const NETWORK       = "base";  // MAINNET. Use "base-sepolia" to test on free testnet.
 // Mainnet ("base") settles real USDC via the Coinbase CDP facilitator and needs
 // CDP_API_KEY_ID + CDP_API_KEY_SECRET set as Cloudflare environment variables.
