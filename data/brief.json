@@ -1,6 +1,6 @@
 {
   "date": "2026-09-04",
-  "summary": "BDI rose 140 pts (+4.01%) to 3,628 on 2026-09-04, led by Capesize.",
+  "summary": "BDI rose 0 pts (+0.00%) to 3,628 on 2026-09-04, led by Capesize.",
   "drivers": [
     "capesize_strength"
   ],
@@ -11,10 +11,10 @@
     }
   ],
   "vessel_notes": {
-    "capesize": "leading",
-    "panamax": "soft",
-    "supramax": "leading",
-    "handysize": "leading"
+    "capesize": "flat",
+    "panamax": "flat",
+    "supramax": "flat",
+    "handysize": "flat"
   },
   "trend": {
     "30d": "up",
