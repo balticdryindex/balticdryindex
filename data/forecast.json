@@ -1,21 +1,21 @@
 {
   "horizon_days": 7,
   "available": true,
-  "as_of": "2026-09-07",
-  "last_value": 3575,
+  "as_of": "2026-09-08",
+  "last_value": 3584,
   "projection": [
-    3601,
-    3623,
-    3642,
-    3658,
-    3671,
-    3683,
-    3692
+    3612,
+    3636,
+    3657,
+    3674,
+    3689,
+    3702,
+    3712
   ],
-  "point": 3692,
+  "point": 3712,
   "band": [
-    3454,
-    3930
+    3478,
+    3946
   ],
   "direction": "up",
   "method": "damped-drift baseline",

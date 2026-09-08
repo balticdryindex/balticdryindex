@@ -1,12 +1,12 @@
 {
-  "date": "2026-09-07",
-  "summary": "BDI fell 53 pts (-1.46%) to 3,575 on 2026-09-07, led by Capesize.",
+  "date": "2026-09-08",
+  "summary": "BDI rose 9 pts (+0.25%) to 3,584 on 2026-09-08, led by Handysize.",
   "drivers": [
-    "capesize_weakness"
+    "handysize_strength"
   ],
   "events": [],
   "vessel_notes": {
-    "capesize": "soft",
+    "capesize": "leading",
     "panamax": "soft",
     "supramax": "leading",
     "handysize": "leading"
