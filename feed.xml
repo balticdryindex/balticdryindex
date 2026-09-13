@@ -5,8 +5,15 @@
   <link>https://www.balticdryindex.com/analysis/</link>
   <description>Weekly BDI market analysis and shipping freight intelligence.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 06 Sep 2026 15:08:47 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 13 Sep 2026 15:49:45 +0000</lastBuildDate>
   <atom:link href="https://www.balticdryindex.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title><![CDATA[Baltic Dry Index Holds Steady at 3,507 on 11 September 2026]]></title>
+    <link>https://www.balticdryindex.com/analysis/bdi-2026-09-11/</link>
+    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-09-11/</guid>
+    <description><![CDATA[Baltic Dry Index risess 0 points to 3,507 on 11 September 2026. BCI 6,080, BPI 2,407, BSI 1,719. Daily shipping market analysis.]]></description>
+    <pubDate>Fri, 11 Sep 2026 14:00:00 +0000</pubDate>
+  </item>
   <item>
     <title><![CDATA[Baltic Dry Index Holds Steady at 3,628 on 4 September 2026]]></title>
     <link>https://www.balticdryindex.com/analysis/bdi-2026-09-04/</link>
@@ -139,13 +146,6 @@
     <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-05-02/</guid>
     <description><![CDATA[Baltic Dry Index market analysis for 2 May 2026. April 2026 was the strongest month for the dry bulk market in 18 months, with the BDI averaging 2,520 points.]]></description>
     <pubDate>Sat, 02 May 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title><![CDATA[Why the BDI Rose 16% in Three Weeks — And What the History Books Say Happens Next]]></title>
-    <link>https://www.balticdryindex.com/analysis/bdi-2026-04-25/</link>
-    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-04-25/</guid>
-    <description><![CDATA[Baltic Dry Index market analysis for 25 April 2026. An in-depth look at the drivers behind April's sharp BDI rally and what historical data suggests for the weeks ahead.]]></description>
-    <pubDate>Sat, 25 Apr 2026 14:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
