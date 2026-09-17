@@ -1,17 +1,12 @@
 {
-  "date": "2026-09-16",
-  "summary": "BDI fell 33 pts (-0.98%) to 3,327 on 2026-09-16, led by Panamax.",
+  "date": "2026-09-17",
+  "summary": "BDI rose 9 pts (+0.27%) to 3,336 on 2026-09-17, led by Handysize.",
   "drivers": [
-    "panamax_weakness"
+    "handysize_strength"
   ],
-  "events": [
-    {
-      "tag": "streak",
-      "detail": "5 consecutive declines"
-    }
-  ],
+  "events": [],
   "vessel_notes": {
-    "capesize": "soft",
+    "capesize": "leading",
     "panamax": "soft",
     "supramax": "leading",
     "handysize": "leading"
