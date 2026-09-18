@@ -1,10 +1,15 @@
 {
-  "date": "2026-09-17",
-  "summary": "BDI rose 9 pts (+0.27%) to 3,336 on 2026-09-17, led by Handysize.",
+  "date": "2026-09-18",
+  "summary": "BDI rose 34 pts (+1.02%) to 3,370 on 2026-09-18, led by Capesize.",
   "drivers": [
-    "handysize_strength"
+    "capesize_strength"
   ],
-  "events": [],
+  "events": [
+    {
+      "tag": "streak",
+      "detail": "2 consecutive gains"
+    }
+  ],
   "vessel_notes": {
     "capesize": "leading",
     "panamax": "soft",
