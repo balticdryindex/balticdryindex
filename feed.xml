@@ -5,8 +5,15 @@
   <link>https://www.balticdryindex.com/analysis/</link>
   <description>Weekly BDI market analysis and shipping freight intelligence.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 13 Sep 2026 15:49:45 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 15:41:15 +0000</lastBuildDate>
   <atom:link href="https://www.balticdryindex.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title><![CDATA[Baltic Dry Index Holds Steady at 3,370 on 18 September 2026]]></title>
+    <link>https://www.balticdryindex.com/analysis/bdi-2026-09-18/</link>
+    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-09-18/</guid>
+    <description><![CDATA[Baltic Dry Index risess 0 points to 3,370 on 18 September 2026. BCI 5,768, BPI 2,251, BSI 1,767. Daily shipping market analysis.]]></description>
+    <pubDate>Fri, 18 Sep 2026 14:00:00 +0000</pubDate>
+  </item>
   <item>
     <title><![CDATA[Baltic Dry Index Holds Steady at 3,507 on 11 September 2026]]></title>
     <link>https://www.balticdryindex.com/analysis/bdi-2026-09-11/</link>
@@ -139,13 +146,6 @@
     <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-05-09/</guid>
     <description><![CDATA[Baltic Dry Index market analysis for 9 May 2026. The BPI recovered to 1,971 after four weeks of softness, supported by improving US Gulf wheat loadings.]]></description>
     <pubDate>Sat, 09 May 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title><![CDATA[April 2026 Monthly Summary: BDI Averaged 2,520 — Best Monthly Close Since November 2024]]></title>
-    <link>https://www.balticdryindex.com/analysis/bdi-2026-05-02/</link>
-    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-05-02/</guid>
-    <description><![CDATA[Baltic Dry Index market analysis for 2 May 2026. April 2026 was the strongest month for the dry bulk market in 18 months, with the BDI averaging 2,520 points.]]></description>
-    <pubDate>Sat, 02 May 2026 14:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
