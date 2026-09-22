@@ -1,13 +1,13 @@
 {
-  "date": "2026-09-21",
-  "summary": "BDI rose 29 pts (+0.86%) to 3,399 on 2026-09-21, led by Capesize.",
+  "date": "2026-09-22",
+  "summary": "BDI rose 33 pts (+0.97%) to 3,432 on 2026-09-22, led by Panamax.",
   "drivers": [
-    "capesize_strength"
+    "panamax_strength"
   ],
   "events": [
     {
       "tag": "streak",
-      "detail": "3 consecutive gains"
+      "detail": "4 consecutive gains"
     }
   ],
   "vessel_notes": {
