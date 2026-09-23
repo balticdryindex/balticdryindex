@@ -1,17 +1,12 @@
 {
-  "date": "2026-09-22",
-  "summary": "BDI rose 33 pts (+0.97%) to 3,432 on 2026-09-22, led by Panamax.",
+  "date": "2026-09-23",
+  "summary": "BDI fell 2 pts (-0.06%) to 3,430 on 2026-09-23, led by Panamax.",
   "drivers": [
     "panamax_strength"
   ],
-  "events": [
-    {
-      "tag": "streak",
-      "detail": "4 consecutive gains"
-    }
-  ],
+  "events": [],
   "vessel_notes": {
-    "capesize": "leading",
+    "capesize": "soft",
     "panamax": "leading",
     "supramax": "leading",
     "handysize": "leading"
