@@ -1,19 +1,19 @@
 {
-  "date": "2026-09-24",
-  "summary": "BDI rose 43 pts (+1.25%) to 3,473 on 2026-09-24, led by Panamax.",
+  "date": "2026-09-25",
+  "summary": "BDI fell 47 pts (-1.35%) to 3,426 on 2026-09-25, led by Capesize.",
   "drivers": [
-    "panamax_strength"
+    "capesize_weakness"
   ],
   "events": [],
   "vessel_notes": {
-    "capesize": "leading",
+    "capesize": "soft",
     "panamax": "leading",
     "supramax": "leading",
     "handysize": "leading"
   },
   "trend": {
     "30d": "up",
-    "90d": "insufficient_data"
+    "90d": "up"
   },
   "attribution": "Underlying BDI values \u00a9 Baltic Exchange. Summary by BalticDryIndex.com.",
   "disclaimer": "Indicative only. Not financial advice."
