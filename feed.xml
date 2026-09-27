@@ -5,8 +5,15 @@
   <link>https://www.balticdryindex.com/analysis/</link>
   <description>Weekly BDI market analysis and shipping freight intelligence.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 20 Sep 2026 15:41:15 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 16:38:10 +0000</lastBuildDate>
   <atom:link href="https://www.balticdryindex.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title><![CDATA[Baltic Dry Index Holds Steady at 3,426 on 25 September 2026]]></title>
+    <link>https://www.balticdryindex.com/analysis/bdi-2026-09-25/</link>
+    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-09-25/</guid>
+    <description><![CDATA[Baltic Dry Index risess 0 points to 3,426 on 25 September 2026. BCI 5,784, BPI 2,407, BSI 1,786. Daily shipping market analysis.]]></description>
+    <pubDate>Fri, 25 Sep 2026 14:00:00 +0000</pubDate>
+  </item>
   <item>
     <title><![CDATA[Baltic Dry Index Holds Steady at 3,370 on 18 September 2026]]></title>
     <link>https://www.balticdryindex.com/analysis/bdi-2026-09-18/</link>
@@ -139,13 +146,6 @@
     <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-05-16/</guid>
     <description><![CDATA[Baltic Dry Index market analysis for 16 May 2026. The Baltic Dry Index closed at 2,675 on Friday, holding above the 2,600 level for the third consecutive week.]]></description>
     <pubDate>Sat, 16 May 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title><![CDATA[Panamax Stabilises as Atlantic Grain Outlook Improves]]></title>
-    <link>https://www.balticdryindex.com/analysis/bdi-2026-05-09/</link>
-    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-05-09/</guid>
-    <description><![CDATA[Baltic Dry Index market analysis for 9 May 2026. The BPI recovered to 1,971 after four weeks of softness, supported by improving US Gulf wheat loadings.]]></description>
-    <pubDate>Sat, 09 May 2026 14:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
