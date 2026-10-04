@@ -5,8 +5,15 @@
   <link>https://www.balticdryindex.com/analysis/</link>
   <description>Weekly BDI market analysis and shipping freight intelligence.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 27 Sep 2026 16:38:10 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 16:37:53 +0000</lastBuildDate>
   <atom:link href="https://www.balticdryindex.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title><![CDATA[Baltic Dry Index Holds Steady at 3,148 on 2 October 2026]]></title>
+    <link>https://www.balticdryindex.com/analysis/bdi-2026-10-02/</link>
+    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-10-02/</guid>
+    <description><![CDATA[Baltic Dry Index risess 0 points to 3,148 on 2 October 2026. BCI 5,042, BPI 2,372, BSI 1,789. Daily shipping market analysis.]]></description>
+    <pubDate>Fri, 02 Oct 2026 14:00:00 +0000</pubDate>
+  </item>
   <item>
     <title><![CDATA[Baltic Dry Index Holds Steady at 3,426 on 25 September 2026]]></title>
     <link>https://www.balticdryindex.com/analysis/bdi-2026-09-25/</link>
@@ -139,13 +146,6 @@
     <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-05-22/</guid>
     <description><![CDATA[Baltic Dry Index risess 0 points to 2,991 on 22 May 2026. BCI 4,954, BPI 2,223, BSI 1,567. Daily shipping market analysis.]]></description>
     <pubDate>Fri, 22 May 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title><![CDATA[BDI Holds Above 2,600 as Capesize Steadies and Supramax Leads Gains]]></title>
-    <link>https://www.balticdryindex.com/analysis/bdi-2026-05-16/</link>
-    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-05-16/</guid>
-    <description><![CDATA[Baltic Dry Index market analysis for 16 May 2026. The Baltic Dry Index closed at 2,675 on Friday, holding above the 2,600 level for the third consecutive week.]]></description>
-    <pubDate>Sat, 16 May 2026 14:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
