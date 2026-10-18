@@ -884,7 +884,6 @@ if __name__ == "__main__":
         update_analysis_index(slug, url_path, headline, excerpt, data["date"])
         update_sitemap(url_path, data["date"])
         generate_rss()
-        remove_news()
         fix_chartjs()
 
         print(f"\nDONE: {headline}")
