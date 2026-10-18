@@ -105,4 +105,4 @@ ads.txt: `google.com, pub-9696700979125307, DIRECT, f08c47fec0942fa0`
 ## Contact
 
 balticdryindex@protonmail.com
-Sea Blast LTD, Cane Garden, Kingstown, St. Vincent and the Grenadines, VC0100
+Virtual Random LLC, Erosi Manjgaladze St. 75a, Nadzaladevi District, Tbilisi, Georgia
