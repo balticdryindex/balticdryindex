@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voyage Estimator — Dry Bulk Voyage P&amp;L &amp; Breakeven | BalticDryIndex.com</title>
+<meta name="description" content="Free dry bulk voyage estimator. Enter route, vessel and freight rate to get voyage P&L, TCE, breakeven freight rate, bunkers, port costs and voyage days. Voyage estimation calculation made simple.">
+<meta name="keywords" content="voyage estimator, voyage estimation, voyage estimation calculation, voyage estimation shipping, voyage calculator, voyage p&l, breakeven freight rate">
+<meta property="og:title" content="Dry Bulk Voyage Estimator — P&L & Breakeven">
+<meta property="og:description" content="Estimate voyage profit, TCE and breakeven freight rate for any dry bulk voyage.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.balticdryindex.com/voyage-calculator/">
+<link rel="canonical" href="https://www.balticdryindex.com/voyage-calculator/">
+<meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Dry Bulk Voyage Estimator","url":"https://www.balticdryindex.com/voyage-calculator/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Voyage estimation calculation for dry bulk: P&L, TCE and breakeven freight rate."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a voyage estimation?","acceptedAnswer":{"@type":"Answer","text":"A voyage estimation works out whether a specific cargo on a specific ship makes money. It combines the freight revenue with the voyage costs — bunkers, port charges and canal dues — over the voyage days to give profit, a daily TCE and the breakeven freight rate."}},
+{"@type":"Question","name":"What is the breakeven freight rate?","acceptedAnswer":{"@type":"Answer","text":"The breakeven freight rate is the freight per tonne at which a voyage exactly covers its voyage costs, before vessel hire. Any rate above breakeven contributes to earnings; below it the voyage loses money on costs alone."}}
+]}
+</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/">Live Data</a>
+      <a href="/what-is-the-baltic-dry-index/">About BDI</a>
+      <a href="/bdi-chart-historical-data/">Chart</a>
+      <a href="/vessel-classes/">Vessels</a>
+      <a href="/shipping-stocks/">Stocks</a>
+      <a href="/analysis/">Analysis</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/tools/" class="active">Tools</a>
+      <a href="/" class="nav-cta">Free Alerts</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/tools/">Tools</a><span>›</span>Voyage Estimator</div>
+
+<main style="max-width:980px;margin:0 auto;padding:24px 20px 72px;">
+  <h1 style="font-family:var(--display);font-size:clamp(30px,5vw,52px);color:#fff;letter-spacing:.02em;margin:.1em 0;">Dry Bulk Voyage Estimator</h1>
+  <p style="color:var(--text-dim);font-size:1.05rem;line-height:1.6;max-width:70ch;">A full <strong>voyage estimation calculation</strong> for dry bulk: enter the route, vessel and freight rate and get voyage profit/loss, daily TCE, the breakeven freight rate and a cost breakdown. Leave the freight rate blank to get breakeven and costs only. Estimates you can override throughout.</p>
+
+  <div class="calc-card">
+    <form id="voyForm" class="calc-grid" onsubmit="return false;">
+      <label>Vessel class<select name="vessel" id="vessel"></select></label>
+      <label>Route<select name="route" id="route"><option value="">— choose a route —</option></select></label>
+      <label>Or distance (nm)<input type="number" name="distance_nm" placeholder="e.g. 11400" min="0" step="1"></label>
+      <label>Speed (kn)<input type="number" name="speed_kn" placeholder="14" min="1" step="0.1"></label>
+      <label>Freight rate (US$/t)<input type="number" name="freight_rate" placeholder="optional — for P&L" min="0" step="0.01"></label>
+      <label>Cargo (t)<input type="number" name="cargo_t" placeholder="auto from vessel" min="0" step="1"></label>
+      <label>Bunker price (US$/t)<input type="number" name="fuel_price" placeholder="600" min="0" step="1"></label>
+      <label>Commission (%)<input type="number" name="commission" placeholder="3.75" min="0" step="0.01"></label>
+      <label>Load days<input type="number" name="load_days" placeholder="3" min="0" step="0.5"></label>
+      <label>Discharge days<input type="number" name="disch_days" placeholder="3" min="0" step="0.5"></label>
+    </form>
+    <button class="calc-btn" onclick="runVoyage()">Estimate Voyage</button>
+    <div id="voyResult" class="calc-result" style="display:none;"></div>
+    <div class="calc-note">Estimate only, from your inputs and representative defaults. Not a firm quote or chartering advice.</div>
+  </div>
+
+  <article class="prose" style="margin-top:40px;">
+    <h2>What a voyage estimation tells you</h2>
+    <p>A <strong>voyage estimation</strong> answers one question: does this cargo, on this ship, over this route, make money? It brings together the freight revenue and every voyage cost — bunker fuel, port disbursements, canal dues — across the days the voyage takes, and returns the voyage result, the daily <a href="/tce-calculator/">TCE</a>, and the breakeven freight rate. Chartering desks run dozens of these a day to rank competing cargoes before fixing.</p>
+
+    <h2>How the estimate is built</h2>
+    <ul>
+      <li><strong>Sea days</strong> = distance ÷ (speed × 24). <strong>Port days</strong> = load + discharge.</li>
+      <li><strong>Bunker cost</strong> = fuel burn at the chosen speed (scaled by the cube law) × bunker price, plus port consumption.</li>
+      <li><strong>Voyage costs</strong> = bunkers + port disbursements + canal dues.</li>
+      <li><strong>Breakeven rate</strong> = voyage costs ÷ (cargo × (1 − commission)).</li>
+      <li><strong>Voyage result</strong> = net freight revenue − voyage costs; <strong>TCE</strong> = result ÷ voyage days.</li>
+    </ul>
+
+    <h2>Worked example</h2>
+    <p>A Panamax lifts ~72,000 t of grain from the US Gulf to Qingdao (~11,400 nm). With bunkers at $600/t the voyage costs land around $0.73m over ~40 days, for a breakeven of roughly <strong>$10/t</strong>. Fix the cargo at $52/t and the voyage returns a strong positive result and a TCE near $75,000/day. Enter it above and vary the rate to find where the voyage turns red.</p>
+
+    <h2>Keep it current</h2>
+    <p>Bunker prices and freight rates move every day, so a voyage estimate is a snapshot. Pair it with the live <a href="/">Baltic Dry Index</a> and sub-indices to judge whether the market is carrying rates up or down before you commit.</p>
+
+    <div class="api-cross">
+      <div class="api-cross-title">Voyage estimation in your own app or agent?</div>
+      <p>Call <code>GET /v1/voyage</code> for machine-readable P&amp;L, TCE and breakeven, or see every endpoint on the <a href="/api/">API page</a>.</p>
+    </div>
+
+    <h2>Related tools</h2>
+    <p><a href="/tce-calculator/">TCE calculator ($/day)</a> · <a href="/freight-rate-calculator/">Freight cost estimator ($/t)</a> · <a href="/tools/">All shipping tools</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div><a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">The independent source for Baltic Dry Index data, shipping market analysis, and freight rate intelligence.</div></div>
+    <div><div class="footer-col-title">Tools</div><ul class="footer-links"><li><a href="/tce-calculator/">TCE Calculator</a></li><li><a href="/voyage-calculator/">Voyage Estimator</a></li><li><a href="/freight-rate-calculator/">Freight Cost</a></li><li><a href="/api/">Data API</a></li></ul></div>
+    <div><div class="footer-col-title">Learn</div><ul class="footer-links"><li><a href="/what-is-the-baltic-dry-index/">What is the BDI?</a></li><li><a href="/analysis/">Analysis</a></li><li><a href="/glossary/">Glossary</a></li><li><a href="/tools/">Tools</a></li></ul></div>
+    <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/disclaimer/">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Virtual Random LLC · BalticDryIndex.com</div><div class="footer-disclaimer">Not financial advice. Estimates only.</div></div>
+</footer>
+
+<style>
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;margin-top:8px;}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+.calc-grid label{display:flex;flex-direction:column;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-dim);}
+.calc-grid input,.calc-grid select{background:var(--bg);border:1px solid var(--border2);border-radius:7px;padding:9px 10px;color:var(--text);font-family:var(--mono);font-size:14px;}
+.calc-grid input:focus,.calc-grid select:focus{outline:none;border-color:var(--gold);}
+.calc-btn{margin-top:16px;background:var(--gold);color:#0b0d11;border:none;border-radius:8px;padding:12px 26px;font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.calc-btn:hover{background:#d8ba5e;}
+.calc-result{margin-top:18px;border-top:1px solid var(--border);padding-top:16px;}
+.calc-headline{font-family:var(--display);font-size:clamp(28px,5vw,44px);color:var(--green);letter-spacing:.02em;}
+.calc-headline.neg{color:var(--red);}
+.calc-sub{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-top:2px;}
+.calc-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:16px;}
+.calc-rows>div{background:var(--bg);border:1px solid var(--border);padding:10px 12px;}
+.calc-rows .k{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);}
+.calc-rows .v{font-family:var(--mono);font-size:15px;color:var(--text);margin-top:3px;}
+.calc-note{font-family:var(--mono);font-size:10.5px;color:var(--text-muted);margin-top:14px;line-height:1.5;}
+.calc-err{color:var(--red);font-family:var(--mono);font-size:13px;}
+.api-cross{background:var(--surface2);border:1px solid var(--border2);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:28px 0;}
+.api-cross-title{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.api-cross p{margin:0;font-size:14px;color:var(--text-dim);}
+.breadcrumb{max-width:980px;margin:0 auto;padding:16px 20px 0;font-family:var(--mono);font-size:11px;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-dim);text-decoration:none;}.breadcrumb span{margin:0 8px;}
+</style>
+<script src="/assets/shipping-calc.js"></script>
+<script>
+const fmt = n => Math.round(n).toLocaleString('en-US');
+function fillSelectors(){
+  const vs=document.getElementById('vessel'), rs=document.getElementById('route');
+  Object.entries(ShipCalc.VESSELS).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label+' ('+fmt(v.dwt)+' dwt)';if(k==='panamax')o.selected=true;vs.appendChild(o);});
+  Object.entries(ShipCalc.ROUTES).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label;rs.appendChild(o);});
+}
+function formData(id){const d={};new FormData(document.getElementById(id)).forEach((v,k)=>{if(v!=='')d[k]=v;});return d;}
+function runVoyage(){
+  const r=ShipCalc.calcVoyage(formData('voyForm'));
+  const el=document.getElementById('voyResult');el.style.display='block';
+  if(r.error){el.innerHTML='<div class="calc-err">'+r.error+'</div>';return;}
+  let head;
+  if('result' in r){const neg=r.result<0?' neg':'';head='<div class="calc-headline'+neg+'">'+(r.result<0?'−$':'$')+fmt(Math.abs(r.result))+'<span style="font-size:18px;color:var(--text-dim);"> voyage result</span></div><div class="calc-sub">TCE $'+fmt(r.tce_usd_per_day)+'/day · breakeven $'+r.breakeven_rate+'/t</div>';}
+  else{head='<div class="calc-headline" style="color:var(--gold);">$'+r.breakeven_rate+'<span style="font-size:18px;color:var(--text-dim);"> /t breakeven</span></div><div class="calc-sub">Add a freight rate above for full P&L and TCE</div>';}
+  el.innerHTML=head+
+    '<div class="calc-sub" style="margin-top:4px;">'+r.vessel+' · '+fmt(r.distance_nm)+' nm · '+r.voyage_days+' days · '+fmt(r.cargo_t)+' t</div>'+
+    '<div class="calc-rows">'+
+      (('net_revenue' in r)?'<div><div class="k">Net revenue</div><div class="v">$'+fmt(r.net_revenue)+'</div></div>':'')+
+      '<div><div class="k">Voyage costs</div><div class="v">$'+fmt(r.voyage_costs)+'</div></div>'+
+      '<div><div class="k">— Bunkers</div><div class="v">$'+fmt(r.bunker_usd)+'</div></div>'+
+      '<div><div class="k">— Port</div><div class="v">$'+fmt(r.port_usd)+'</div></div>'+
+      '<div><div class="k">Breakeven</div><div class="v">$'+r.breakeven_rate+'/t</div></div>'+
+    '</div>';
+}
+fillSelectors();
+</script>
+</body>
+</html>

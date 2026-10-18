@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCE Calculator — Time Charter Equivalent ($/day) | BalticDryIndex.com</title>
+<meta name="description" content="Free Time Charter Equivalent (TCE) calculator for dry bulk voyages. Enter freight rate, route and vessel to get $/day TCE, with the formula, a worked example and bunker/port cost breakdown.">
+<meta name="keywords" content="tce calculator, time charter equivalent, tce shipping, time charter equivalent formula, voyage tce, dry bulk tce">
+<meta property="og:title" content="Time Charter Equivalent (TCE) Calculator">
+<meta property="og:description" content="Calculate TCE ($/day) for any dry bulk voyage — freight rate, bunkers, port costs and voyage days.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.balticdryindex.com/tce-calculator/">
+<link rel="canonical" href="https://www.balticdryindex.com/tce-calculator/">
+<meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"TCE Calculator — Time Charter Equivalent","url":"https://www.balticdryindex.com/tce-calculator/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Time Charter Equivalent (TCE) calculator for dry bulk voyages."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is Time Charter Equivalent (TCE)?","acceptedAnswer":{"@type":"Answer","text":"TCE is a vessel's daily earnings from a voyage, expressed in US$ per day. It converts a voyage's net freight revenue, after voyage costs such as bunkers and port charges, into a daily rate that can be compared directly against time-charter hire."}},
+{"@type":"Question","name":"How is TCE calculated?","acceptedAnswer":{"@type":"Answer","text":"TCE = (gross freight − commissions − voyage costs) ÷ total voyage days. Voyage costs are mainly bunker fuel, port disbursements and any canal dues. Total voyage days are sea days plus port days."}}
+]}
+</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/">Live Data</a>
+      <a href="/what-is-the-baltic-dry-index/">About BDI</a>
+      <a href="/bdi-chart-historical-data/">Chart</a>
+      <a href="/vessel-classes/">Vessels</a>
+      <a href="/shipping-stocks/">Stocks</a>
+      <a href="/analysis/">Analysis</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/tools/" class="active">Tools</a>
+      <a href="/" class="nav-cta">Free Alerts</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/tools/">Tools</a><span>›</span>TCE Calculator</div>
+
+<main style="max-width:980px;margin:0 auto;padding:24px 20px 72px;">
+  <h1 style="font-family:var(--display);font-size:clamp(30px,5vw,52px);color:#fff;letter-spacing:.02em;margin:.1em 0;">Time Charter Equivalent (TCE) Calculator</h1>
+  <p style="color:var(--text-dim);font-size:1.05rem;line-height:1.6;max-width:70ch;">Work out a dry bulk voyage's <strong>daily earnings in US$/day</strong> — the standard way to compare a spot voyage against time-charter hire. Enter your freight rate and voyage, and the calculator returns TCE with a full cost breakdown. All figures are estimates you can override.</p>
+
+  <!-- CALCULATOR -->
+  <div class="calc-card">
+    <form id="tceForm" class="calc-grid" onsubmit="return false;">
+      <label>Vessel class<select name="vessel" id="vessel"></select></label>
+      <label>Route<select name="route" id="route"><option value="">— choose a route —</option></select></label>
+      <label>Or distance (nm)<input type="number" name="distance_nm" placeholder="e.g. 11067" min="0" step="1"></label>
+      <label>Speed (kn)<input type="number" name="speed_kn" placeholder="14" min="1" step="0.1"></label>
+      <label>Freight rate (US$/t) <span class="req">*</span><input type="number" name="freight_rate" placeholder="e.g. 10.50" min="0" step="0.01"></label>
+      <label>Cargo (t)<input type="number" name="cargo_t" placeholder="auto from vessel" min="0" step="1"></label>
+      <label>Bunker price (US$/t)<input type="number" name="fuel_price" placeholder="600" min="0" step="1"></label>
+      <label>Commission (%)<input type="number" name="commission" placeholder="3.75" min="0" step="0.01"></label>
+      <label>Load days<input type="number" name="load_days" placeholder="3" min="0" step="0.5"></label>
+      <label>Discharge days<input type="number" name="disch_days" placeholder="3" min="0" step="0.5"></label>
+    </form>
+    <button class="calc-btn" onclick="runTCE()">Calculate TCE</button>
+    <div id="tceResult" class="calc-result" style="display:none;"></div>
+    <div class="calc-note">Estimate only, from your inputs and representative defaults. Not a firm quote or chartering advice.</div>
+  </div>
+
+  <article class="prose" style="margin-top:40px;">
+    <h2>What is Time Charter Equivalent?</h2>
+    <p><strong>Time Charter Equivalent (TCE)</strong> expresses a voyage's earnings as a daily rate in US dollars, so a one-off (spot) voyage charter can be compared like-for-like with a time charter. A voyage charter pays a lump freight per tonne of cargo; a time charter pays a daily hire. TCE strips the voyage costs out of the freight and divides what's left over the days the voyage takes, giving the daily number owners and operators actually compare.</p>
+
+    <h2>The TCE formula</h2>
+    <p style="font-family:var(--mono);background:var(--surface);border:1px solid var(--border);padding:14px 16px;border-radius:8px;color:var(--gold);">TCE ($/day) = ( Gross freight − Commission − Voyage costs ) ÷ Voyage days</p>
+    <p>Where:</p>
+    <ul>
+      <li><strong>Gross freight</strong> = freight rate ($/t) × cargo quantity (t)</li>
+      <li><strong>Voyage costs</strong> = bunker fuel + port disbursements + canal dues</li>
+      <li><strong>Voyage days</strong> = sea days (distance ÷ speed) + port days (load + discharge)</li>
+    </ul>
+
+    <h2>Worked example</h2>
+    <p>A Capesize carries 171,000 t of iron ore from Dampier to Qingdao (~3,500 nm) at a freight rate of $10.50/t, 3.75% commission, bunkers at $600/t. Gross freight is about $1.80m; after commission and roughly $0.48m of bunker and port costs over a ~16-day voyage, the result is a TCE of roughly <strong>$75,000/day</strong>. Enter those values above to reproduce it, then flex the rate or speed to see TCE move.</p>
+
+    <h2>Why TCE matters</h2>
+    <p>TCE is the single most-watched earnings metric in dry bulk. It lets an owner decide whether a spot voyage beats fixing the ship on time charter, lets an operator rank competing cargoes, and underpins the vessel-class earnings you see quoted alongside the <a href="/">Baltic Dry Index</a>. Because bunker price and freight rates move daily, treat any single TCE as a snapshot and re-run it with live numbers.</p>
+
+    <div class="api-cross">
+      <div class="api-cross-title">Need TCE in your own app or agent?</div>
+      <p>This calculator is also a paid API endpoint. Call <code>GET /v1/tce</code> for machine-readable TCE, or browse all endpoints — BDI analytics, freight, voyage, bunker and CO₂ — on the <a href="/api/">API page</a>.</p>
+    </div>
+
+    <h2>Related tools</h2>
+    <p><a href="/voyage-calculator/">Voyage estimator (P&amp;L + breakeven)</a> · <a href="/freight-rate-calculator/">Freight cost estimator ($/t)</a> · <a href="/tools/">All shipping tools</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div><a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">The independent source for Baltic Dry Index data, shipping market analysis, and freight rate intelligence.</div></div>
+    <div><div class="footer-col-title">Tools</div><ul class="footer-links"><li><a href="/tce-calculator/">TCE Calculator</a></li><li><a href="/voyage-calculator/">Voyage Estimator</a></li><li><a href="/freight-rate-calculator/">Freight Cost</a></li><li><a href="/api/">Data API</a></li></ul></div>
+    <div><div class="footer-col-title">Learn</div><ul class="footer-links"><li><a href="/what-is-the-baltic-dry-index/">What is the BDI?</a></li><li><a href="/analysis/">Analysis</a></li><li><a href="/glossary/">Glossary</a></li><li><a href="/tools/">Tools</a></li></ul></div>
+    <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/disclaimer/">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Virtual Random LLC · BalticDryIndex.com</div><div class="footer-disclaimer">Not financial advice. Estimates only.</div></div>
+</footer>
+
+<style>
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;margin-top:8px;}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+.calc-grid label{display:flex;flex-direction:column;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-dim);}
+.calc-grid .req{color:var(--gold);}
+.calc-grid input,.calc-grid select{background:var(--bg);border:1px solid var(--border2);border-radius:7px;padding:9px 10px;color:var(--text);font-family:var(--mono);font-size:14px;}
+.calc-grid input:focus,.calc-grid select:focus{outline:none;border-color:var(--gold);}
+.calc-btn{margin-top:16px;background:var(--gold);color:#0b0d11;border:none;border-radius:8px;padding:12px 26px;font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.calc-btn:hover{background:#d8ba5e;}
+.calc-result{margin-top:18px;border-top:1px solid var(--border);padding-top:16px;}
+.calc-headline{font-family:var(--display);font-size:clamp(28px,5vw,44px);color:var(--green);letter-spacing:.02em;}
+.calc-headline.neg{color:var(--red);}
+.calc-sub{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-top:2px;}
+.calc-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:16px;}
+.calc-rows>div{background:var(--bg);border:1px solid var(--border);padding:10px 12px;}
+.calc-rows .k{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);}
+.calc-rows .v{font-family:var(--mono);font-size:15px;color:var(--text);margin-top:3px;}
+.calc-note{font-family:var(--mono);font-size:10.5px;color:var(--text-muted);margin-top:14px;line-height:1.5;}
+.calc-err{color:var(--red);font-family:var(--mono);font-size:13px;}
+.api-cross{background:var(--surface2);border:1px solid var(--border2);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:28px 0;}
+.api-cross-title{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.api-cross p{margin:0;font-size:14px;color:var(--text-dim);}
+.breadcrumb{max-width:980px;margin:0 auto;padding:16px 20px 0;font-family:var(--mono);font-size:11px;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-dim);text-decoration:none;}.breadcrumb span{margin:0 8px;}
+</style>
+<script src="/assets/shipping-calc.js"></script>
+<script>
+const fmt = n => Math.round(n).toLocaleString('en-US');
+function fillSelectors(){
+  const vs=document.getElementById('vessel'), rs=document.getElementById('route');
+  Object.entries(ShipCalc.VESSELS).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label+' ('+fmt(v.dwt)+' dwt)';if(k==='capesize')o.selected=true;vs.appendChild(o);});
+  Object.entries(ShipCalc.ROUTES).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label;rs.appendChild(o);});
+}
+function formData(id){const d={};new FormData(document.getElementById(id)).forEach((v,k)=>{if(v!=='')d[k]=v;});return d;}
+function runTCE(){
+  const r=ShipCalc.calcTCE(formData('tceForm'));
+  const el=document.getElementById('tceResult');el.style.display='block';
+  if(r.error){el.innerHTML='<div class="calc-err">'+r.error+'</div>';return;}
+  const neg=r.tce_usd_per_day<0?' neg':'';
+  el.innerHTML=
+    '<div class="calc-headline'+neg+'">$'+fmt(r.tce_usd_per_day)+'<span style="font-size:18px;color:var(--text-dim);"> /day</span></div>'+
+    '<div class="calc-sub">'+r.vessel+' · '+fmt(r.distance_nm)+' nm · '+r.voyage_days+' voyage days · '+fmt(r.cargo_t)+' t cargo</div>'+
+    '<div class="calc-rows">'+
+      '<div><div class="k">Gross freight</div><div class="v">$'+fmt(r.gross_revenue)+'</div></div>'+
+      '<div><div class="k">Net revenue</div><div class="v">$'+fmt(r.net_revenue)+'</div></div>'+
+      '<div><div class="k">Voyage costs</div><div class="v">$'+fmt(r.voyage_costs)+'</div></div>'+
+      '<div><div class="k">— Bunkers</div><div class="v">$'+fmt(r.bunker_usd)+'</div></div>'+
+      '<div><div class="k">— Port</div><div class="v">$'+fmt(r.port_usd)+'</div></div>'+
+    '</div>';
+}
+fillSelectors();
+</script>
+</body>
+</html>

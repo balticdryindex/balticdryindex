@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freight Cost Calculator — Cost to Ship Dry Bulk (US$/tonne) | BalticDryIndex.com</title>
+<meta name="description" content="Estimate the cost to ship dry bulk cargo — iron ore, coal, grain — in US$ per tonne and total voyage cost. Free dry bulk freight rate calculator with bunkers, port costs, hire and voyage days.">
+<meta name="keywords" content="freight cost calculator, cost to ship iron ore, dry bulk freight rates, freight rate calculator, cost to ship coal, bulk shipping cost, freight per tonne">
+<meta property="og:title" content="Freight Cost Calculator — Cost to Ship Dry Bulk">
+<meta property="og:description" content="Estimate $/tonne and total cost to ship iron ore, coal or grain by bulk carrier.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.balticdryindex.com/freight-rate-calculator/">
+<link rel="canonical" href="https://www.balticdryindex.com/freight-rate-calculator/">
+<meta name="theme-color" content="#090b0e">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Dry Bulk Freight Cost Calculator","url":"https://www.balticdryindex.com/freight-rate-calculator/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate the cost to ship dry bulk cargo in US$ per tonne."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much does it cost to ship iron ore from Brazil to China?","acceptedAnswer":{"@type":"Answer","text":"For a Capesize carrying ~171,000 t from Tubarão to Qingdao (~11,067 nm), an indicative all-in cost is roughly US$12 per tonne, covering bunkers, port disbursements and vessel hire over about 39 days. Exact figures move daily with bunker prices and the hire market."}},
+{"@type":"Question","name":"What drives dry bulk freight rates?","acceptedAnswer":{"@type":"Answer","text":"Freight rates are driven by the balance of cargo demand and available vessels, the distance of the voyage, bunker fuel prices and vessel hire levels. The Baltic Dry Index tracks the overall direction of dry bulk rates."}}
+]}
+</script>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span><span class="logo-tag">INDEX</span></a>
+    <nav>
+      <a href="/">Live Data</a>
+      <a href="/what-is-the-baltic-dry-index/">About BDI</a>
+      <a href="/bdi-chart-historical-data/">Chart</a>
+      <a href="/vessel-classes/">Vessels</a>
+      <a href="/shipping-stocks/">Stocks</a>
+      <a href="/analysis/">Analysis</a>
+      <a href="/glossary/">Glossary</a>
+      <a href="/tools/" class="active">Tools</a>
+      <a href="/" class="nav-cta">Free Alerts</a>
+    </nav>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/tools/">Tools</a><span>›</span>Freight Cost Calculator</div>
+
+<main style="max-width:980px;margin:0 auto;padding:24px 20px 72px;">
+  <h1 style="font-family:var(--display);font-size:clamp(30px,5vw,52px);color:#fff;letter-spacing:.02em;margin:.1em 0;">Freight Cost Calculator</h1>
+  <p style="color:var(--text-dim);font-size:1.05rem;line-height:1.6;max-width:70ch;">Estimate the <strong>cost to ship dry bulk cargo</strong> — iron ore, coal, grain — in US$ per tonne and as a total voyage cost. Pick a route and vessel, adjust bunker price and hire to today's market, and see the full breakdown. Indicative estimates, not firm quotes.</p>
+
+  <div class="calc-card">
+    <form id="frForm" class="calc-grid" onsubmit="return false;">
+      <label>Vessel class<select name="vessel" id="vessel"></select></label>
+      <label>Route<select name="route" id="route"><option value="">— choose a route —</option></select></label>
+      <label>Or distance (nm)<input type="number" name="distance_nm" placeholder="e.g. 11067" min="0" step="1"></label>
+      <label>Speed (kn)<input type="number" name="speed_kn" placeholder="14" min="1" step="0.1"></label>
+      <label>Cargo (t)<input type="number" name="cargo_t" placeholder="auto from vessel" min="0" step="1"></label>
+      <label>Bunker price (US$/t)<input type="number" name="fuel_price" placeholder="600" min="0" step="1"></label>
+      <label>Daily hire (US$/day)<input type="number" name="daily_hire" placeholder="auto from vessel" min="0" step="100"></label>
+      <label>Load days<input type="number" name="load_days" placeholder="3" min="0" step="0.5"></label>
+      <label>Discharge days<input type="number" name="disch_days" placeholder="3" min="0" step="0.5"></label>
+    </form>
+    <button class="calc-btn" onclick="runFreight()">Estimate Cost</button>
+    <div id="frResult" class="calc-result" style="display:none;"></div>
+    <div class="calc-note">Estimate only, from your inputs and representative defaults for vessel specs, hire and bunker price. Not a firm quote. Does not reproduce any proprietary published route rate.</div>
+  </div>
+
+  <article class="prose" style="margin-top:40px;">
+    <h2>What this estimates</h2>
+    <p>This tool estimates the <strong>all-in cost to move a bulk cargo</strong> on a single voyage: bunker fuel, port disbursements and vessel hire over the voyage days, divided by the cargo to give a cost per tonne. It's the number a shipper or trader wants when asking "what will it cost to get this cargo from A to B?" — built from independent inputs, not from any proprietary published freight rate.</p>
+
+    <h2>How the cost is built</h2>
+    <ul>
+      <li><strong>Voyage days</strong> = sea days (distance ÷ speed) + load + discharge days.</li>
+      <li><strong>Bunker cost</strong> = fuel burn at speed × bunker price, plus port consumption.</li>
+      <li><strong>Hire cost</strong> = daily hire × voyage days.</li>
+      <li><strong>Total cost</strong> = bunkers + port disbursements + hire (+ canal). <strong>Cost per tonne</strong> = total ÷ cargo.</li>
+    </ul>
+
+    <h2>Example: cost to ship iron ore Brazil → China</h2>
+    <p>A Capesize carrying ~171,000 t from Tubarão to Qingdao (~11,067 nm), with bunkers at $600/t and representative hire, comes out around <strong>$12 per tonne</strong> all-in, or roughly $2.0m for the voyage, over about 39 days. Because hire and bunker prices move daily, enter today's numbers to sharpen the estimate.</p>
+
+    <h2>Common dry bulk routes</h2>
+    <p>The calculator includes reference distances for major corridors — iron ore (Dampier/Tubarão → Qingdao), coal (Newcastle → Qingdao, Richards Bay → Rotterdam) and grain (US Gulf/Santos → Qingdao). For any other pair, type the distance in nautical miles. Track the overall direction of rates on the live <a href="/">Baltic Dry Index</a>.</p>
+
+    <div class="api-cross">
+      <div class="api-cross-title">Freight cost in your own app or agent?</div>
+      <p>Call <code>GET /v1/freight-estimate</code> for machine-readable $/tonne and total cost, or see all endpoints on the <a href="/api/">API page</a>.</p>
+    </div>
+
+    <h2>Related tools</h2>
+    <p><a href="/tce-calculator/">TCE calculator ($/day)</a> · <a href="/voyage-calculator/">Voyage estimator (P&amp;L)</a> · <a href="/tools/">All shipping tools</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div><a href="/" class="logo"><span class="logo-main">BALTIC DRY</span><span class="logo-dot">.</span></a><div class="footer-tagline">The independent source for Baltic Dry Index data, shipping market analysis, and freight rate intelligence.</div></div>
+    <div><div class="footer-col-title">Tools</div><ul class="footer-links"><li><a href="/tce-calculator/">TCE Calculator</a></li><li><a href="/voyage-calculator/">Voyage Estimator</a></li><li><a href="/freight-rate-calculator/">Freight Cost</a></li><li><a href="/api/">Data API</a></li></ul></div>
+    <div><div class="footer-col-title">Learn</div><ul class="footer-links"><li><a href="/what-is-the-baltic-dry-index/">What is the BDI?</a></li><li><a href="/analysis/">Analysis</a></li><li><a href="/glossary/">Glossary</a></li><li><a href="/tools/">Tools</a></li></ul></div>
+    <div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/disclaimer/">Disclaimer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Virtual Random LLC · BalticDryIndex.com</div><div class="footer-disclaimer">Not financial advice. Estimates only.</div></div>
+</footer>
+
+<style>
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;margin-top:8px;}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+.calc-grid label{display:flex;flex-direction:column;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-dim);}
+.calc-grid input,.calc-grid select{background:var(--bg);border:1px solid var(--border2);border-radius:7px;padding:9px 10px;color:var(--text);font-family:var(--mono);font-size:14px;}
+.calc-grid input:focus,.calc-grid select:focus{outline:none;border-color:var(--gold);}
+.calc-btn{margin-top:16px;background:var(--gold);color:#0b0d11;border:none;border-radius:8px;padding:12px 26px;font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.calc-btn:hover{background:#d8ba5e;}
+.calc-result{margin-top:18px;border-top:1px solid var(--border);padding-top:16px;}
+.calc-headline{font-family:var(--display);font-size:clamp(28px,5vw,44px);color:var(--gold);letter-spacing:.02em;}
+.calc-sub{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-top:2px;}
+.calc-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px;margin-top:16px;}
+.calc-rows>div{background:var(--bg);border:1px solid var(--border);padding:10px 12px;}
+.calc-rows .k{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);}
+.calc-rows .v{font-family:var(--mono);font-size:15px;color:var(--text);margin-top:3px;}
+.calc-note{font-family:var(--mono);font-size:10.5px;color:var(--text-muted);margin-top:14px;line-height:1.5;}
+.calc-err{color:var(--red);font-family:var(--mono);font-size:13px;}
+.api-cross{background:var(--surface2);border:1px solid var(--border2);border-left:3px solid var(--gold);border-radius:8px;padding:16px 18px;margin:28px 0;}
+.api-cross-title{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.api-cross p{margin:0;font-size:14px;color:var(--text-dim);}
+.breadcrumb{max-width:980px;margin:0 auto;padding:16px 20px 0;font-family:var(--mono);font-size:11px;color:var(--text-muted);}
+.breadcrumb a{color:var(--text-dim);text-decoration:none;}.breadcrumb span{margin:0 8px;}
+</style>
+<script src="/assets/shipping-calc.js"></script>
+<script>
+const fmt = n => Math.round(n).toLocaleString('en-US');
+function fillSelectors(){
+  const vs=document.getElementById('vessel'), rs=document.getElementById('route');
+  Object.entries(ShipCalc.VESSELS).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label+' ('+fmt(v.dwt)+' dwt)';if(k==='capesize')o.selected=true;vs.appendChild(o);});
+  Object.entries(ShipCalc.ROUTES).forEach(([k,v])=>{const o=document.createElement('option');o.value=k;o.textContent=v.label;rs.appendChild(o);});
+}
+function formData(id){const d={};new FormData(document.getElementById(id)).forEach((v,k)=>{if(v!=='')d[k]=v;});return d;}
+function runFreight(){
+  const r=ShipCalc.calcFreight(formData('frForm'));
+  const el=document.getElementById('frResult');el.style.display='block';
+  if(r.error){el.innerHTML='<div class="calc-err">'+r.error+'</div>';return;}
+  el.innerHTML=
+    '<div class="calc-headline">$'+r.cost_per_tonne+'<span style="font-size:18px;color:var(--text-dim);"> /tonne</span></div>'+
+    '<div class="calc-sub">Total $'+fmt(r.total_cost)+' · '+r.vessel+' · '+fmt(r.distance_nm)+' nm · '+r.voyage_days+' days · '+fmt(r.cargo_t)+' t</div>'+
+    '<div class="calc-rows">'+
+      '<div><div class="k">Total cost</div><div class="v">$'+fmt(r.total_cost)+'</div></div>'+
+      '<div><div class="k">— Bunkers</div><div class="v">$'+fmt(r.bunker_usd)+'</div></div>'+
+      '<div><div class="k">— Port</div><div class="v">$'+fmt(r.port_usd)+'</div></div>'+
+      '<div><div class="k">— Hire</div><div class="v">$'+fmt(r.hire_usd)+'</div></div>'+
+      '<div><div class="k">Cost / tonne</div><div class="v">$'+r.cost_per_tonne+'</div></div>'+
+    '</div>';
+}
+fillSelectors();
+</script>
+</body>
+</html>
