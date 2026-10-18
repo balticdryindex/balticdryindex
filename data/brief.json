@@ -1,8 +1,8 @@
 {
   "date": "2026-10-16",
-  "summary": "BDI fell 34 pts (-1.34%) to 2,511 on 2026-10-16, led by Capesize.",
+  "summary": "BDI rose 0 pts (+0.00%) to 2,511 on 2026-10-16, led by Capesize.",
   "drivers": [
-    "capesize_weakness"
+    "capesize_strength"
   ],
   "events": [
     {
@@ -11,10 +11,10 @@
     }
   ],
   "vessel_notes": {
-    "capesize": "soft",
-    "panamax": "soft",
-    "supramax": "leading",
-    "handysize": "leading"
+    "capesize": "flat",
+    "panamax": "flat",
+    "supramax": "flat",
+    "handysize": "flat"
   },
   "trend": {
     "30d": "down",
