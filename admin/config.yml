@@ -1,0 +1,39 @@
+# Sveltia CMS configuration for BalticDryIndex.com
+# Editor commits Markdown to content/news/*.md; the build-news GitHub Action
+# renders those into /news/<slug>/index.html with the site design.
+#
+# >>> FILL IN TWO VALUES BELOW before this works:
+#   1. repo:      your GitHub  owner/repo   (e.g. your-username/balticdryindex)
+#   2. base_url:  the URL of the sveltia-cms-auth Worker you deploy (Step 6C)
+
+backend:
+  name: github
+  repo: balticdryindex/balticdryindex      # <-- (1) change this
+  branch: main
+  base_url: https://sveltia-cms-auth.balticdryindex.workers.dev   # <-- (2) change this
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+backend_commit_messages:
+  create: 'News: create "{{slug}}"'
+  update: 'News: update "{{slug}}"'
+  delete: 'News: delete "{{slug}}"'
+
+collections:
+  - name: news
+    label: News Posts
+    label_singular: News Post
+    folder: content/news
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    summary: '{{title}} — {{date}}'
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, picker_utc: true }
+      - { name: description, label: 'Summary (for search & the news list)', widget: text }
+      - { name: author, label: Author, widget: string, default: 'BalticDryIndex.com', required: false }
+      - { name: body, label: Body, widget: markdown }

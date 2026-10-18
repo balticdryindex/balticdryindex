@@ -25,6 +25,9 @@ jobs:
 
       - name: Run updater full
         run: python scripts/update_bdi.py
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ secrets.OPENROUTER_MODEL }}
 
       - name: Commit weekly news
         run: |

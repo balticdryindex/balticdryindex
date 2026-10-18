@@ -34,6 +34,11 @@ import shutil
 from pathlib import Path
 import requests
 
+try:
+    import llm_news  # optional LLM auto-news (OpenRouter); no-op if key unset or file absent
+except Exception:
+    llm_news = None
+
 ROOT         = Path(__file__).parent.parent
 DATA_DIR     = ROOT / "data"
 DATA_FILE    = DATA_DIR / "latest.json"
@@ -873,6 +878,8 @@ if __name__ == "__main__":
         # Full update: weekly analysis article, sitemap, RSS, cleanup.
         # (data + history + artifacts + homepage render already done above.)
         slug, url_path, headline, excerpt, article_html = generate_article(data)
+        if llm_news:
+            article_html = llm_news.enhance(article_html, data)
         save_article(slug, article_html)
         update_analysis_index(slug, url_path, headline, excerpt, data["date"])
         update_sitemap(url_path, data["date"])
