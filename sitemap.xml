@@ -1478,4 +1478,24 @@
   <url><loc>https://www.balticdryindex.com/analysis/bdi-2026-09-25/</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-09-25</lastmod></url>
   <url><loc>https://www.balticdryindex.com/analysis/bdi-2026-10-02/</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-10-02</lastmod></url>
   <url><loc>https://www.balticdryindex.com/analysis/bdi-2026-10-09/</loc><changefreq>monthly</changefreq><priority>0.75</priority><lastmod>2026-10-09</lastmod></url>
+ <url>
+    <loc>https://www.balticdryindex.com/tce-calculator/</loc>
+    <changefreq>weekly</changefreq><priority>0.80</priority><lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.balticdryindex.com/voyage-calculator/</loc>
+    <changefreq>weekly</changefreq><priority>0.80</priority><lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.balticdryindex.com/freight-rate-calculator/</loc>
+    <changefreq>weekly</changefreq><priority>0.80</priority><lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.balticdryindex.com/news/</loc>
+    <changefreq>weekly</changefreq><priority>0.80</priority><lastmod>2026-10-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.balticdryindex.com/api/</loc>
+    <changefreq>weekly</changefreq><priority>0.80</priority><lastmod>2026-10-18</lastmod>
+  </url>
 </urlset>
