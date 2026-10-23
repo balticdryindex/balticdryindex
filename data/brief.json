@@ -1,20 +1,15 @@
 {
-  "date": "2026-10-16",
-  "summary": "BDI fell 34 pts (-1.34%) to 2,511 on 2026-10-16, led by Capesize.",
+  "date": "2026-10-23",
+  "summary": "BDI fell 33 pts (-1.23%) to 2,660 on 2026-10-23, led by Panamax.",
   "drivers": [
-    "capesize_weakness"
+    "panamax_weakness"
   ],
-  "events": [
-    {
-      "tag": "streak",
-      "detail": "10 consecutive declines"
-    }
-  ],
+  "events": [],
   "vessel_notes": {
     "capesize": "soft",
     "panamax": "soft",
-    "supramax": "leading",
-    "handysize": "leading"
+    "supramax": "soft",
+    "handysize": "flat"
   },
   "trend": {
     "30d": "down",

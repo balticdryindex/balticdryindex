@@ -5,8 +5,15 @@
   <link>https://www.balticdryindex.com/analysis/</link>
   <description>Weekly BDI market analysis and shipping freight intelligence.</description>
   <language>en-gb</language>
-  <lastBuildDate>Sun, 11 Oct 2026 17:29:59 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 18 Oct 2026 15:35:07 +0000</lastBuildDate>
   <atom:link href="https://www.balticdryindex.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title><![CDATA[Baltic Dry Index Holds Steady at 2,511 on 16 October 2026]]></title>
+    <link>https://www.balticdryindex.com/analysis/bdi-2026-10-16/</link>
+    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-10-16/</guid>
+    <description><![CDATA[Baltic Dry Index risess 0 points to 2,511 on 16 October 2026. BCI 3,249, BPI 2,314, BSI 1,865. Daily shipping market analysis.]]></description>
+    <pubDate>Fri, 16 Oct 2026 14:00:00 +0000</pubDate>
+  </item>
   <item>
     <title><![CDATA[Baltic Dry Index Holds Steady at 2,917 on 9 October 2026]]></title>
     <link>https://www.balticdryindex.com/analysis/bdi-2026-10-09/</link>
@@ -139,13 +146,6 @@
     <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-06-05/</guid>
     <description><![CDATA[Baltic Dry Index risess 0 points to 2,981 on 5 June 2026. BCI 4,893, BPI 2,236, BSI 1,588. Daily shipping market analysis.]]></description>
     <pubDate>Fri, 05 Jun 2026 14:00:00 +0000</pubDate>
-  </item>
-  <item>
-    <title><![CDATA[Baltic Dry Index Holds Steady at 3,224 on 29 May 2026]]></title>
-    <link>https://www.balticdryindex.com/analysis/bdi-2026-05-29/</link>
-    <guid isPermaLink="true">https://www.balticdryindex.com/analysis/bdi-2026-05-29/</guid>
-    <description><![CDATA[Baltic Dry Index risess 0 points to 3,224 on 29 May 2026. BCI 5,503, BPI 2,343, BSI 1,569. Daily shipping market analysis.]]></description>
-    <pubDate>Fri, 29 May 2026 14:00:00 +0000</pubDate>
   </item>
 </channel>
 </rss>
