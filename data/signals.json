@@ -1,18 +1,18 @@
 {
-  "date": "2026-10-29",
-  "points_available": 69,
+  "date": "2026-10-30",
+  "points_available": 70,
   "sma": {
-    "7d": 2661.1,
-    "30d": 2949.2,
-    "90d": 3021.0,
-    "200d": 3021.0
+    "7d": 2666.0,
+    "30d": 2927.3,
+    "90d": 3016.6,
+    "200d": 3016.6
   },
   "trend": {
     "30d": "down",
     "90d": "down"
   },
-  "momentum_z": -0.97,
-  "volatility_annualized": 0.4,
+  "momentum_z": -0.96,
+  "volatility_annualized": 0.397,
   "pct_from_ath": -77.0,
   "regime": "contraction",
   "note": null,
