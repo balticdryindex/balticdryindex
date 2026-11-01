@@ -1,8 +1,8 @@
 {
   "date": "2026-10-30",
-  "summary": "BDI rose 2 pts (+0.07%) to 2,714 on 2026-10-30, led by Panamax.",
+  "summary": "BDI rose 0 pts (+0.00%) to 2,714 on 2026-10-30, led by Capesize.",
   "drivers": [
-    "panamax_weakness"
+    "capesize_strength"
   ],
   "events": [
     {
@@ -11,10 +11,10 @@
     }
   ],
   "vessel_notes": {
-    "capesize": "leading",
-    "panamax": "soft",
-    "supramax": "soft",
-    "handysize": "soft"
+    "capesize": "flat",
+    "panamax": "flat",
+    "supramax": "flat",
+    "handysize": "flat"
   },
   "trend": {
     "30d": "down",
