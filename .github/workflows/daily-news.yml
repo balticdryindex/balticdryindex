@@ -1,0 +1,40 @@
+name: Daily News Autopost
+
+on:
+  schedule:
+    # 14:30 UTC Mon–Fri — runs after daily-data.yml (13:20 UTC)
+    - cron: "30 14 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  autopost:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run autopost
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL:   ${{ secrets.OPENROUTER_MODEL }}
+        run: python scripts/autopost_news.py
+
+      - name: Commit new articles
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/news/
+          # Only commit if there's something new
+          git diff --cached --quiet && echo "No new articles." || \
+            git commit -m "chore: daily news autopost $(date -u +%Y-%m-%d)"
+          git push
