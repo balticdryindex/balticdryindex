@@ -64,11 +64,13 @@ OPENROUTER_MODEL    = os.environ.get("OPENROUTER_MODEL", "google/gemini-flash-1.
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 
 # Baltic Sea sub-regions for weather: (label, lat, lon)
+# SMHI API requires coordinates rounded to 4 decimal places max,
+# and the URL format is /lon/{lon}/lat/{lat}/ (lon first, then lat)
 WEATHER_REGIONS = [
-    ("Stockholm Archipelago",  59.3,  18.9),
-    ("Gulf of Finland",        60.0,  25.0),
-    ("Bornholm Basin",         55.2,  15.5),
-    ("Gulf of Riga",           57.5,  23.5),
+    ("Stockholm Archipelago",  59.33, 18.07),
+    ("Gulf of Finland",        59.95, 24.97),
+    ("Bornholm Basin",         55.10, 14.92),
+    ("Gulf of Riga",           57.50, 23.50),
 ]
 
 EMSA_RSS = "https://www.emsa.europa.eu/newsroom/press-releases.feed?type=rss&format=feed"
@@ -300,9 +302,13 @@ def run_bdi_brief(seen):
         print("[BDI brief] no data available, skipping.")
         return seen
 
-    if data.get("date") != date:
-        print(f"[BDI brief] data/latest.json is from {data.get('date')}, not today — skipping.")
+    data_date = data.get("date", "")
+    yesterday = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
+    if data_date not in (date, yesterday):
+        print(f"[BDI brief] data/latest.json is from {data_date}, too old — skipping.")
         return seen
+    if data_date == yesterday:
+        print(f"[BDI brief] using yesterday's data ({data_date}) — today's fetch not yet run.")
 
     history = load_history()
     print(f"[BDI brief] writing {slug} …")
@@ -319,11 +325,15 @@ def fetch_smhi_marine(lat, lon):
     Fetch marine forecast from SMHI Open Data API (CC BY 4.0).
     Returns dict with wind_speed, wind_dir, wave_height, visibility or None.
     SMHI pointforecast for the Baltic Sea.
+    URL format: /lon/{lon}/lat/{lat}/ with coords rounded to 2 decimal places.
     """
-    # SMHI Open Data API — meteorological forecasts (PMPFREKV2)
+    # SMHI Open Data API — meteorological forecasts
+    # Coordinates must be rounded to 2 decimal places for the API to accept them
+    lon_r = round(lon, 2)
+    lat_r = round(lat, 2)
     url = (
         f"https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2"
-        f"/geotype/point/lon/{lon}/lat/{lat}/data.json"
+        f"/geotype/point/lon/{lon_r}/lat/{lat_r}/data.json"
     )
     raw = fetch_url(url, timeout=15)
     if not raw:
@@ -486,8 +496,12 @@ def fetch_emsa_items():
     if not raw:
         return []
     try:
-        root = ET.fromstring(raw)
-        ns   = {"dc": "http://purl.org/dc/elements/1.1/"}
+        # EMSA feed sometimes contains invalid XML characters — strip them before parsing
+        # Remove control characters except tab, newline, carriage return
+        raw_clean = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', raw)
+        # Also replace any lone & that aren't part of an entity
+        raw_clean = re.sub(r'&(?!(?:amp|lt|gt|apos|quot|#\d+|#x[0-9a-fA-F]+);)', '&amp;', raw_clean)
+        root = ET.fromstring(raw_clean)
         items = []
         for item in root.iter("item"):
             title   = (item.findtext("title") or "").strip()
