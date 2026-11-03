@@ -64,8 +64,7 @@ OPENROUTER_MODEL    = os.environ.get("OPENROUTER_MODEL", "google/gemini-flash-1.
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 
 # Baltic Sea sub-regions for weather: (label, lat, lon)
-# SMHI API requires coordinates rounded to 4 decimal places max,
-# and the URL format is /lon/{lon}/lat/{lat}/ (lon first, then lat)
+# Using Open-Meteo marine API — covers open sea grid points unlike SMHI pmp3g
 WEATHER_REGIONS = [
     ("Stockholm Archipelago",  59.33, 18.07),
     ("Gulf of Finland",        59.95, 24.97),
@@ -320,43 +319,37 @@ def run_bdi_brief(seen):
 
 # ── 2. BALTIC SEA WEATHER ─────────────────────────────────────────────────────
 
-def fetch_smhi_marine(lat, lon):
+def fetch_openmeteo_marine(lat, lon):
     """
-    Fetch marine forecast from SMHI Open Data API (CC BY 4.0).
-    Returns dict with wind_speed, wind_dir, wave_height, visibility or None.
-    SMHI pointforecast for the Baltic Sea.
-    URL format: /lon/{lon}/lat/{lat}/ with coords rounded to 2 decimal places.
+    Fetch marine + weather forecast from Open-Meteo (free, no key, open licence).
+    Covers open Baltic Sea grid points unlike SMHI pmp3g which is land-focused.
+    Returns dict with wind_speed, wind_dir, wind_gust, wave_height, temp or None.
     """
-    # SMHI Open Data API — meteorological forecasts
-    # Coordinates must be rounded to 2 decimal places for the API to accept them
-    lon_r = round(lon, 2)
-    lat_r = round(lat, 2)
+    # Open-Meteo forecast API — current conditions
     url = (
-        f"https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2"
-        f"/geotype/point/lon/{lon_r}/lat/{lat_r}/data.json"
+        f"https://api.open-meteo.com/v1/forecast"
+        f"?latitude={lat}&longitude={lon}"
+        f"&current=temperature_2m,wind_speed_10m,wind_direction_10m,wind_gusts_10m"
+        f"&wind_speed_unit=ms"
+        f"&forecast_days=1"
     )
     raw = fetch_url(url, timeout=15)
     if not raw:
         return None
     try:
         payload = json.loads(raw)
-        series = payload.get("timeSeries", [])
-        if not series:
+        cur = payload.get("current", {})
+        if not cur:
             return None
-        # Take the first (most current) time step
-        entry = series[0]
-        params = {p["name"]: p["values"][0] for p in entry.get("parameters", []) if p.get("values")}
         return {
-            "wind_speed":  params.get("ws"),    # m/s
-            "wind_dir":    params.get("wd"),    # degrees
-            "wind_gust":   params.get("gust"),  # m/s
-            "visibility":  params.get("vis"),   # km
-            "temp":        params.get("t"),     # °C
-            "precip":      params.get("pcat"),  # precipitation category 0-6
-            "valid_time":  entry.get("validTime", ""),
+            "wind_speed": cur.get("wind_speed_10m"),       # m/s
+            "wind_dir":   cur.get("wind_direction_10m"),   # degrees
+            "wind_gust":  cur.get("wind_gusts_10m"),       # m/s
+            "temp":       cur.get("temperature_2m"),       # °C
+            "wave_height": None,                           # not in forecast API
         }
     except Exception as e:
-        print(f"  SMHI parse error: {e}")
+        print(f"  Open-Meteo parse error: {e}")
         return None
 
 
@@ -454,8 +447,8 @@ def build_weather_article(regions_data, date):
 
     body += (
         "\n\n---\n\n"
-        "*Weather data: [SMHI Open Data](https://www.smhi.se/data) "
-        "(CC BY 4.0 — Swedish Meteorological and Hydrological Institute). "
+        "*Weather data: [Open-Meteo](https://open-meteo.com) "
+        "(free, open licence). "
         "For indicative planning purposes only. Always consult official NAVTEX "
         "and national met office warnings before departure.*"
     )
@@ -469,10 +462,10 @@ def run_weather(seen):
         print(f"[weather] already posted today ({slug}), skipping.")
         return seen
 
-    print("[weather] fetching SMHI data …")
+    print("[weather] fetching Open-Meteo data …")
     regions_data = []
     for name, lat, lon in WEATHER_REGIONS:
-        obs = fetch_smhi_marine(lat, lon)
+        obs = fetch_openmeteo_marine(lat, lon)
         regions_data.append((name, obs))
         status = f"wind {obs.get('wind_speed')} m/s" if obs else "no data"
         print(f"  {name}: {status}")
