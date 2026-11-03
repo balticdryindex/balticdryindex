@@ -1,16 +1,10 @@
 # Sveltia CMS configuration for BalticDryIndex.com
-# Editor commits Markdown to content/news/*.md; the build-news GitHub Action
-# renders those into /news/<slug>/index.html with the site design.
-#
-# >>> FILL IN TWO VALUES BELOW before this works:
-#   1. repo:      your GitHub  owner/repo   (e.g. your-username/balticdryindex)
-#   2. base_url:  the URL of the sveltia-cms-auth Worker you deploy (Step 6C)
+# Login: go to /admin/, click "Sign in with token", paste your GitHub PAT.
 
 backend:
   name: github
-  repo: balticdryindex/balticdryindex      # <-- (1) change this
+  repo: balticdryindex/balticdryindex
   branch: main
-  base_url: https://sveltia-cms-auth.balticdryindex.workers.dev   # <-- (2) change this
 
 media_folder: assets/uploads
 public_folder: /assets/uploads
