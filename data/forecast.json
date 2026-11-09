@@ -1,23 +1,23 @@
 {
   "horizon_days": 7,
   "available": true,
-  "as_of": "2026-11-06",
-  "last_value": 2805,
+  "as_of": "2026-11-09",
+  "last_value": 2854,
   "projection": [
-    2803,
-    2800,
-    2799,
-    2797,
-    2796,
-    2795,
-    2794
+    2857,
+    2859,
+    2861,
+    2863,
+    2864,
+    2866,
+    2867
   ],
-  "point": 2794,
+  "point": 2867,
   "band": [
-    2595,
-    2993
+    2669,
+    3065
   ],
-  "direction": "down",
+  "direction": "up",
   "method": "damped-drift baseline",
   "confidence": "moderate",
   "disclaimer": "Model output, indicative only, not financial advice."
