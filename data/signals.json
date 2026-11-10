@@ -1,19 +1,19 @@
 {
-  "date": "2026-11-09",
-  "points_available": 76,
+  "date": "2026-11-10",
+  "points_available": 77,
   "sma": {
-    "7d": 2720.7,
-    "30d": 2790.8,
-    "90d": 2993.4,
-    "200d": 2993.4
+    "7d": 2741.9,
+    "30d": 2780.2,
+    "90d": 2991.6,
+    "200d": 2991.6
   },
   "trend": {
     "30d": "up",
     "90d": "down"
   },
-  "momentum_z": -0.44,
-  "volatility_annualized": 0.398,
-  "pct_from_ath": -75.8,
+  "momentum_z": -0.41,
+  "volatility_annualized": 0.395,
+  "pct_from_ath": -75.7,
   "regime": "contraction",
   "note": null,
   "attribution": "Underlying BDI values \u00a9 Baltic Exchange. Indicators computed by BalticDryIndex.com.",
