@@ -1,19 +1,24 @@
 {
-  "date": "2026-11-13",
-  "summary": "BDI rose 0 pts (+0.00%) to 2,980 on 2026-11-13, led by Capesize.",
+  "date": "2026-11-16",
+  "summary": "BDI fell 59 pts (-1.98%) to 2,921 on 2026-11-16, led by Capesize.",
   "drivers": [
-    "capesize_strength"
+    "capesize_weakness"
   ],
-  "events": [],
+  "events": [
+    {
+      "tag": "streak",
+      "detail": "2 consecutive declines"
+    }
+  ],
   "vessel_notes": {
-    "capesize": "flat",
-    "panamax": "flat",
-    "supramax": "flat",
-    "handysize": "flat"
+    "capesize": "soft",
+    "panamax": "soft",
+    "supramax": "leading",
+    "handysize": "leading"
   },
   "trend": {
     "30d": "up",
-    "90d": "neutral"
+    "90d": "down"
   },
   "attribution": "Underlying BDI values \u00a9 Baltic Exchange. Summary by BalticDryIndex.com.",
   "disclaimer": "Indicative only. Not financial advice."
