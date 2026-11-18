@@ -1,17 +1,12 @@
 {
-  "date": "2026-11-17",
-  "summary": "BDI fell 28 pts (-0.96%) to 2,893 on 2026-11-17, led by Capesize.",
+  "date": "2026-11-18",
+  "summary": "BDI rose 21 pts (+0.73%) to 2,914 on 2026-11-18, led by Capesize.",
   "drivers": [
-    "capesize_weakness"
+    "capesize_strength"
   ],
-  "events": [
-    {
-      "tag": "streak",
-      "detail": "3 consecutive declines"
-    }
-  ],
+  "events": [],
   "vessel_notes": {
-    "capesize": "soft",
+    "capesize": "leading",
     "panamax": "leading",
     "supramax": "soft",
     "handysize": "leading"
