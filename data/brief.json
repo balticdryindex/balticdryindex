@@ -1,13 +1,13 @@
 {
-  "date": "2026-11-25",
-  "summary": "BDI rose 39 pts (+1.27%) to 3,107 on 2026-11-25, led by Panamax.",
+  "date": "2026-11-26",
+  "summary": "BDI rose 45 pts (+1.45%) to 3,152 on 2026-11-26, led by Panamax.",
   "drivers": [
     "panamax_strength"
   ],
   "events": [
     {
       "tag": "streak",
-      "detail": "3 consecutive gains"
+      "detail": "4 consecutive gains"
     }
   ],
   "vessel_notes": {
